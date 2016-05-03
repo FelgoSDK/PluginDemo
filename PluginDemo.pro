@@ -84,6 +84,7 @@ ios {
     LIBS += -framework CoreText
     LIBS += -framework EventKit
     LIBS += -framework EventKitUI
+    LIBS += -framework GameKit
     LIBS += -framework MediaPlayer
     LIBS += -framework MessageUI
     LIBS += -framework MobileCoreServices

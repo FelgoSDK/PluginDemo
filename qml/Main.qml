@@ -22,6 +22,7 @@ App {
 
         ListElement { type: "In-App Purchases"; name: "Soomla" }
 
+        ListElement { type: "Social"; name: "GameCenter" }
         ListElement { type: "Social"; name: "Facebook" }
 
         ListElement { type: "Analytics"; name: "Google Analytics" }
@@ -48,21 +49,24 @@ App {
             page.navigationStack.push(Qt.resolvedUrl("pages/SoomlaPage.qml"))
             break
           case 3:
-            page.navigationStack.push(Qt.resolvedUrl("pages/FacebookPage.qml"))
+            page.navigationStack.push(Qt.resolvedUrl("pages/GameCenterPage.qml"))
             break
           case 4:
-            page.navigationStack.push(Qt.resolvedUrl("pages/GoogleAnalyticsPage.qml"))
+            page.navigationStack.push(Qt.resolvedUrl("pages/FacebookPage.qml"))
             break
           case 5:
-            page.navigationStack.push(Qt.resolvedUrl("pages/FlurryPage.qml"))
+            page.navigationStack.push(Qt.resolvedUrl("pages/GoogleAnalyticsPage.qml"))
             break
           case 6:
-            page.navigationStack.push(Qt.resolvedUrl("pages/OneSignalPage.qml"))
+            page.navigationStack.push(Qt.resolvedUrl("pages/FlurryPage.qml"))
             break
           case 7:
-            page.navigationStack.push(Qt.resolvedUrl("pages/LocalNotificationPage.qml"))
+            page.navigationStack.push(Qt.resolvedUrl("pages/OneSignalPage.qml"))
             break
           case 8:
+            page.navigationStack.push(Qt.resolvedUrl("pages/LocalNotificationPage.qml"))
+            break
+          case 9:
             page.navigationStack.push(Qt.resolvedUrl("pages/HockeyAppPage.qml"))
             break
           }
