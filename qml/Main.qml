@@ -1,6 +1,7 @@
 import VPlayApps 1.0
 import VPlayPlugins 1.0
 import QtQuick 2.0
+import "helper"
 
 App {
   // You get free licenseKeys from http://v-play.net/licenseKey
@@ -15,6 +16,10 @@ App {
     ListPage {
       id: page
       title: qsTr("V-Play Plugins")
+
+      listView.anchors.fill: null // do not fill page
+      listView.height: listView.parent.height - callToAction.height // leave space for call to action
+      listView.width: listView.parent.width
 
       model: ListModel {
         ListElement { type: "Advertising"; name: "AdMob" }
@@ -75,6 +80,8 @@ App {
 
       section.property: "type"
       section.delegate: SimpleSection { }
+
+      CallToAction { id: callToAction }
     }
   }
 }
