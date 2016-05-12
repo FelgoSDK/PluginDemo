@@ -2,19 +2,20 @@
 
 Description
 -----------
-This is the source code of the V-Play Plugin Demo which is available for free in all stores. The Plugin Demo is an open source project showcasing the usage of V-Play Plugins to integrate leading 3rd party services to your Qt based apps & games. V-Play is available for free on http://v-play.net/. 
+This is the source code of the V-Play Plugin Demo which is available for free in all stores. The Plugin Demo is an open source project showcasing the usage of V-Play Plugins to integrate leading 3rd party services to your Qt based apps & games.
+For more information about the V-Play Plugin Demo see http://v-play.net/plugin-demo/.
 
-![ScreenShot](http://v-play.net/doc/images/plugindemo_admob.png)
+![ScreenShot](http://v-play.net/doc/images/plugindemo_screens.png)
 
 The Plugin Demo uses V-Play Plugins to add features like:
- - Advertising / Monetization with AdMob or Chartboost
- - In-App Purchases by Soomla
- - Facebook Integration
- - Analytics with Google Analytics or Flurry
- - Targeted Push Notifications by OneSignal
- - Local Push Notifications
- - Beta Testing & Crash Reporting with HockeyApp
- - iOS GameCenter Integration
+ - Advertising / Monetization with AdMob (http://v-play.net/doc/plugin-admob/) or Chartboost (http://v-play.net/doc/plugin-chartboost/)
+ - In-App Purchases by Soomla (http://v-play.net/doc/plugin-soomla/)
+ - Facebook Integration (http://v-play.net/doc/plugin-facebook/)
+ - Analytics with Google Analytics (http://v-play.net/doc/plugin-googleanalytics/) or Flurry (http://v-play.net/doc/plugin-flurry/)
+ - Targeted Push Notifications by OneSignal (http://v-play.net/plugins)
+ - Local Push Notifications (http://v-play.net/doc/plugin-notification/)
+ - Beta Testing & Crash Reporting with HockeyApp (http://v-play.net/doc/test/plugin-hockeyapp/)
+ - iOS GameCenter Integration (http://v-play.net/doc/test/plugin-gamecenter/)
 
 
 Why use V-Play Plugins for your Apps and Games?
@@ -22,12 +23,6 @@ Why use V-Play Plugins for your Apps and Games?
 There is no need to re-invent the wheel when integrating third party services and platform-specific functionality to your Qt 5 apps & games. V-Play plugins save you weeks in comparison with in-house development, both during implementation and later on for maintaining and updating third-party libraries.
 
 V-Play Plugins use native, platform-specific functionality, meaning that your app seamlessly integrates with existing platform experiences. They incorporate platform-specific human interface guidelines and follow best-practices down to the detail.
-
-Get started with V-Play now!
-http://www.v-play.net
-
-For more information about V-Play Plugins see http://plugins.v-play.net.
-
 
 Installation Instructions
 -------------------------
