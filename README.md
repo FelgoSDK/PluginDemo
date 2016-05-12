@@ -7,6 +7,9 @@ For more information about the V-Play Plugin Demo see http://v-play.net/plugin-d
 
 ![ScreenShot](http://v-play.net/doc/images/plugindemo_screens.png)
 
+Download and try the demo:
+ - Android: https://play.google.com/store/apps/details?id=net.vplay.demos.PluginDemo
+
 The Plugin Demo uses V-Play Plugins to add features like:
  - Advertising / Monetization with AdMob (http://v-play.net/doc/plugin-admob/) or Chartboost (http://v-play.net/doc/plugin-chartboost/)
  - In-App Purchases by Soomla (http://v-play.net/doc/plugin-soomla/)
@@ -14,8 +17,8 @@ The Plugin Demo uses V-Play Plugins to add features like:
  - Analytics with Google Analytics (http://v-play.net/doc/plugin-googleanalytics/) or Flurry (http://v-play.net/doc/plugin-flurry/)
  - Targeted Push Notifications by OneSignal (http://v-play.net/plugins)
  - Local Push Notifications (http://v-play.net/doc/plugin-notification/)
- - Beta Testing & Crash Reporting with HockeyApp (http://v-play.net/doc/test/plugin-hockeyapp/)
- - iOS GameCenter Integration (http://v-play.net/doc/test/plugin-gamecenter/)
+ - Beta Testing & Crash Reporting with HockeyApp (http://v-play.net/doc/plugin-hockeyapp/)
+ - iOS GameCenter Integration (http://v-play.net/doc/plugin-gamecenter/)
 
 
 Why use V-Play Plugins for your Apps and Games?
