@@ -1,8 +1,8 @@
 {
-  "title": "PluginDemo",
+  "title": "V-Play Plugins",
   "identifier": "net.vplay.demos.PluginDemo",
   "orientation": "auto",
-  "versioncode": 1,
+  "versioncode": 10,
   "versionname": "1.0",
   "stage": "test"
 }
