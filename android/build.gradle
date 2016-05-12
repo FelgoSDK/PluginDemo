@@ -48,6 +48,8 @@ android {
 
     buildToolsVersion androidBuildToolsVersion
 
+    defaultConfig.applicationId = "net.vplay.demos.PluginDemo"
+
     sourceSets {
         main {
             manifest.srcFile 'AndroidManifest.xml'
