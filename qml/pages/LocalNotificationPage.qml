@@ -16,10 +16,14 @@ ListPage {
 
     onSelected: {
       if (index === 0) {
-        notificationmanager.schedule({ message: "Notification Test", number: 1, timeInterval: 8 })
+        NativeDialog.confirm("Local Notifications", "A test notification will be scheduled to arrive in 8 seconds.", function(confirmed) {
+          if(confirmed)
+            notificationmanager.schedule({ message: "Notification Test", number: 1, timeInterval: 8 })
+        })
       }
       else if (index === 1) {
         notificationmanager.cancelAllNotifications()
+        NativeDialog.confirm("Local Notifications", "All notifications cancelled.", function(){}, false)
       }
     }
   }
@@ -29,5 +33,6 @@ ListPage {
 
   NotificationManager {
     id: notificationmanager
+    onNotificationFired: NativeDialog.confirm("Local Notifications", "Notification with id "+notificationId+" fired", function(){}, false)
   }
 }
