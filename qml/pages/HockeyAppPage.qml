@@ -16,7 +16,10 @@ ListPage {
 
     onSelected: {
       if (index === 0) {
-        hockeyApp.forceCrash()
+        NativeDialog.confirm("Crash app", "Do you really want to crash the app?", function(confirmed) {
+          if(confirmed)
+            hockeyApp.forceCrash()
+        })
       }
       else if (index === 1) {
         hockeyApp.showUpdateView()
