@@ -15,8 +15,9 @@ ListPage {
     text: name
 
     onSelected: {
-     if (index === 0) {
+      if (index === 0) {
         flurry.logEvent("Buttons", "Send Event Clicked")
+        NativeDialog.confirm("Flurry", "event logged:\nButtons\nSend Event Clicked", function(){}, false)
       }
     }
   }
