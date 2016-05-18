@@ -54,6 +54,7 @@ ListPage {
       }
       else if (index === 4) {
         onesignal.requestTags()
+        listModel.setProperty(5, "name", "Current tags: requesting tags ...")
       }
     }
   }
