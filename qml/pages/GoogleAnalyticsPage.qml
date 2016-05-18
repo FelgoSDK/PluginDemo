@@ -18,9 +18,11 @@ ListPage {
     onSelected: {
       if (index === 0) {
         googleAnalytics.logScreen("GoogleAnalyticsPage")
+        NativeDialog.confirm("Google Analytics", "screen logged:\nGoogleAnalyticsPage", function() {}, false)
       }
       else if (index === 1) {
         googleAnalytics.logEvent("Buttons", "Send Event Clicked")
+        NativeDialog.confirm("Google Analytics", "event logged\nCategory: Buttons\nAction: Send Event Clicked", function(){}, false)
       }
     }
   }
