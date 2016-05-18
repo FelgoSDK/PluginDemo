@@ -22,7 +22,7 @@ ListPage {
       }
       else if (index === 1) {
         googleAnalytics.logEvent("Buttons", "Send Event Clicked")
-        NativeDialog.confirm("Google Analytics", "event logged\nCategory: Buttons\nAction: Send Event Clicked", function(){}, false)
+        NativeDialog.confirm("Google Analytics", "event logged:\nButtons\nSend Event Clicked", function(){}, false)
       }
     }
   }
