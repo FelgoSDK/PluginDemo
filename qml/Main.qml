@@ -11,50 +11,7 @@ App {
   //  * Add plugins to monetize, analyze & improve your apps (available with the Pro Licenses)
   //licenseKey: "<generate one from http://v-play.net/licenseKey>"
 
-  // define NotificationManager once per app in main window
-  NotificationManager {
-    id: notificationmanager
-    onNotificationFired: NativeDialog.confirm("Local Notifications", "Notification with id "+notificationId+" fired", function(){}, false)
-  }
-
-  // define OneSignal once per app in main window
-  OneSignal {
-    id: onesignal
-
-    logLevel: OneSignal.LogLevelVerbose
-    appId: Constants.oneSignalAppId
-    googleProjectNumber: Constants.oneSignalGoogleProjectNumber
-
-    onNotificationReceived: {
-      console.debug("Received notification:", message, JSON.stringify(additionalData), isActive)
-      // Possible actions:
-      // - Read message from data payload and display a user dialog
-      // - Navigate to a specific screen
-      // - ...
-    }
-
-    onUserIdChanged: {
-      console.debug("Got OneSignal user id:", userId)
-    }
-  }
-
-  // define AdMobBanner once per app in main window
-  AdMobBanner {
-    id: adMobBanner
-    adUnitId: Constants.admobBannerAdUnitId
-    banner: AdMobBanner.Smart
-
-    anchors.horizontalCenter: parent.horizontalCenter
-    anchors.bottom: parent.bottom
-
-    testDeviceIds: Constants.admobTestDeviceIds
-    visible: false // will be shown in AdMob page
-  }
-
-  // nagation stack
   NavigationStack {
-    // automatically show/hide AdMobBanner when navigating
-    onCurrentTitleChanged: currentTitle == "AdMob Plugin" ? adMobBanner.visible = true : adMobBanner.visible = false
 
     ListPage {
       id: page
