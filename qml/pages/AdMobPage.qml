@@ -86,6 +86,17 @@ ListPage {
     interstitial.loadInterstitial()
   }
 
+  AdMobBanner {
+    id: adMobBanner
+    adUnitId: Constants.admobBannerAdUnitId
+    banner: AdMobBanner.Smart
+
+    anchors.horizontalCenter: parent.horizontalCenter
+    anchors.bottom: parent.bottom
+
+    testDeviceIds: Constants.admobTestDeviceIds
+  }
+
   AdMobInterstitial {
     id: interstitial
     adUnitId: Constants.admobInterstitialAdUnitId
