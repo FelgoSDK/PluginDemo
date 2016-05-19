@@ -30,9 +30,4 @@ ListPage {
 
   section.property: "section"
   section.delegate: SimpleSection { }
-
-  NotificationManager {
-    id: notificationmanager
-    onNotificationFired: NativeDialog.confirm("Local Notifications", "Notification with id "+notificationId+" fired", function(){}, false)
-  }
 }

@@ -11,6 +11,12 @@ App {
   //  * Add plugins to monetize, analyze & improve your apps (available with the Pro Licenses)
   //licenseKey: "<generate one from http://v-play.net/licenseKey>"
 
+  // only use notification manager once per app
+  NotificationManager {
+    id: notificationmanager
+    onNotificationFired: NativeDialog.confirm("Local Notifications", "Notification with id "+notificationId+" fired", function(){}, false)
+  }
+
   NavigationStack {
 
     ListPage {
