@@ -45,9 +45,9 @@ ListPage {
   GameCenter {
     id: gamecenter
 
-    onAuthenticatedChanged: console.debug("User is authenticated:", authenticated)
-    onAchievementReported: console.debug("Achievement reported with success:", success)
-    onScoreReported: console.debug("Score reported with success:", success)
-    onAchievementsReset: console.debug("Achievements reset with success:", success)
+    onAuthenticatedChanged: NativeDialog.confirm("GameCenter", "User is authenticated: "+authenticated, function() { }, false)
+    onAchievementReported: NativeDialog.confirm("GameCenter", "Achievement reported with success: "+success, function() { }, false)
+    onScoreReported: NativeDialog.confirm("GameCenter", "Score reported with success: "+success, function() { }, false)
+    onAchievementsReset: NativeDialog.confirm("GameCenter", "Achievements reset with success: "+success, function() { }, false)
   }
 }
