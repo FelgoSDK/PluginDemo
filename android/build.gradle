@@ -23,7 +23,6 @@ dependencies {
     compile 'net.vplay.plugins:plugin-chartboost:2.+'
     compile 'net.vplay.plugins:plugin-facebook:2.+'
     compile 'net.vplay.plugins:plugin-flurry:2.+'
-    compile 'net.vplay.plugins:plugin-googleanalytics:2.+'
     compile 'net.vplay.plugins:plugin-hockeyapp:2.+'
     compile 'net.vplay.plugins:plugin-notification:2.+'
     compile 'net.vplay.plugins:plugin-onesignal:2.+'
