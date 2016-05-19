@@ -62,22 +62,9 @@ ListPage {
   section.property: "section"
   section.delegate: SimpleSection { }
 
-  OneSignal {
-    id: onesignal
-
-    logLevel: OneSignal.LogLevelVerbose
-    appId: Constants.oneSignalAppId
-    googleProjectNumber: Constants.oneSignalGoogleProjectNumber
-
-    onNotificationReceived: {
-      console.debug("Received notification:", message, JSON.stringify(additionalData), isActive)
-
-      // Possible actions:
-      // - Read message from data payload and display a user dialog
-      // - Navigate to a specific screen
-      // - ...
-    }
-
+  // react to onTagsReceived signal to display tags
+  Connections {
+    target: onesignal
     onTagsReceived: {
       var tagStr = ""
       for(var tag in tags)
@@ -89,10 +76,6 @@ ListPage {
         tagStr = "Current tags: no tags set"
 
       listModel.setProperty(5, "name", tagStr)
-    }
-
-    onUserIdChanged: {
-      console.debug("Got OneSignal user id:", userId)
     }
   }
 }
