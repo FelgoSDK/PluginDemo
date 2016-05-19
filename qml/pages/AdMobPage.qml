@@ -25,7 +25,7 @@ ListPage {
     id: row
 
     text: name
-    property bool isSelected: current
+    property bool isSelected: current || (index === 0 && adMobBanner.visible || index === 1 && !adMobBanner.visible)
 
     Icon {
       anchors.right: parent.right
@@ -84,17 +84,6 @@ ListPage {
   Component.onCompleted: {
     // Cache interstitial
     interstitial.loadInterstitial()
-  }
-
-  AdMobBanner {
-    id: adMobBanner
-    adUnitId: Constants.admobBannerAdUnitId
-    banner: AdMobBanner.Smart
-
-    anchors.horizontalCenter: parent.horizontalCenter
-    anchors.bottom: parent.bottom
-
-    testDeviceIds: Constants.admobTestDeviceIds
   }
 
   AdMobInterstitial {

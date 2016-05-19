@@ -11,13 +11,28 @@ App {
   //  * Add plugins to monetize, analyze & improve your apps (available with the Pro Licenses)
   //licenseKey: "<generate one from http://v-play.net/licenseKey>"
 
-  // only use notification manager once per app
+  // define NotificationManager once per app in main window
   NotificationManager {
     id: notificationmanager
     onNotificationFired: NativeDialog.confirm("Local Notifications", "Notification with id "+notificationId+" fired", function(){}, false)
   }
 
+  // define AdMobBanner once per app in main window
+  AdMobBanner {
+    id: adMobBanner
+    adUnitId: Constants.admobBannerAdUnitId
+    banner: AdMobBanner.Smart
+
+    anchors.horizontalCenter: parent.horizontalCenter
+    anchors.bottom: parent.bottom
+
+    testDeviceIds: Constants.admobTestDeviceIds
+    visible: false // will be shown in AdMob page
+  }
+
   NavigationStack {
+    // automatically show/hide AdMobBanner when navigating
+    onCurrentTitleChanged: currentTitle == "AdMob Plugin" ? adMobBanner.visible = true : adMobBanner.visible = false
 
     ListPage {
       id: page
