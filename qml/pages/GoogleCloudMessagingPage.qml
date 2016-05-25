@@ -64,5 +64,21 @@ ListPage {
     listModel.setProperty(4, "name", str)
   }
 
+  // Define GoogleCloudMessaging once per app in GameWindow or App root component
+  GoogleCloudMessaging {
+    id: gcm
+
+    onNotificationReceived: {
+      console.debug("Received notification:", JSON.stringify(data))
+      // Possible actions:
+      // - Read message from data payload and display a user dialog
+      // - Navigate to a specific screen
+      // - ...
+    }
+
+    onChannelsChanged: {
+      updateChannelString()
+    }
+  }
 
 }
