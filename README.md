@@ -9,6 +9,7 @@ For more information about the V-Play Plugin Demo see http://v-play.net/plugin-d
 
 Download and try the demo:
  - Android: https://play.google.com/store/apps/details?id=net.vplay.demos.PluginDemo
+ - iOS: https://itunes.apple.com/us/app/qt-plugin-demo-by-v-play/id1108040936?ls=1&mt=8
 
 The Plugin Demo uses V-Play Plugins to add features like:
  - Advertising / Monetization with AdMob (http://v-play.net/doc/plugin-admob/) or Chartboost (http://v-play.net/doc/plugin-chartboost/)
