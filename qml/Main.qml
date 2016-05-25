@@ -33,6 +33,7 @@ App {
         ListElement { type: "Analytics"; name: "Google Analytics" }
         ListElement { type: "Analytics"; name: "Flurry" }
 
+        ListElement { type: "Notifications"; name: "Google Cloud Messaging Push Notifications" }
         ListElement { type: "Notifications"; name: "OneSignal Push Notifications" }
         ListElement { type: "Notifications"; name: "Local Notifications" }
 
@@ -66,12 +67,15 @@ App {
             page.navigationStack.push(Qt.resolvedUrl("pages/FlurryPage.qml"))
             break
           case 7:
-            page.navigationStack.push(Qt.resolvedUrl("pages/OneSignalPage.qml"))
+            page.navigationStack.push(Qt.resolvedUrl("pages/GoogleCloudMessagingPage.qml"))
             break
           case 8:
-            page.navigationStack.push(Qt.resolvedUrl("pages/LocalNotificationPage.qml"))
+            page.navigationStack.push(Qt.resolvedUrl("pages/OneSignalPage.qml"))
             break
           case 9:
+            page.navigationStack.push(Qt.resolvedUrl("pages/LocalNotificationPage.qml"))
+            break
+          case 10:
             page.navigationStack.push(Qt.resolvedUrl("pages/HockeyAppPage.qml"))
             break
           }

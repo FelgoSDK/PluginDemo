@@ -23,7 +23,7 @@ ListPage {
       }
       else if (index === 1) {
         notificationmanager.cancelAllNotifications()
-        NativeDialog.confirm("Local Notifications", "All notifications cancelled.", function(){}, false)
+        NativeDialog.confirm("Local Notifications", "All notifications cancelled.", null, false)
       }
     }
   }
@@ -33,6 +33,6 @@ ListPage {
 
   NotificationManager {
     id: notificationmanager
-    onNotificationFired: NativeDialog.confirm("Local Notifications", "Notification with id "+notificationId+" fired", function(){}, false)
+    onNotificationFired: NativeDialog.confirm("Local Notifications", "Notification with id " + notificationId + " fired", null, false)
   }
 }

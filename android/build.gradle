@@ -4,7 +4,8 @@ buildscript {
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:1.1.0'
+        classpath 'com.android.tools.build:gradle:2.1.0'
+        classpath 'com.google.gms:google-services:2.1.0'
     }
 }
 
@@ -23,6 +24,7 @@ dependencies {
     compile 'net.vplay.plugins:plugin-chartboost:2.+'
     compile 'net.vplay.plugins:plugin-facebook:2.+'
     compile 'net.vplay.plugins:plugin-flurry:2.+'
+    compile 'net.vplay.plugins:plugin-gcm:2.+'
     compile 'net.vplay.plugins:plugin-hockeyapp:2.+'
     compile 'net.vplay.plugins:plugin-notification:2.+'
     compile 'net.vplay.plugins:plugin-onesignal:2.+'
@@ -47,7 +49,7 @@ android {
 
     buildToolsVersion androidBuildToolsVersion
 
-    defaultConfig.applicationId = "net.vplay.demos.PluginDemo"
+    defaultConfig.applicationId = 'net.vplay.demos.PluginDemo'
 
     sourceSets {
         main {
@@ -66,3 +68,5 @@ android {
         abortOnError false
     }
 }
+
+apply plugin: 'com.google.gms.google-services'

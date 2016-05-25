@@ -1,0 +1,35 @@
+{
+  "project_info": {
+    "project_number": "326518690918",
+    "project_id": "plugindemo-d016e"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:326518690918:android:cd18b515f6297270",
+        "android_client_info": {
+          "package_name": "net.vplay.demos.PluginDemo"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBz8c0P5yvDM4YMkOWDrj48fqErkWFOcNM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
