@@ -18,8 +18,23 @@ ListPage {
     text: name
 
     onSelected: {
+      // if user is not authenticated, show a message box that he cannot use GameCenter features
+      if(index > 0 && !gamecenter.authenticated) {
+        NativeDialog.confirm("Not Authenticated",
+                             "Log in with your account to use GameCenter. Do you want to log in now?",
+                             function(ok) {
+                               if(ok)
+                                 gamecenter.authenticateLocalPlayer()
+                             })
+        return
+      }
+
+      // default clicked behavior
       if (index === 0) {
-        gamecenter.authenticateLocalPlayer()
+        if(gamecenter.authenticated)
+          NativeDialog.confirm("Already Authenticated", "You are already authenticated.", function(){}, false)
+        else
+          gamecenter.authenticateLocalPlayer()
       }
       else if (index === 1) {
         gamecenter.showLeaderboard()
@@ -40,7 +55,15 @@ ListPage {
   }
 
   section.property: "section"
-  section.delegate: SimpleSection { }
+  section.delegate: SimpleSection {
+    // show authentication status in first section title
+    title: {
+      if(section === "Game Center")
+        return section + (gamecenter.authenticated ? " (Authenticated)" : " (Not Authenticated)")
+      else
+        return section
+    }
+  }
 
   GameCenter {
     id: gamecenter
@@ -49,5 +72,11 @@ ListPage {
     onAchievementReported: NativeDialog.confirm("GameCenter", "Achievement reported with success: "+success, function() { }, false)
     onScoreReported: NativeDialog.confirm("GameCenter", "Score reported with success: "+success, function() { }, false)
     onAchievementsReset: NativeDialog.confirm("GameCenter", "Achievements reset with success: "+success, function() { }, false)
+  }
+
+  // automatically call authenticate when page is created/opened
+  Component.onCompleted: {
+    if(!gamecenter.authenticated)
+      gamecenter.authenticateLocalPlayer()
   }
 }
