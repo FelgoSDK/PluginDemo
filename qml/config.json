@@ -2,7 +2,7 @@
   "title": "V-Play Plugins",
   "identifier": "net.vplay.demos.PluginDemo",
   "orientation": "auto",
-  "versioncode": 12,
-  "versionname": "1.2",
+  "versioncode": 13,
+  "versionname": "1.3",
   "stage": "test"
 }
