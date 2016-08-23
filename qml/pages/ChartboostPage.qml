@@ -8,6 +8,12 @@ ListPage {
 
   model: ListModel {
     ListElement { section: "Interstitial"; name: "Load and show" }
+    ListElement { section: "Interstitial"; name: "Cache interstitial" }
+    ListElement { section: "Interstitial"; name: "Show Interstitial" }
+    ListElement { section: "Rewarded Video"; name: "Cache Video" }
+    ListElement { section: "Rewarded Video"; name: "Show Video" }
+    ListElement { section: "More"; name: "Load and show" }
+
   }
 
   delegate: SimpleRow {
@@ -17,6 +23,16 @@ ListPage {
       // Interstitial
       if (index === 0) {
         chartboost.showInterstitial()
+      } else if (index === 1) {
+        chartboost.cacheInterstitial(Chartboost.HomeScreenLocation)
+      } else if(index === 2) {
+        chartboost.showInterstitial(Chartboost.HomeScreenLocation)
+      } else if(index === 3) {
+        chartboost.cacheRewardedVideo(Chartboost.DefaultLocation)
+      } else if (index === 4) {
+        chartboost.showRewardedVideo(Chartboost.DefaultLocation)
+      } else if (index === 5) {
+        chartboost.showMoreApps(Chartboost.DefaultLocation)
       }
     }
   }
@@ -26,9 +42,22 @@ ListPage {
 
   Chartboost {
     id: chartboost
+    property bool rewardReady: false
 
     appId: Theme.isIos ? Constants.chartboostIosAppId : Constants.chartboostAndroidAppId
     appSignature: Theme.isIos ? Constants.chartboostIosAppSignature : Constants.chartboostAndroidAppSignature
+
+    onRewardedVideoCached: {
+      rewardReady = true
+      console.debug("Rewarded Video was cached!")
+    }
+
+    onInterstitialCached: {
+      console.log("Interstitial Cached for " + location + " or locationType: " + locationType)
+      if(locationType === Chartboost.HomeScreenLocation) {
+        console.log("Interstitial cached for HomeScreen")
+      }
+    }
 
     shouldRequestInterstitialsInFirstSession: true
   }
