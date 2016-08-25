@@ -20,6 +20,7 @@ Page {
       width: dp(100)
       height: dp(100)
       source: facebook.profile.pictureUrl
+      visible: facebook.loggedIn
     }
 
     AppText {
@@ -97,6 +98,7 @@ Page {
       id: friendsHeader
       text: "Friends: "
       font.bold: true
+      height: implicitHeight + userProfile.anchors.margins
       x: userProfile.anchors.margins
     }
 
@@ -148,7 +150,7 @@ Page {
       if(resultState !== Facebook.ResultOk)
         NativeDialog.confirm("Post Request Failed", "", function(){}, false)
       else
-        NativeDialog.confirm("Message Successfully Posted", "", function(){}, false)
+        NativeDialog.confirm("Message Posted Successfully", "", function(){}, false)
     }
   }
 }
