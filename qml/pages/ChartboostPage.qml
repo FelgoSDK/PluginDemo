@@ -50,6 +50,7 @@ ListPage {
     onRewardedVideoCached: {
       rewardReady = true
       console.debug("Rewarded Video was cached!")
+      NativeDialog.confirm("Rewarded Video Cached", "Rewarded Video is now cached.", function() {}, false)
     }
 
     onInterstitialCached: {
@@ -57,7 +58,12 @@ ListPage {
       if(locationType === Chartboost.HomeScreenLocation) {
         console.log("Interstitial cached for HomeScreen")
       }
+      NativeDialog.confirm("Interstitial Cached", "Interstitial is now cached.", function() {}, false)
     }
+
+    // handle failed to load
+    onRewardedVideoFailedToLoad: NativeDialog.confirm("Rewarded Video Failed", "Rewarded Video failed to load.", function() {}, false)
+    onInterstitialFailedToLoad: NativeDialog.confirm("Interstitial Failed", "Interstitial failed to load.", function() {}, false)
 
     shouldRequestInterstitialsInFirstSession: true
   }
