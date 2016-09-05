@@ -123,7 +123,7 @@ Page {
     readonly property bool loggedIn: sessionState === Facebook.SessionOpened
 
     appId: Constants.facebookAppId
-    readPermissions: [ "public_profile", "user_friends" ]
+    readPermissions: [ "public_profile", "email", "user_friends" ]
     publishPermissions: ["publish_actions"]
 
     // fetch data after log in
