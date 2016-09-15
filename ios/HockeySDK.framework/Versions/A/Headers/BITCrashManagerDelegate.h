@@ -49,8 +49,8 @@
 
  @param crashManager The `BITCrashManager` instance invoking this delegate
  @see attachmentForCrashManager:
- @see userNameForCrashManager:
- @see userEmailForCrashManager:
+ @see BITHockeyManagerDelegate userNameForHockeyManager:componentManager:
+ @see BITHockeyManagerDelegate userEmailForHockeyManager:componentManager:
  */
 -(NSString *)applicationLogForCrashManager:(BITCrashManager *)crashManager;
 
@@ -74,38 +74,10 @@
  @param crashManager The `BITCrashManager` instance invoking this delegate
  @see BITHockeyAttachment
  @see applicationLogForCrashManager:
- @see userNameForCrashManager:
- @see userEmailForCrashManager:
+ @see BITHockeyManagerDelegate userNameForHockeyManager:componentManager:
+ @see BITHockeyManagerDelegate userEmailForHockeyManager:componentManager:
  */
 -(BITHockeyAttachment *)attachmentForCrashManager:(BITCrashManager *)crashManager;
-
-
-
-/** Return the user name or userid that should be send along each crash report
- 
- @param crashManager The `BITCrashManager` instance invoking this delegate
- @see applicationLogForCrashManager:
- @see attachmentForCrashManager:
- @see userEmailForCrashManager:
- @deprecated Please use `BITHockeyManagerDelegate userNameForHockeyManager:componentManager:` instead
- @warning When returning a non nil value, crash reports are not anonymous any
- more and the alerts will not show the "anonymous" word!
- */
--(NSString *)userNameForCrashManager:(BITCrashManager *)crashManager DEPRECATED_ATTRIBUTE;
-
-
-
-/** Return the users email address that should be send along each crash report
- 
- @param crashManager The `BITCrashManager` instance invoking this delegate
- @see applicationLogForCrashManager:
- @see attachmentForCrashManager:
- @see userNameForCrashManager:
- @deprecated Please use `BITHockeyManagerDelegate userEmailForHockeyManager:componentManager:` instead
- @warning When returning a non nil value, crash reports are not anonymous any
- more and the alerts will not show the "anonymous" word!
- */
--(NSString *)userEmailForCrashManager:(BITCrashManager *)crashManager DEPRECATED_ATTRIBUTE;
 
 
 
@@ -148,7 +120,7 @@
 /** Invoked after sending crash reports failed
  
  @param crashManager The `BITCrashManager` instance invoking this delegate
- @param error The error returned from the NSURLConnection call or `kBITCrashErrorDomain`
+ @param error The error returned from the NSURLConnection/NSURLSession call or `kBITCrashErrorDomain`
  with reason of type `BITCrashErrorReason`.
  */
 - (void)crashManager:(BITCrashManager *)crashManager didFailWithError:(NSError *)error;

@@ -110,6 +110,19 @@
 /// @name Privacy
 ///-----------------------------------------------------------------------------
 
+/** Implement this method to be notified before an update starts.
+ 
+ The update manager will send this delegate message _just_ before the system
+ call to update the application is placed, but after the user has already chosen
+ to install the update.
+ 
+ There is no guarantee that the update will actually start after this delegate
+ message is sent.
+
+ @param updateManager The `BITUpdateManager` instance invoking this delegate
+ */
+- (BOOL)willStartDownloadAndUpdate:(BITUpdateManager *)updateManager;
+
 /**
  Invoked right before the app will exit to allow app update to start (>= iOS8 only)
  
@@ -120,25 +133,5 @@
  @param updateManager The `BITUpdateManager` instance invoking this delegate
  */
 - (void)updateManagerWillExitApp:(BITUpdateManager *)updateManager;
-
-
-#pragma mark - Deprecated
-
-///-----------------------------------------------------------------------------
-/// @name Update View Presentation Helper
-///-----------------------------------------------------------------------------
-
-/**
- Provide a parent view controller for the update user interface
- 
- If you don't have a `rootViewController` set on your `UIWindow` and the SDK cannot
- automatically find the current top most `UIViewController`, you can provide the 
- `UIViewController` that should be used to present the update user interface modal.
-
- @param updateManager The `BITUpdateManager` instance invoking this delegate
- 
- @deprecated Please use `BITHockeyManagerDelegate viewControllerForHockeyManager:componentManager:` instead
- */
-- (UIViewController *)viewControllerForUpdateManager:(BITUpdateManager *)updateManager DEPRECATED_ATTRIBUTE;
 
 @end
