@@ -7,14 +7,11 @@ framework module GoogleMobileAds {
   link framework "AdSupport"
   link framework "AudioToolbox"
   link framework "AVFoundation"
-  link framework "CoreBluetooth"
   link framework "CoreGraphics"
   link framework "CoreMedia"
   link framework "CoreMotion"
   link framework "CoreTelephony"
   link framework "CoreVideo"
-  link framework "EventKit"
-  link framework "EventKitUI"
   link framework "Foundation"
   link framework "GLKit"
   link framework "MediaPlayer"
@@ -25,6 +22,7 @@ framework module GoogleMobileAds {
   link framework "StoreKit"
   link framework "SystemConfiguration"
   link framework "UIKit"
+  link framework "WebKit"
 
   header "GoogleMobileAdsDefines.h"
 
@@ -35,6 +33,7 @@ framework module GoogleMobileAds {
   header "GADBannerViewDelegate.h"
   header "GADCorrelator.h"
   header "GADCorrelatorAdLoaderOptions.h"
+  header "GADDebugOptionsViewController.h"
   header "GADExtras.h"
   header "GADInAppPurchase.h"
   header "GADInAppPurchaseDelegate.h"
@@ -72,6 +71,7 @@ framework module GoogleMobileAds {
   header "GADNativeCustomTemplateAd.h"
 
   header "GADNativeAdImageAdLoaderOptions.h"
+  header "GADNativeAdViewAdOptions.h"
 
   header "GADCustomEventBanner.h"
   header "GADCustomEventBannerDelegate.h"
