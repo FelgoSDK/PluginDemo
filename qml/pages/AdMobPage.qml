@@ -12,11 +12,11 @@ ListPage {
     ListElement { section: "Visibility"; current: false; name: "Display banner" }
     ListElement { section: "Visibility"; current: false; name: "Hide banner" }
 
-    ListElement { section: "Banner Type"; current: false; name: "Standard" }
-    ListElement { section: "Banner Type"; current: false; name: "Medium" }
-    ListElement { section: "Banner Type"; current: false; name: "Large" }
-    ListElement { section: "Banner Type"; current: false; name: "Leaderboard" }
-    ListElement { section: "Banner Type"; current: true; name: "Smart" }
+    ListElement { section: "Banner Type"; current: false; name: "Standard (320 x 50)" }
+    ListElement { section: "Banner Type"; current: false; name: "Medium Rectangle (300x250)" }
+    ListElement { section: "Banner Type"; current: false; name: "Large (320x100)" }
+    ListElement { section: "Banner Type"; current: false; name: "Leaderboard (728x90) - Tablet Only" }
+    ListElement { section: "Banner Type"; current: true; name: "Smart (auto-size)" }
 
     ListElement { section: "Interstitial"; active: false; name: "Load and show" }
   }
