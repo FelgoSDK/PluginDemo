@@ -4,4 +4,9 @@
         <file>qml/pages</file>
         <file>qml/helper</file>
     </qresource>
+    <qresource prefix="/plugindemo/">
+        <file>qml</file>
+        <file>qml/pages</file>
+        <file>qml/helper</file>
+    </qresource>
 </RCC>
