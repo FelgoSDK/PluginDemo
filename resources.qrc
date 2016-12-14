@@ -4,7 +4,7 @@
         <file>qml/pages</file>
         <file>qml/helper</file>
     </qresource>
-    <qresource prefix="/plugindemo/">
+    <qresource prefix="/appdemos/plugindemo/">
         <file>qml</file>
         <file>qml/pages</file>
         <file>qml/helper</file>
