@@ -8,5 +8,6 @@
         <file>qml</file>
         <file>qml/pages</file>
         <file>qml/helper</file>
+        <file>assets</file>
     </qresource>
 </RCC>
