@@ -6,6 +6,21 @@ import "../helper"
 ListPage {
   title: "HockeyApp Plugin"
 
+
+  listView.header: Column {
+    width: parent.width
+
+    SectionDescription { text: "Integrate with HockeyApp for beta distribution & crash reports." }
+    SectionContent {
+      contentItem: AppImage {
+        width: sourceSize.width * dp(1) * 0.75
+        height: width / sourceSize.width * sourceSize.height
+        source: Qt.resolvedUrl("../../assets/code-hockeyapp.png")
+      }
+    }
+    SectionHeader { text: "Example" }
+  }
+
   model: ListModel {
     ListElement { section: "Crashes"; name: "Crash app" }
     ListElement { section: "Updates"; name: "Check updates" }

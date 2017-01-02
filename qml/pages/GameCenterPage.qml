@@ -1,9 +1,24 @@
 import VPlayApps 1.0
 import VPlayPlugins 1.0
 import QtQuick 2.0
+import "../helper"
 
 ListPage {
   title: "GameCenter Plugin"
+
+  listView.header: Column {
+    width: parent.width
+
+    SectionDescription { text: "Integrate with GameCenter to send your games' highscores from V-Play Game Network to Apple Game Center on iOS devices." }
+    SectionContent {
+      contentItem: AppImage {
+        width: sourceSize.width * dp(1) * 0.75
+        height: width / sourceSize.width * sourceSize.height
+        source: Qt.resolvedUrl("../../assets/code-gamecenter.png")
+      }
+    }
+    SectionHeader { text: "Example" }
+  }
 
   model: ListModel {
     ListElement { section: "Game Center"; name: "Authenticate" }

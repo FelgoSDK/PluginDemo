@@ -7,6 +7,20 @@ ListPage {
 
   title: "OneSignal Plugin"
 
+  listView.header: Column {
+    width: parent.width
+
+    SectionDescription { text: "Integrate with OneSignal Push to send cross-platform push notifications." }
+    SectionContent {
+      contentItem: AppImage {
+        width: sourceSize.width * dp(1) * 0.75
+        height: width / sourceSize.width * sourceSize.height
+        source: Qt.resolvedUrl("../../assets/code-onesignal.png")
+      }
+    }
+    SectionHeader { text: "Example" }
+  }
+
   model: ListModel {
     id: listModel
     ListElement { section: "Notifications"; name: "Enable notifications"; clickable: true }

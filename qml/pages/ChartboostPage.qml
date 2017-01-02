@@ -6,6 +6,20 @@ import "../helper"
 ListPage {
   title: "Chartboost Plugin"
 
+  listView.header: Column {
+    width: parent.width
+
+    SectionDescription { text: "Integrate with Chartboost to monetize and cross-promote your games with ads." }
+    SectionContent {
+      contentItem: AppImage {
+        width: sourceSize.width * dp(1) * 0.75
+        height: width / sourceSize.width * sourceSize.height
+        source: Qt.resolvedUrl("../../assets/code-chartboost.png")
+      }
+    }
+    SectionHeader { text: "Example" }
+  }
+
   model: ListModel {
     ListElement { section: "Interstitial"; name: "Load and show" }
     ListElement { section: "Interstitial"; name: "Cache interstitial" }

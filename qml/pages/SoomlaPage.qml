@@ -7,17 +7,31 @@ ListPage {
 
   title: "Soomla Plugin"
 
-  listView.header: Grid {
+  listView.header: Column {
+    width: parent.width
 
-    columns: 4
-    spacing: dp(10)
-    anchors.horizontalCenter: parent.horizontalCenter
+    SectionDescription { text: "Integrate with Soomla to offer in-app purchases and a virtual economy model within your app." }
+    SectionContent {
+      contentItem: AppImage {
+        width: sourceSize.width * dp(1) * 0.75
+        height: width / sourceSize.width * sourceSize.height
+        source: Qt.resolvedUrl("../../assets/code-soomla.png")
+      }
+    }
+    SectionHeader { text: "Example" }
+    SectionContent { contentItem: Row {
+        spacing: dp(10)
+        anchors.horizontalCenter: parent.horizontalCenter
 
-    AppText { text: "Credits:" }
-    AppText { text: "" + creditsCurrency.balance }
-    AppText { text: "Goodies:" }
-    AppText { text: "" + goodieGood.balance }
+        AppText { text: "Credits:" }
+        AppText { text: "" + creditsCurrency.balance }
+        AppText { text: "Goodies:" }
+        AppText { text: "" + goodieGood.balance }
+      }
+    }
   }
+
+  listView.anchors.bottomMargin: annoyingAd.visible ? annoyingAd.height : 0
 
   model: ListModel {
     ListElement { section: "Credits"; name: "Buy 10 credits" }
@@ -61,6 +75,7 @@ ListPage {
 
   // This rectangle represents an ad banner within your app
   Rectangle {
+    id: annoyingAd
     anchors.bottom: parent.bottom
     width: parent.width
     height: dp(75)

@@ -4,8 +4,21 @@ import QtQuick 2.0
 import "../helper"
 
 ListPage {
-
   title: "Google Analytics Plugin"
+
+  listView.header: Column {
+    width: parent.width
+
+    SectionDescription { text: "Integrate with Google Analytics to measure user interactions for your mobile and desktop apps." }
+    SectionContent {
+      contentItem: AppImage {
+        width: sourceSize.width * dp(1) * 0.75
+        height: width / sourceSize.width * sourceSize.height
+        source: Qt.resolvedUrl("../../assets/code-ga.png")
+      }
+    }
+    SectionHeader { text: "Example" }
+  }
 
   model: ListModel {
     ListElement { section: "Pages"; name: "Send page view" }

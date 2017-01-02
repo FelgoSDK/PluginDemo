@@ -5,6 +5,19 @@ import "../helper"
 
 ListPage {
   title: "AdMob Plugin"
+  listView.header: Column {
+    width: parent.width
+
+    SectionDescription { text: "Integrate with AdMob to monetize and promote your apps & games with ads on Android and iOS." }
+    SectionContent {
+      contentItem: AppImage {
+        width: sourceSize.width * dp(1) * 0.75
+        height: width / sourceSize.width * sourceSize.height
+        source: Qt.resolvedUrl("../../assets/code-admob.png")
+      }
+    }
+    SectionHeader { text: "Example" }
+  }
 
   model: ListModel {
     id: listModel

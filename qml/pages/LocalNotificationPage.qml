@@ -6,6 +6,20 @@ import "../helper"
 ListPage {
   title: "Local Notifications Plugin"
 
+  listView.header: Column {
+    width: parent.width
+
+    SectionDescription { text: "Schedule native local push notifications in your app." }
+    SectionContent {
+      contentItem: AppImage {
+        width: sourceSize.width * dp(1) * 0.75
+        height: width / sourceSize.width * sourceSize.height
+        source: Qt.resolvedUrl("../../assets/code-localpush.png")
+      }
+    }
+    SectionHeader { text: "Example" }
+  }
+
   model: ListModel {
     ListElement { section: "Notifications"; name: "Schedule notification" }
     ListElement { section: "Notifications"; name: "Cancel all notifications" }
