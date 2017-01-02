@@ -18,12 +18,12 @@ ListPage {
         source: Qt.resolvedUrl("../../assets/code-flurry.png")
       }
     }
-    SectionHeader { text: "Example" }
+//    SectionHeader { text: "Example" }
   }
 
-  model: ListModel {
-    ListElement { section: "Events"; name: "Send event" }
-  }
+//  model: ListModel {
+//    ListElement { section: "Events"; name: "Send event" }
+//  }
 
   delegate: SimpleRow {
     text: name

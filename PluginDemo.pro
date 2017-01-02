@@ -39,11 +39,11 @@ ios {
   VPLAY_PLUGINS += admob
   VPLAY_PLUGINS += chartboost
   VPLAY_PLUGINS += facebook
-  VPLAY_PLUGINS += flurry
+  # VPLAY_PLUGINS += flurry
   VPLAY_PLUGINS += gamecenter
-  VPLAY_PLUGINS += gcm
-  VPLAY_PLUGINS += hockeyapp
-  VPLAY_PLUGINS += onesignal
+  # VPLAY_PLUGINS += gcm
+  # VPLAY_PLUGINS += hockeyapp
+  # VPLAY_PLUGINS += onesignal
   VPLAY_PLUGINS += soomla
 }
 

@@ -18,18 +18,18 @@ ListPage {
         source: Qt.resolvedUrl("../../assets/code-gcm.png")
       }
     }
-    SectionHeader { text: "Example" }
+//    SectionHeader { text: "Example" }
   }
 
-  model: ListModel {
-    id: listModel
-    ListElement { section: "Notifications"; name: "Enable notifications"; clickable: true }
-    ListElement { section: "Notifications"; name: "Disable notifications"; clickable: true }
+//  model: ListModel {
+//    id: listModel
+//    ListElement { section: "Notifications"; name: "Enable notifications"; clickable: true }
+//    ListElement { section: "Notifications"; name: "Disable notifications"; clickable: true }
 
-    ListElement { section: "Channels"; name: "Set channel"; clickable: true }
-    ListElement { section: "Channels"; name: "Remove channel"; clickable: true }
-    ListElement { section: "Channels"; name: "Current channels:"; clickable: false }
-  }
+//    ListElement { section: "Channels"; name: "Set channel"; clickable: true }
+//    ListElement { section: "Channels"; name: "Remove channel"; clickable: true }
+//    ListElement { section: "Channels"; name: "Current channels:"; clickable: false }
+//  }
 
   delegate: SimpleRow {
     id: row

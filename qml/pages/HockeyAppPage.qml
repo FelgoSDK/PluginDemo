@@ -18,13 +18,13 @@ ListPage {
         source: Qt.resolvedUrl("../../assets/code-hockeyapp.png")
       }
     }
-    SectionHeader { text: "Example" }
+//    SectionHeader { text: "Example" }
   }
 
-  model: ListModel {
-    ListElement { section: "Crashes"; name: "Crash app" }
-    ListElement { section: "Updates"; name: "Check updates" }
-  }
+//  model: ListModel {
+//    ListElement { section: "Crashes"; name: "Crash app" }
+//    ListElement { section: "Updates"; name: "Check updates" }
+//  }
 
   delegate: SimpleRow {
     text: name

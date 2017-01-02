@@ -18,19 +18,19 @@ ListPage {
         source: Qt.resolvedUrl("../../assets/code-onesignal.png")
       }
     }
-    SectionHeader { text: "Example" }
+//    SectionHeader { text: "Example" }
   }
 
-  model: ListModel {
-    id: listModel
-    ListElement { section: "Notifications"; name: "Enable notifications"; clickable: true }
-    ListElement { section: "Notifications"; name: "Disable notifications"; clickable: true }
+//  model: ListModel {
+//    id: listModel
+//    ListElement { section: "Notifications"; name: "Enable notifications"; clickable: true }
+//    ListElement { section: "Notifications"; name: "Disable notifications"; clickable: true }
 
-    ListElement { section: "Tags"; name: "Set tag"; clickable: true }
-    ListElement { section: "Tags"; name: "Remove tag"; clickable: true }
-    ListElement { section: "Tags"; name: "Request tags"; clickable: true }
-    ListElement { section: "Tags"; name: "Current tags: tags not yet requested"; clickable: false }
-  }
+//    ListElement { section: "Tags"; name: "Set tag"; clickable: true }
+//    ListElement { section: "Tags"; name: "Remove tag"; clickable: true }
+//    ListElement { section: "Tags"; name: "Request tags"; clickable: true }
+//    ListElement { section: "Tags"; name: "Current tags: tags not yet requested"; clickable: false }
+//  }
 
   delegate: SimpleRow {
     id: row
