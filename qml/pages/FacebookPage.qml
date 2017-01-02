@@ -7,7 +7,13 @@ Page {
 
   title: "Facebook Plugin"
 
+  ScrollIndicator {
+    flickable: flick
+    z: 1
+  }
+
   AppFlickable {
+    id: flick
     anchors.fill: parent
     contentHeight: pluginInfo.height + example.height
 
