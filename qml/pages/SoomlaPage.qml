@@ -18,6 +18,15 @@ ListPage {
         source: Qt.resolvedUrl("../../assets/code-soomla.png")
       }
     }
+    SectionContent {
+      contentItem: AppImage {
+        anchors.horizontalCenter: parent.horizontalCenter
+        width: sourceSize.width * dp(1) * 0.5
+        height: width / sourceSize.width * sourceSize.height
+        source: Qt.resolvedUrl("../../assets/logo-soomla.png")
+      }
+    }
+
     SectionHeader { text: "Example" }
     SectionContent { contentItem: Row {
         spacing: dp(10)

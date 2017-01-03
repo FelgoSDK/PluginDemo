@@ -18,6 +18,20 @@ ListPage {
         source: Qt.resolvedUrl("../../assets/code-hockeyapp.png")
       }
     }
+
+    SectionHeader { text: "Beta Distribution" }
+    SectionDescription { text: "When developing an app or game you often want to allow beta testers to install your apps to get feedback early in your development process. With HockeyApp you can upload new versions of your iOS & Android builds and automatically notify your testers about the new version when they open your app the next time." }
+    SectionHeader { text: "Crash Reports" }
+    SectionDescription { text: "HockeyApp collects and uploads crash reports from you apps or games for you. The plugin currently supports crash reporting for native iOS crashes and Android SDK crashes." }
+    SectionContent {
+      contentItem: AppImage {
+        anchors.horizontalCenter: parent.horizontalCenter
+        width: sourceSize.width * dp(1) * 0.5
+        height: width / sourceSize.width * sourceSize.height
+        source: Qt.resolvedUrl("../../assets/logo-hockey.png")
+      }
+    }
+
 //    SectionHeader { text: "Example" }
   }
 

@@ -17,6 +17,14 @@ ListPage {
         source: Qt.resolvedUrl("../../assets/code-ga.png")
       }
     }
+    SectionContent {
+      contentItem: AppImage {
+        anchors.horizontalCenter: parent.horizontalCenter
+        width: sourceSize.width * dp(1) * 0.5
+        height: width / sourceSize.width * sourceSize.height
+        source: Qt.resolvedUrl("../../assets/logo-ga.png")
+      }
+    }
     SectionHeader { text: "Example" }
   }
 

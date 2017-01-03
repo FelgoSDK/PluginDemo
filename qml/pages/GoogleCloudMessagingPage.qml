@@ -18,6 +18,20 @@ ListPage {
         source: Qt.resolvedUrl("../../assets/code-gcm.png")
       }
     }
+
+    SectionHeader { text: "Increase Engagement" }
+    SectionDescription { text: "Push notifications are a direct channel to your app's users. Keep them happy and engaged with app updates, promotions, and more sent directly to their device." }
+    SectionHeader { text: "Targeted Push Notifications" }
+    SectionDescription { text: "Send notifications to all users, a targeted segment or an individual user, thanks to push tags it has never been easier to send push notifications." }
+    SectionContent {
+      contentItem: AppImage {
+        anchors.horizontalCenter: parent.horizontalCenter
+        width: sourceSize.width * dp(1) * 0.5
+        height: width / sourceSize.width * sourceSize.height
+        source: Qt.resolvedUrl("../../assets/logo-gcm.png")
+      }
+    }
+
 //    SectionHeader { text: "Example" }
   }
 

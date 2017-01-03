@@ -18,6 +18,20 @@ ListPage {
         source: Qt.resolvedUrl("../../assets/code-flurry.png")
       }
     }
+
+    SectionHeader { text: "Track Sessions & Events" }
+    SectionDescription { text: "Session and event tracking data gives you valuable insights on how often users open your app, how long they use it and how often they return (retention)." }
+    SectionHeader { text: "Analyze Your Audience" }
+    SectionDescription { text: "Get insights into your app's audience with Flurry's demographic and technical data. This includes information about the mobile phone and OS version used or from which countries your users come from." }
+    SectionContent {
+      contentItem: AppImage {
+        anchors.horizontalCenter: parent.horizontalCenter
+        width: sourceSize.width * dp(1) * 0.5
+        height: width / sourceSize.width * sourceSize.height
+        source: Qt.resolvedUrl("../../assets/logo-flurry.png")
+      }
+    }
+
 //    SectionHeader { text: "Example" }
   }
 
