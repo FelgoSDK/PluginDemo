@@ -136,8 +136,10 @@ Page {
         // show facebook friends
         AppText {
           id: friendsHeader
-          text: "Friends: "
+          width: parent.width - 2 * x
+          text: "Friends (who also used Facebook login with this app): "
           font.bold: true
+          wrapMode: AppText.WordWrap
           height: implicitHeight + userProfile.anchors.margins
           x: userProfile.anchors.margins
         }
