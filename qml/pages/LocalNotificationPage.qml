@@ -39,9 +39,9 @@ ListPage {
 
     onSelected: {
       if (index === 0) {
-        NativeDialog.confirm("Local Notifications", "A test notification will be scheduled to arrive in 8 seconds.", function(confirmed) {
+        NativeDialog.confirm("Local Notifications", "A test notification will be scheduled to arrive in 3 seconds.", function(confirmed) {
           if(confirmed)
-            notificationmanager.schedule({ message: "Notification Test", number: 1, timeInterval: 8 })
+            notificationmanager.schedule({ message: "Notification Test", number: 1, timeInterval: 3 })
         })
       }
       else if (index === 1) {
