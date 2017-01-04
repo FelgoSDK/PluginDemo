@@ -2,6 +2,7 @@ import VPlayApps 1.0
 import VPlayPlugins 1.0
 import QtQuick 2.0
 import "helper"
+import "pages"
 
 Item {
   anchors.fill: parent
@@ -52,7 +53,7 @@ Item {
             page.navigationStack.push(Qt.resolvedUrl("pages/ChartboostPage.qml"))
             break
           case 2:
-            page.navigationStack.push(Qt.resolvedUrl("pages/SoomlaPage.qml"))
+            page.navigationStack.push(soomlaPage)
             break
           case 3:
             page.navigationStack.push(Qt.resolvedUrl("pages/GameCenterPage.qml"))
@@ -85,5 +86,12 @@ Item {
       section.property: "type"
       section.delegate: SimpleSection { }
     }
+  }
+
+  // keep only one soomla page active (using multiple soomla items is not allowed)
+  SoomlaPage {
+    id: soomlaPage
+    visible: false
+    onPushed: soomlaPage.listView.contentY = soomlaPage.listView.originY
   }
 }
