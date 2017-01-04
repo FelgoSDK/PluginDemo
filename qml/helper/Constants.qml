@@ -25,10 +25,10 @@ Item {
   readonly property string oneSignalAppId: "a23e646c-0d6f-4611-836e-5bf14ee96e98"
   readonly property string oneSignalGoogleProjectNumber: "522591647137"
 
-  readonly property string soomlaSecret: "<your-game-secret>"
-  readonly property string soomlaAndroidPublicKey: "<android-public-key>"
-  readonly property string creditsCurrencyItemId: "net.vplay.demos.PluginDemo.credits"
-  readonly property string creditsPackItemId: "net.vplay.demos.PluginDemo.creditspack"
-  readonly property string goodieItemId: "net.vplay.demos.PluginDemo.goodie"
-  readonly property string noAdsItemId: "net.vplay.demos.PluginDemo.noads"
+  property string soomlaSecret: "<your-game-secret>"
+  property string soomlaAndroidPublicKey: "<android-public-key>"
+  property string creditsCurrencyItemId: "net.vplay.demos.PluginDemo.credits"
+  property string creditsPackItemId: "net.vplay.demos.PluginDemo.creditspack"
+  property string goodieItemId: "net.vplay.demos.PluginDemo.goodie"
+  property string noAdsItemId: "net.vplay.demos.PluginDemo.noads"
 }
