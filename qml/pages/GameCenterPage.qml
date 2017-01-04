@@ -64,13 +64,13 @@ ListPage {
         gamecenter.showLeaderboard()
       }
       else if (index === 2) {
-        gamecenter.reportScore(25, "leaderboard_main")
+        gamecenter.reportScore(25, Constants.gcLeaderboardID)
       }
       else if (index === 3) {
         gamecenter.showAchievements()
       }
       else if (index === 4) {
-        gamecenter.reportAchievement("achievement_1", 100, true)
+        gamecenter.reportAchievement(Constants.gcAchievementID, 100, true)
       }
       else if (index === 5) {
         gamecenter.resetAchievements()
