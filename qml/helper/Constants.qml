@@ -27,5 +27,8 @@ Item {
 
   readonly property string soomlaSecret: "<your-game-secret>"
   readonly property string soomlaAndroidPublicKey: "<android-public-key>"
-
+  readonly property string creditsCurrencyItemId: "net.vplay.demos.PluginDemo.credits"
+  readonly property string creditsPackItemId: "net.vplay.demos.PluginDemo.creditspack"
+  readonly property string goodieItemId: "net.vplay.demos.PluginDemo.goodie"
+  readonly property string noAdsItemId: "net.vplay.demos.PluginDemo.noads"
 }

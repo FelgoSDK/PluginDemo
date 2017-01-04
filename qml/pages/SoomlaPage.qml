@@ -117,7 +117,7 @@ ListPage {
     currencies: [
       Currency {
         id: creditsCurrency
-        itemId: "net.vplay.demos.PluginDemo.credits"
+        itemId: Constants.creditsCurrencyItemId
         name: "Credits"
       }
     ]
@@ -126,7 +126,7 @@ ListPage {
     currencyPacks: [
       CurrencyPack {
         id: creditsPack
-        itemId: "net.vplay.demos.PluginDemo.creditspack"
+        itemId: Constants.creditsPackItemId
         name: "10 Credits"
         description: "Buy 10 Credits"
         currencyId: creditsCurrency.itemId
@@ -140,7 +140,7 @@ ListPage {
       // A goodie costs 3 credits (virtual currency that can be purschased with an in-app purchase)
       SingleUseGood {
         id: goodieGood
-        itemId: "net.vplay.demos.PluginDemo.goodie"
+        itemId: Constants.goodieItemId
         name: "Goodie"
         description: "A tasty goodie"
         purchaseType: VirtualPurchase { itemId: creditsCurrency.itemId; amount: 3; }
@@ -148,7 +148,7 @@ ListPage {
       // Life-time goods can be restored from the store
       LifetimeGood {
         id: noadsGood
-        itemId: "net.vplay.demos.PluginDemo.noads"
+        itemId: Constants.noAdsItemId
         name: "No Ads"
         description: "Buy this item to remove the app banner"
         purchaseType: StorePurchase { id: noAdPurchase; productId: noadsGood.itemId; price: 2.99; }
