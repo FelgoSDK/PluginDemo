@@ -13,8 +13,6 @@ Item {
   readonly property string chartboostIosAppSignature: "6fed94ffeaf6abb3d5aa85781e59fa2fb83354b8"
   readonly property string chartboostAndroidAppSignature: "c87b4e51a85b76a4bbe41ee880634fc9ae875ca8"
 
-  readonly property string facebookAppId: "1014223965320966"
-
   readonly property string flurryApiKey: "HMV9VC35FS77G6QK9TNZ"
 
   readonly property string googleAnalyticsPropertyId: "UA-32264673-5"
@@ -36,4 +34,7 @@ Item {
   // gamecenter
   property string gcLeaderboardID: "leaderboard_main"
   property string gcAchievementID: "achievement_1"
+
+  // fb
+  property string facebookAppId: "1014223965320966"
 }
