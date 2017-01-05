@@ -5,8 +5,10 @@ import "helper"
 import "pages"
 
 Item {
+  id: pluginMainItem
   anchors.fill: parent
 
+  // app content with plugin list
   NavigationStack {
 
     ListPage {
@@ -59,7 +61,7 @@ Item {
             page.navigationStack.push(Qt.resolvedUrl("pages/GameCenterPage.qml"))
             break
           case 4:
-            page.navigationStack.push(Qt.resolvedUrl("pages/FacebookPage.qml"))
+            page.navigationStack.push(facebookPage)
             break
           case 5:
             page.navigationStack.push(Qt.resolvedUrl("pages/GoogleAnalyticsPage.qml"))
@@ -88,10 +90,17 @@ Item {
     }
   }
 
-  // keep only one soomla page active (using multiple soomla items is not allowed)
+  // keep only one soomla and facebook page alive (to prevent crashes due to multiple plugin item definitions)
   SoomlaPage {
     id: soomlaPage
     visible: false
     onPushed: soomlaPage.listView.contentY = soomlaPage.listView.originY
+    onPopped: { soomlaPage.parent = pluginMainItem; visible = false }
+  }
+
+  FacebookPage {
+    id: facebookPage
+    visible: false
+    onPopped: { facebookPage.parent = pluginMainItem; visible = false }
   }
 }
