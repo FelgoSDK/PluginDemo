@@ -5,7 +5,6 @@ import "helper"
 import "pages"
 
 Item {
-  id: pluginMainItem
   anchors.fill: parent
 
   // app content with plugin list
@@ -88,19 +87,5 @@ Item {
       section.property: "type"
       section.delegate: SimpleSection { }
     }
-  }
-
-  // keep only one soomla and facebook page alive (to prevent crashes due to multiple plugin item definitions)
-  SoomlaPage {
-    id: soomlaPage
-    visible: false
-    onPushed: soomlaPage.listView.contentY = soomlaPage.listView.originY
-    onPopped: { soomlaPage.parent = pluginMainItem; visible = false }
-  }
-
-  FacebookPage {
-    id: facebookPage
-    visible: false
-    onPopped: { facebookPage.parent = pluginMainItem; visible = false }
   }
 }

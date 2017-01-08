@@ -2,6 +2,7 @@ import VPlayApps 1.0
 import VPlayPlugins 1.0
 import QtQuick 2.0
 import "helper"
+import "pages"
 
 App {
   // You get free licenseKeys from http://v-play.net/licenseKey
@@ -12,6 +13,32 @@ App {
   //licenseKey: "<generate one from http://v-play.net/licenseKey>"
 
   PluginMainItem {
+    id: pluginMainItem
+
+    // keep only one soomla, facebook and notification page alive within app (to prevent crashes)
+    property alias soomlaPage: soomlaPage
+    property alias facebookPage: facebookPage
+    property alias notificationPage: notificationPage
+
+    SoomlaPage {
+      id: soomlaPage
+      visible: false
+      onPushed: soomlaPage.listView.contentY = soomlaPage.listView.originY
+      onPopped: { soomlaPage.parent = pluginMainItem; visible = false }
+    }
+
+    FacebookPage {
+      id: facebookPage
+      visible: false
+      onPopped: { facebookPage.parent = pluginMainItem; visible = false }
+    }
+
+    LocalNotificationPage {
+      id: notificationPage
+      visible: false
+      onPopped: { facebookPage.parent = pluginMainItem; visible = false }
+    }
+
     anchors.bottomMargin: callToAction.height + callToAction.anchors.bottomMargin
   }
   CallToAction { id: callToAction }
