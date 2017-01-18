@@ -75,7 +75,7 @@ Item {
             page.navigationStack.push(Qt.resolvedUrl("pages/OneSignalPage.qml"))
             break
           case 9:
-            page.navigationStack.push(Qt.resolvedUrl("pages/LocalNotificationPage.qml"))
+            page.navigationStack.push(notificationPage)
             break
           case 10:
             page.navigationStack.push(Qt.resolvedUrl("pages/HockeyAppPage.qml"))

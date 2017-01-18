@@ -36,7 +36,7 @@ App {
     LocalNotificationPage {
       id: notificationPage
       visible: false
-      onPopped: { facebookPage.parent = pluginMainItem; visible = false }
+      onPopped: { notificationPage.parent = pluginMainItem; visible = false }
     }
 
     anchors.bottomMargin: callToAction.height + callToAction.anchors.bottomMargin
