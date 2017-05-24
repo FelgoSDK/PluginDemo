@@ -39,6 +39,7 @@ ios {
   VPLAY_PLUGINS += admob
   VPLAY_PLUGINS += chartboost
   VPLAY_PLUGINS += facebook
+  # VPLAY_PLUGINS += firebase
   # VPLAY_PLUGINS += flurry
   VPLAY_PLUGINS += gamecenter
   # VPLAY_PLUGINS += gcm

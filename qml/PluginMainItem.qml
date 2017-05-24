@@ -42,6 +42,9 @@ Item {
 
         ListElement { type: "Beta Testing & Crash Reporting"; name: "HockeyApp"
           detailText: "Beta Distribution & Crash Reports"; image: "../assets/logo-hockey.png" }
+
+        ListElement { type: "Database & Authentication"; name: "Firebase"
+          detailText: "Manage users and user Realtime Dtabase"; image: "../assets/logo-firebase.png" }
       }
 
       delegate: PluginListItem {
@@ -79,6 +82,9 @@ Item {
             break
           case 10:
             page.navigationStack.push(Qt.resolvedUrl("pages/HockeyAppPage.qml"))
+            break
+          case 11:
+            page.navigationStack.push(Qt.resolvedUrl("pages/FirebasePage.qml"))
             break
           }
         }
