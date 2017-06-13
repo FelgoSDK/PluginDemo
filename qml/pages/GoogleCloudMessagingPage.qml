@@ -89,7 +89,11 @@ ListPage {
 
   function updateChannelString() {
     var str = "Current channels: " + (gcm.channels.length > 0 ? gcm.channels.join(", ") : "no channels set")
-    listModel.setProperty(4, "name", str)
+
+    // check if listModel exists, as it is commented above by default, may be removed after uncommenting the ListModel
+    if(typeof (listModel) !== "undefined") {
+      listModel.setProperty(4, "name", str)
+    }
   }
 
   // Define GoogleCloudMessaging once per app in GameWindow or App root component
