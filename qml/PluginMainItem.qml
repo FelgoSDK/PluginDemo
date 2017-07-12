@@ -32,6 +32,8 @@ Item {
           detailText: "App Analytics & Events"; image: "../assets/logo-ga.png" }
         ListElement { type: "Analytics"; name: "Flurry"
           detailText: "User Analytics & App Statistics"; image: "../assets/logo-flurry.png" }
+        ListElement { type: "Analytics"; name: "Amplitude"
+          detailText: "User Analytics & App Statistics"; image: "../assets/logo-amplitude.png" }
 
         ListElement { type: "Notifications"; name: "Google Cloud Messaging Push Notifications"
           detailText: "Targeted Push Notifications"; image: "../assets/logo-gcm.png" }
@@ -72,18 +74,21 @@ Item {
             page.navigationStack.push(Qt.resolvedUrl("pages/FlurryPage.qml"))
             break
           case 7:
-            page.navigationStack.push(Qt.resolvedUrl("pages/GoogleCloudMessagingPage.qml"))
+            page.navigationStack.push(Qt.resolvedUrl("pages/AmplitudePage.qml"))
             break
           case 8:
-            page.navigationStack.push(Qt.resolvedUrl("pages/OneSignalPage.qml"))
+            page.navigationStack.push(Qt.resolvedUrl("pages/GoogleCloudMessagingPage.qml"))
             break
           case 9:
-            page.navigationStack.push(notificationPage)
+            page.navigationStack.push(Qt.resolvedUrl("pages/OneSignalPage.qml"))
             break
           case 10:
-            page.navigationStack.push(Qt.resolvedUrl("pages/HockeyAppPage.qml"))
+            page.navigationStack.push(notificationPage)
             break
           case 11:
+            page.navigationStack.push(Qt.resolvedUrl("pages/HockeyAppPage.qml"))
+            break
+          case 12:
             page.navigationStack.push(Qt.resolvedUrl("pages/FirebasePage.qml"))
             break
           }
