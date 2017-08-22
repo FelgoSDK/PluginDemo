@@ -40,7 +40,11 @@ ListPage {
     ListElement { section: "Banner Type"; current: false; name: "Leaderboard (728x90) - Tablet Only" }
     ListElement { section: "Banner Type"; current: true; name: "Smart (auto-size)" }
 
+    ListElement { section: "Native ad"; current: false; name: "" }
+
     ListElement { section: "Interstitial"; active: false; name: "Load and show" }
+
+    ListElement { section: "Rewarded video"; active: false; name: "Load and show" }
   }
 
   delegate: SimpleRow {
@@ -48,6 +52,8 @@ ListPage {
 
     text: name
     property bool isSelected: current || (index === 0 && adMobBanner.visible || index === 1 && !adMobBanner.visible)
+
+    height: nativeAdLoader.active ? dp(80) : dp(48)
 
     Icon {
       anchors.right: parent.right
@@ -57,6 +63,26 @@ ListPage {
       size: dp(14)
       color: row.style.textColor
       visible: isSelected
+    }
+
+    //show native ad view inside corresponding list element
+    Loader {
+      id: nativeAdLoader
+
+      active: index === 7
+      anchors.fill: parent
+
+      sourceComponent: AdMobNative {
+        id: adMobNative
+
+        width: parent.width
+        height: dp(80) //minimum height of small native ad template
+
+        clipContainer: listView
+
+        adUnitId: Constants.admobNativeAdUnitId
+        testDeviceIds: Constants.admobTestDeviceIds
+      }
     }
 
     style.showDisclosure: false
@@ -93,20 +119,23 @@ ListPage {
       else if (index === 6) {
         adMobBanner.banner = AdMobBanner.Smart
       }
-      // Interstitial
+      // Native ad
       else if (index === 7) {
-        interstitial.showInterstitialIfLoaded()
+        //no click handler, this list element shows the ad
+      }
+      // Interstitial
+      else if (index === 8) {
+        interstitial.loadInterstitial()
+      }
+      // Rewarded video
+      else if (index === 9) {
+        rewardedVideo.loadRewardedVideo()
       }
     }
   }
 
   section.property: "section"
   section.delegate: SimpleSection { }
-
-  Component.onCompleted: {
-    // Cache interstitial
-    interstitial.loadInterstitial()
-  }
 
   AdMobBanner {
     id: adMobBanner
@@ -124,5 +153,16 @@ ListPage {
     adUnitId: Constants.admobInterstitialAdUnitId
 
     testDeviceIds: Constants.admobTestDeviceIds
+
+    onInterstitialReceived: showInterstitialIfLoaded()
+  }
+
+  AdMobRewardedVideo {
+    id: rewardedVideo
+    adUnitId: Constants.admobRewardedVideoAdUnitId
+
+    testDeviceIds: Constants.admobTestDeviceIds
+
+    onRewardedVideoReceived: showRewardedVideoIfLoaded()
   }
 }

@@ -4,11 +4,12 @@ import QtQuick 2.0
 
 Item {
 
-
-  readonly property string admobBannerAdUnitId: "ca-app-pub-9155324456588158/9913032020"
-  readonly property string admobInterstitialAdUnitId: "ca-app-pub-9155324456588158/9075427220"
+  //test ad units by admob: https://developers.google.com/admob/android/test-ads
+  readonly property string admobBannerAdUnitId: "ca-app-pub-3940256099942544/6300978111"
+  readonly property string admobNativeAdUnitId: "ca-app-pub-3940256099942544/2793859312"
+  readonly property string admobInterstitialAdUnitId: "ca-app-pub-3940256099942544/1033173712"
+  readonly property string admobRewardedVideoAdUnitId: "ca-app-pub-3940256099942544/5224354917"
   readonly property var admobTestDeviceIds: [ "d17ba18ff075e7c20c5ce081813d9666", "28CA0A7F16015163A1C70EA42709318A" ]
-
   readonly property string chartboostIosAppId: "53609edd89b0bb726b46c6e0"
   readonly property string chartboostAndroidAppId: "53609f3789b0bb72b4b95836"
   readonly property string chartboostIosAppSignature: "6fed94ffeaf6abb3d5aa85781e59fa2fb83354b8"
