@@ -6,6 +6,8 @@ import "./firebase"
 ListPage {
   id: firebasePage
 
+  title: "Firebase Plugin"
+
   FirebaseLoginPage {
     id: loginPage
     opacity: 0
