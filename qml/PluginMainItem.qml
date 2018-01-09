@@ -46,7 +46,7 @@ Item {
           detailText: "Beta Distribution & Crash Reports"; image: "../assets/logo-hockey.png" }
 
         ListElement { type: "Database & Authentication"; name: "Firebase"
-          detailText: "Manage users and user Realtime Dtabase"; image: "../assets/logo-firebase.png" }
+          detailText: "Manage users and user Realtime Database"; image: "../assets/logo-firebase.png" }
       }
 
       delegate: PluginListItem {
