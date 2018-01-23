@@ -5,7 +5,7 @@ buildscript {
 
     dependencies {
         classpath 'com.android.tools.build:gradle:2.3.0'
-        // classpath 'com.google.gms:google-services:3.0.0'
+        classpath 'com.google.gms:google-services:3.0.0'
     }
 }
 
@@ -24,7 +24,7 @@ dependencies {
     compile 'net.vplay.plugins:plugin-admob:2.+'
     compile 'net.vplay.plugins:plugin-chartboost:2.+'
     compile 'net.vplay.plugins:plugin-facebook:2.+'
-    // compile 'net.vplay.plugins:plugin-firebase:2.+'
+    compile 'net.vplay.plugins:plugin-firebase:2.+'
     // compile 'net.vplay.plugins:plugin-flurry:2.+'
     // compile 'net.vplay.plugins:plugin-gcm:2.+'
     // compile 'net.vplay.plugins:plugin-hockeyapp:2.+'
@@ -71,4 +71,4 @@ android {
     }
 }
 
-// apply plugin: 'com.google.gms.google-services'
+apply plugin: 'com.google.gms.google-services'
