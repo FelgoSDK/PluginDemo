@@ -4,6 +4,12 @@ import QtQuick 2.0
 
 Page {
 
+  /* Dummy FirebaseAuth item, which is only required within plugin demo.
+     FirebaseDatbase of this example otherwise gets confused by FirebaseAuth items of other examples. */
+  FirebaseAuth {
+    id: firebaseAuth
+  }
+
   FirebaseDatabase {
     id: firebaseDb
 
