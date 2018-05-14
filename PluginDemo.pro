@@ -24,6 +24,9 @@ RESOURCES += # resources.qrc # uncomment for publishing
 # The .cpp file which was generated for your project. Feel free to hack it.
 SOURCES += main.cpp
 
+# configure the bundle identifier for iOS
+PRODUCT_IDENTIFIER = net.vplay.demos.PluginDemo
+
 android {
   ANDROID_PACKAGE_SOURCE_DIR = $$PWD/android
 
