@@ -15,7 +15,7 @@ Item {
   readonly property string chartboostIosAppSignature: "6fed94ffeaf6abb3d5aa85781e59fa2fb83354b8"
   readonly property string chartboostAndroidAppSignature: "c87b4e51a85b76a4bbe41ee880634fc9ae875ca8"
 
-  //IDs created by V-Play for PluginDemo app, use your own IDs to see analytics
+  //IDs created by Felgo for PluginDemo app, use your own IDs to see analytics
 
   readonly property string amplitudeApiKey: "47f92e5a607264e66bffa4aa3c94ce2a"
 

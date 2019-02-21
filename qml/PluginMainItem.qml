@@ -1,5 +1,4 @@
-import VPlayApps 1.0
-import VPlayPlugins 1.0
+import Felgo 3.0
 import QtQuick 2.0
 import "helper"
 import "pages"
@@ -12,7 +11,7 @@ Item {
 
     ListPage {
       id: page
-      title: qsTr("V-Play Plugins")
+      title: qsTr("Felgo Plugins")
 
       model: ListModel {
         ListElement { type: "Advertising"; name: "AdMob";

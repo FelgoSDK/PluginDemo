@@ -1,5 +1,4 @@
-import VPlayApps 1.0
-import VPlayPlugins 1.0
+import Felgo 3.0
 import QtQuick 2.0
 import "../helper"
 
@@ -9,7 +8,7 @@ ListPage {
   listView.header: Column {
     width: parent.width
 
-    SectionDescription { text: "Integrate with GameCenter to send your games' highscores from V-Play Game Network to Apple Game Center on iOS devices." }
+    SectionDescription { text: "Integrate with GameCenter to send your games' highscores from Felgo Game Network to Apple Game Center on iOS devices." }
     SectionContent {
       contentItem: AppImage {
         width: sourceSize.width * dp(1) * 0.75

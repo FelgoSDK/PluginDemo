@@ -1,7 +1,6 @@
-import VPlayApps 1.0
+import Felgo 3.0
 import QtQuick 2.0
 import QtQuick.Layouts 1.1
-import VPlayPlugins 1.0
 
 Page {
   id: loginPage

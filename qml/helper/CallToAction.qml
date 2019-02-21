@@ -1,6 +1,5 @@
 import QtQuick 2.0
-import VPlayApps 1.0
-import VPlay 2.0 // for nativeUtils & system
+import Felgo 3.0
 
 Rectangle {
   id: cta
@@ -8,9 +7,9 @@ Rectangle {
   anchors.bottomMargin: -dp(40)
   width: parent.width
   height: dp(40)
-  color: "#01a9e2"
+  color: Theme.tintColor
 
-  property string linkUrl: "http://v-play.net/plugin-demo/?source=app-plugin-demo&utm_medium=app&utm_source=app-plugin-demo"
+  property string linkUrl: "http://felgo.com/plugin-demo/?source=app-plugin-demo&utm_medium=app&utm_source=app-plugin-demo"
 
   MouseArea {
     anchors.fill: parent
@@ -19,10 +18,10 @@ Rectangle {
       // to try: may get rejected in the review by Apple as it links to a product where you can buy something
       if(false && system.isPlatform(System.IOS)) {
         // NOTE: no browser is opened on iOS!
-        nativeUtils.displayMessageBox("Get Started with V-Play", "This app is available with full source code on github.\n\nYou can download it for free at\nwww.v-play.net")
+        nativeUtils.displayMessageBox("Get Started with Felgo", "This app is available with full source code on github.\n\nYou can download it for free at\nwww.felgo.com")
 
         // the custom dialog does not fit the text
-//        aboutVPlayDialog.open()
+//        aboutFelgoDialog.open()
 
       } else {
         nativeUtils.openUrl(cta.linkUrl)
@@ -45,7 +44,7 @@ Rectangle {
       height: width
       anchors.verticalCenterOffset: height
       Image {
-        source: "../../assets/vplay-logo.png"
+        source: "../../assets/felgo-logo.png"
         anchors.fill: parent
       }
     }
@@ -74,7 +73,7 @@ Rectangle {
         spacing: dp(10)
         AppText {
           color: "#fff"
-          text: "Get Started with V-Play"
+          text: "Get Started with Felgo"
           // other variations: "Get Full Source Code", "Download for Free"
           font.pixelSize: sp(14)
         }
@@ -168,7 +167,7 @@ Rectangle {
 
   // the dialog does not fit the content, thus use nativeUtils.displayMessageBox() instead
   Dialog {
-    id: aboutVPlayDialog
+    id: aboutFelgoDialog
     title: "Get Started"
     positiveActionLabel: "Ok"
     negativeAction: false // only display the positive button
@@ -176,7 +175,7 @@ Rectangle {
     AppText {
       anchors.fill: parent
       anchors.margins: dp(8)
-      text: "This app is available with full source code in the V-Play Apps SDK.\n\nFree Download at www.v-play.net"
+      text: "This app is available with full source code in the Felgo SDK.\n\nFree Download at www.felgo.com"
       width: parent.width
     }
 

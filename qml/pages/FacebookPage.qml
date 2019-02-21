@@ -1,5 +1,4 @@
-import VPlayApps 1.0
-import VPlayPlugins 1.0
+import Felgo 3.0
 import QtQuick 2.5
 import "../helper"
 
@@ -112,7 +111,7 @@ Page {
           AppTextEdit {
             id: messageField
             placeholderText: "What are you up to?"
-            text: "I just posted this message with the V-Play Facebook Plugin.\nhttp://www.v-play.net/plugins"
+            text: "I just posted this message with the Felgo Facebook Plugin.\nhttp://www.felgo.com/plugins"
             width: parent.width - dp(16)
             height: messageField.lineCount * messageField.lineHeight
             wrapMode: TextEdit.WordWrap
