@@ -13,11 +13,11 @@
     <key>CFBundlePackageType</key>
     <string>APPL</string>
     <key>CFBundleShortVersionString</key>
-    <string>1.5</string>
+    <string>${PRODUCT_VERSION_NAME}</string>
     <key>CFBundleSignature</key>
     <string>????</string>
     <key>CFBundleVersion</key>
-    <string>15</string>
+    <string>${PRODUCT_VERSION_CODE}</string>
     <key>UIStatusBarHidden</key>
     <true/>
     <key>LSRequiresIPhoneOS</key>
@@ -39,6 +39,18 @@
         <string>UIInterfaceOrientationLandscapeLeft</string>
         <string>UIInterfaceOrientationLandscapeRight</string>
     </array>
+    <key>NSPhotoLibraryUsageDescription</key>
+    <string>App would like to access the library.</string>
+    <key>NSPhotoLibraryAddUsageDescription</key>
+    <string>App would like to save images taken with camera.</string>
+    <key>NSCameraUsageDescription</key>
+    <string>App would like to access the camera.</string>
+    <key>NSContactsUsageDescription</key>
+    <string>App would like to read contacts from the Addressbook.</string>
+    <key>NSBluetoothPeripheralUsageDescription</key>
+    <string>App would like to access Bluetooth.</string>
+    <key>NSBluetoothAlwaysUsageDescription</key>
+    <string>App would like to access Bluetooth.</string>
     <key>NSAppTransportSecurity</key>
     <dict>
         <key>NSAllowsArbitraryLoads</key>
@@ -77,5 +89,9 @@
         <string>fbauth2</string>
         <string>fb-messenger-api20140430</string>
     </array>
+    <key>GADApplicationIdentifier</key>
+    <string>ca-app-pub-1062462698709071~5327930646</string>
+    <key>ITSAppUsesNonExemptEncryption</key>
+    <false/>
 </dict>
 </plist>

@@ -2,7 +2,7 @@
   "title": "Felgo Plugins",
   "identifier": "net.vplay.demos.PluginDemo",
   "orientation": "auto",
-  "versioncode": 15,
-  "versionname": "1.5",
-  "stage": "test"
+  "versioncode": 1,
+  "versionname": "1.0",
+  "stage": "publish"
 }

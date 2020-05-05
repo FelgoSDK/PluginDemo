@@ -111,7 +111,7 @@ Page {
           AppTextEdit {
             id: messageField
             placeholderText: "What are you up to?"
-            text: "I just posted this message with the Felgo Facebook Plugin.\nhttp://www.felgo.com/plugins"
+            text: "I just posted this message with the Felgo Facebook Plugin.\nhttps://www.felgo.com/plugins"
             width: parent.width - dp(16)
             height: messageField.lineCount * messageField.lineHeight
             wrapMode: TextEdit.WordWrap

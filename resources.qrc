@@ -3,10 +3,12 @@
         <file>qml</file>
         <file>qml/pages</file>
         <file>qml/helper</file>
+        <file>qml/pages/firebase</file>
     </qresource>
     <qresource prefix="/appdemos/plugindemo/">
         <file>qml</file>
         <file>qml/pages</file>
         <file>qml/helper</file>
+        <file>qml/pages/firebase</file>
     </qresource>
 </RCC>

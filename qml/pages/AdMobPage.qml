@@ -39,7 +39,8 @@ ListPage {
     ListElement { section: "Banner Type"; current: false; name: "Leaderboard (728x90) - Tablet Only" }
     ListElement { section: "Banner Type"; current: true; name: "Smart (auto-size)" }
 
-    ListElement { section: "Native ad"; current: false; name: "" }
+    // native ad currently not supported
+   // ListElement { section: "Native ad"; current: false; name: "" }
 
     ListElement { section: "Interstitial"; active: false; name: "Load and show" }
 
@@ -68,7 +69,7 @@ ListPage {
     Loader {
       id: nativeAdLoader
 
-      active: index === 7
+      active: false//index === 7
       anchors.fill: parent
 
       sourceComponent: AdMobNative {
@@ -119,15 +120,15 @@ ListPage {
         adMobBanner.banner = AdMobBanner.Smart
       }
       // Native ad
-      else if (index === 7) {
-        //no click handler, this list element shows the ad
-      }
+//      else if (index === 7) {
+//        //no click handler, this list element shows the ad
+//      }
       // Interstitial
-      else if (index === 8) {
+      else if (index === 7) {
         interstitial.loadInterstitial()
       }
       // Rewarded video
-      else if (index === 9) {
+      else if (index === 8) {
         rewardedVideo.loadRewardedVideo()
       }
     }

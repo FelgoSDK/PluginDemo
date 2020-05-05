@@ -34,7 +34,7 @@ ListPage {
     ListElement { section: "Interstitial"; name: "Show Interstitial" }
     ListElement { section: "Rewarded Video"; name: "Cache Video" }
     ListElement { section: "Rewarded Video"; name: "Show Video" }
-    ListElement { section: "More"; name: "Load and show" }
+   // ListElement { section: "More"; name: "Load and show" }
 
   }
 

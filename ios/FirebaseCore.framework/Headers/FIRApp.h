@@ -16,11 +16,6 @@
 
 #import <Foundation/Foundation.h>
 
-#if TARGET_OS_IOS
-// TODO: Remove UIKit import on next breaking change release
-#import <UIKit/UIKit.h>
-#endif
-
 @class FIROptions;
 
 NS_ASSUME_NONNULL_BEGIN
@@ -52,15 +47,15 @@ NS_SWIFT_NAME(FirebaseApp)
 /**
  * Configures a default Firebase app. Raises an exception if any configuration step fails. The
  * default app is named "__FIRAPP_DEFAULT". This method should be called after the app is launched
- * and before using Firebase services. This method is thread safe and contains synchronous file I/O
- * (reading GoogleService-Info.plist from disk).
+ * and before using Firebase services. This method should be called from the main thread and
+ * contains synchronous file I/O (reading GoogleService-Info.plist from disk).
  */
 + (void)configure;
 
 /**
  * Configures the default Firebase app with the provided options. The default app is named
- * "__FIRAPP_DEFAULT". Raises an exception if any configuration step fails. This method is thread
- * safe.
+ * "__FIRAPP_DEFAULT". Raises an exception if any configuration step fails. This method should be
+ * called from the main thread.
  *
  * @param options The Firebase application options used to configure the service.
  */
@@ -68,7 +63,7 @@ NS_SWIFT_NAME(FirebaseApp)
 
 /**
  * Configures a Firebase app with the given name and options. Raises an exception if any
- * configuration step fails. This method is thread safe.
+ * configuration step fails. This method should be called from the main thread.
  *
  * @param name The application's name given by the developer. The name should should only contain
                Letters, Numbers and Underscore.
@@ -90,19 +85,11 @@ NS_SWIFT_NAME(FirebaseApp)
  */
 + (nullable FIRApp *)appNamed:(NSString *)name NS_SWIFT_NAME(app(name:));
 
-#if defined(__IPHONE_10_0) && __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_10_0
 /**
  * Returns the set of all extant FIRApp instances, or nil if there are no FIRApp instances. This
  * method is thread safe.
  */
 @property(class, readonly, nullable) NSDictionary<NSString *, FIRApp *> *allApps;
-#else
-/**
- * Returns the set of all extant FIRApp instances, or nil if there are no FIRApp instances. This
- * method is thread safe.
- */
-+ (nullable NSDictionary<NSString *, FIRApp *> *)allApps NS_SWIFT_NAME(allApps());
-#endif  // defined(__IPHONE_10_0) && __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_10_0
 
 /**
  * Cleans up the current FIRApp, freeing associated data and returning its name to the pool for
@@ -125,6 +112,15 @@ NS_SWIFT_NAME(FirebaseApp)
  * Gets a copy of the options for this app. These are non-modifiable.
  */
 @property(nonatomic, copy, readonly) FIROptions *options;
+
+/**
+ * Gets or sets whether automatic data collection is enabled for all products. Defaults to `YES`
+ * unless `FirebaseDataCollectionDefaultEnabled` is set to `NO` in your app's Info.plist. This value
+ * is persisted across runs of the app so that it can be set once when users have consented to
+ * collection.
+ */
+@property(nonatomic, readwrite, getter=isDataCollectionDefaultEnabled)
+    BOOL dataCollectionDefaultEnabled;
 
 @end
 

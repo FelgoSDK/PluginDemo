@@ -9,7 +9,7 @@ Rectangle {
   height: dp(40)
   color: Theme.tintColor
 
-  property string linkUrl: "http://felgo.com/plugin-demo/?source=app-plugin-demo&utm_medium=app&utm_source=app-plugin-demo"
+  property string linkUrl: "https://felgo.com/plugin-demo/?source=app-plugin-demo&utm_medium=app&utm_source=app-plugin-demo"
 
   MouseArea {
     anchors.fill: parent
@@ -31,7 +31,7 @@ Rectangle {
 
   Item {
     id: logocontainer
-    width: dp(40)
+    width: dp(30)
     height: width
     x: dp(5)
     y: dp(60)
@@ -108,7 +108,7 @@ Rectangle {
         NumberAnimation {
           target: logocontainer
           property: "y"
-          to: -dp(5)
+          to: dp(5)
           easing.type: Easing.OutBack
           duration: 400
         }

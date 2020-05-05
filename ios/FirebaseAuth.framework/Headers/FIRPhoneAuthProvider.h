@@ -14,10 +14,15 @@
  * limitations under the License.
  */
 
+#include <TargetConditionals.h>
+#if TARGET_OS_IOS
+
 #import <Foundation/Foundation.h>
 
 @class FIRAuth;
+@class FIRMultiFactorSession;
 @class FIRPhoneAuthCredential;
+@class FIRPhoneMultiFactorInfo;
 @protocol FIRAuthUIDelegate;
 
 NS_ASSUME_NONNULL_BEGIN
@@ -32,12 +37,11 @@ extern NSString *const FIRPhoneAuthProviderID NS_SWIFT_NAME(PhoneAuthProviderID)
  */
 extern NSString *const _Nonnull FIRPhoneAuthSignInMethod NS_SWIFT_NAME(PhoneAuthSignInMethod);
 
-
 /** @typedef FIRVerificationResultCallback
     @brief The type of block invoked when a request to send a verification code has finished.
 
     @param verificationID On success, the verification ID provided, nil otherwise.
-    @param error On error, the error that occured, nil otherwise.
+    @param error On error, the error that occurred, nil otherwise.
  */
 typedef void (^FIRVerificationResultCallback)(NSString *_Nullable verificationID,
                                               NSError *_Nullable error)
@@ -56,39 +60,12 @@ NS_SWIFT_NAME(PhoneAuthProvider)
 
 /** @fn providerWithAuth:
     @brief Returns an instance of `FIRPhoneAuthProvider` for the provided `FIRAuth` object.
-
     @param auth The auth object to associate with the phone auth provider instance.
  */
 + (instancetype)providerWithAuth:(FIRAuth *)auth NS_SWIFT_NAME(provider(auth:));
 
-/** @fn verifyPhoneNumber:completion:
-    @brief Please use `verifyPhoneNumber:UIDelegate:completion:` instead.
-
-    @param phoneNumber The phone number to be verified.
-    @param completion The callback to be invoked when the verification flow is finished.
-
-    @remarks Possible error codes:
-
-        + `FIRAuthErrorCodeAppNotVerified` - Indicates that Firebase could not retrieve the
-            silent push notification and therefore could not verify your app.
-        + `FIRAuthErrorCodeInvalidAppCredential` - Indicates that The APNs device token provided
-            is either incorrect or does not match the private certificate uploaded to the Firebase
-            Console.
-        + `FIRAuthErrorCodeQuotaExceeded` - Indicates that the phone verification quota for this
-            project has been exceeded.
-        + `FIRAuthErrorCodeInvalidPhoneNumber` - Indicates that the phone number provided is
-            invalid.
-        + `FIRAuthErrorCodeMissingPhoneNumber` - Indicates that a phone number was not provided.
-        + `FIRAuthErrorCodeMissingAppToken` - Indicates that the APNs device token could not be
-            obtained. The app may not have set up remote notification correctly, or may fail to
-            forward the APNs device token to FIRAuth if app delegate swizzling is disabled.
- */
-- (void)verifyPhoneNumber:(NSString *)phoneNumber
-               completion:(nullable FIRVerificationResultCallback)completion
-    __attribute__((deprecated));
-
 /** @fn verifyPhoneNumber:UIDelegate:completion:
-    @brief Starts the phone number authentication flow by sending a verifcation code to the
+    @brief Starts the phone number authentication flow by sending a verification code to the
         specified phone number.
     @param phoneNumber The phone number to be verified.
     @param UIDelegate An object used to present the SFSafariViewController. The object is retained
@@ -107,6 +84,36 @@ NS_SWIFT_NAME(PhoneAuthProvider)
 - (void)verifyPhoneNumber:(NSString *)phoneNumber
                UIDelegate:(nullable id<FIRAuthUIDelegate>)UIDelegate
                completion:(nullable FIRVerificationResultCallback)completion;
+
+/** @fn verifyPhoneNumber:UIDelegate:multiFactorSession:completion:
+    @brief Verify ownership of the second factor phone number by the current user.
+    @param phoneNumber The phone number to be verified.
+    @param UIDelegate An object used to present the SFSafariViewController. The object is retained
+        by this method until the completion block is executed.
+    @param session A session to identify the MFA flow. For enrollment, this identifies the user
+        trying to enroll. For sign-in, this identifies that the user already passed the first
+        factor challenge.
+    @param completion The callback to be invoked when the verification flow is finished.
+*/
+- (void)verifyPhoneNumber:(NSString *)phoneNumber
+               UIDelegate:(nullable id<FIRAuthUIDelegate>)UIDelegate
+       multiFactorSession:(nullable FIRMultiFactorSession *)session
+               completion:(nullable FIRVerificationResultCallback)completion;
+
+/** @fn verifyPhoneNumberWithMultiFactorInfo:UIDelegate:multiFactorSession:completion:
+    @brief Verify ownership of the second factor phone number by the current user.
+    @param phoneMultiFactorInfo The phone multi factor whose number need to be verified.
+    @param UIDelegate An object used to present the SFSafariViewController. The object is retained
+        by this method until the completion block is executed.
+    @param session A session to identify the MFA flow. For enrollment, this identifies the user
+        trying to enroll. For sign-in, this identifies that the user already passed the first
+        factor challenge.
+    @param completion The callback to be invoked when the verification flow is finished.
+*/
+- (void)verifyPhoneNumberWithMultiFactorInfo:(FIRPhoneMultiFactorInfo *)phoneMultiFactorInfo
+                                  UIDelegate:(nullable id<FIRAuthUIDelegate>)UIDelegate
+                          multiFactorSession:(nullable FIRMultiFactorSession *)session
+                                  completion:(nullable FIRVerificationResultCallback)completion;
 
 /** @fn credentialWithVerificationID:verificationCode:
     @brief Creates an `FIRAuthCredential` for the phone number provider identified by the
@@ -130,3 +137,5 @@ NS_SWIFT_NAME(PhoneAuthProvider)
 @end
 
 NS_ASSUME_NONNULL_END
+
+#endif
