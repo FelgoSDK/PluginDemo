@@ -6,6 +6,8 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
+
 #import <GoogleMobileAds/GADAudioVideoManager.h>
 #import <GoogleMobileAds/GADInitializationStatus.h>
 #import <GoogleMobileAds/GADRequestConfiguration.h>
@@ -14,11 +16,18 @@
 /// completes or times out.
 typedef void (^GADInitializationCompletionHandler)(GADInitializationStatus *_Nonnull status);
 
+/// Completion handler for presenting Ad Inspector. Returns an error if a problem was detected
+/// during presentation, or nil otherwise.
+typedef void (^GADAdInspectorCompletionHandler)(NSError *_Nullable error);
+
 /// Google Mobile Ads SDK settings.
 @interface GADMobileAds : NSObject
 
 /// Returns the shared GADMobileAds instance.
 + (nonnull GADMobileAds *)sharedInstance;
+
+/// Returns the version of the SDK.
+@property(nonatomic, nonnull, readonly) NSString *sdkVersion;
 
 /// The application's audio volume. Affects audio volumes of all ads relative to other audio output.
 /// Valid ad volume values range from 0.0 (silent) to 1.0 (current device volume). Use this method
@@ -55,15 +64,6 @@ typedef void (^GADInitializationCompletionHandler)(GADInitializationStatus *_Non
 /// request if this method is not called.
 - (void)startWithCompletionHandler:(nullable GADInitializationCompletionHandler)completionHandler;
 
-/// Disables automated in-app purchase (IAP) reporting. IAP reporting is enabled by default but can
-/// be disabled by calling this method before initializing the GMA SDK or loading ads. IAP reporting
-/// is used to track IAP ad conversions. Don't disable reporting if you use IAP ads.
-- (void)disableAutomatedInAppPurchaseReporting;
-
-/// Enables automated in-app purchase (IAP) reporting. IAP reporting is used to track IAP ad
-/// conversions.
-- (void)enableAutomatedInAppPurchaseReporting;
-
 /// Disables automated SDK crash reporting. If not called, the SDK records the original exception
 /// handler if available and registers a new exception handler. The new exception handler only
 /// reports SDK related exceptions and calls the recorded original exception handler.
@@ -75,22 +75,22 @@ typedef void (^GADInitializationCompletionHandler)(GADInitializationStatus *_Non
 /// initializing the GMA SDK or loading ads and has no effect once the SDK has been initialized.
 - (void)disableMediationInitialization;
 
+/// Presents Ad Inspector. The device calling this API must be registered as a test device in order
+/// to launch Ad Inspector. Set
+/// GADMobileAds.sharedInstance.requestConfiguration.testDeviceIdentifiers to enable test mode on
+/// this device.
+/// @param viewController A view controller to present Ad Inspector.
+/// @param completionHandler A handler to execute when Ad Inspector is closed.
+- (void)presentAdInspectorFromViewController:(nonnull UIViewController *)viewController
+                           completionHandler:
+                               (nullable GADAdInspectorCompletionHandler)completionHandler;
+
 #pragma mark Deprecated
 
-/// Configures the SDK using the settings associated with the given application ID.
-+ (void)configureWithApplicationID:(nonnull NSString *)applicationID
-    GAD_DEPRECATED_MSG_ATTRIBUTE("Use [GADMobileAds.sharedInstance startWithCompletionHandler:]");
+/// Deprecated and does nothing. IAP transaction reporting is no longer supported.
+- (void)disableAutomatedInAppPurchaseReporting GAD_DEPRECATED_ATTRIBUTE;
 
-/// Disables automated in-app purchase (IAP) reporting. IAP reporting is enabled by default but can
-/// be disabled by calling this method before initializing the GMA SDK or loading ads. IAP reporting
-/// is used to track IAP ad conversions. Don't disable reporting if you use IAP ads.
-+ (void)disableAutomatedInAppPurchaseReporting GAD_DEPRECATED_MSG_ATTRIBUTE(
-    "Use [GADMobileAds.sharedInstance disableAutomatedInAppPurchaseReporting]");
-
-/// Disables automated SDK crash reporting. If not called, the SDK records the original exception
-/// handler if available and registers a new exception handler. The new exception handler only
-/// reports SDK related exceptions and calls the recorded original exception handler.
-+ (void)disableSDKCrashReporting GAD_DEPRECATED_MSG_ATTRIBUTE(
-    "Use [GADMobileAds.sharedInstance disableSDKCrashReporting]");
+/// Deprecated and does nothing. IAP transaction reporting is no longer supported.
+- (void)enableAutomatedInAppPurchaseReporting GAD_DEPRECATED_ATTRIBUTE;
 
 @end

@@ -22,8 +22,10 @@ typedef struct GAD_BOXABLE GADAdSize GADAdSize;
 ///
 /// @see typedef GADAdSize
 struct GAD_BOXABLE GADAdSize {
-  CGSize size;       ///< The ad size. Don't modify this value directly.
-  NSUInteger flags;  ///< Reserved.
+  /// The ad size. Don't modify this value directly.
+  CGSize size;
+  /// Reserved.
+  NSUInteger flags;
 };
 
 #pragma mark Standard Sizes
@@ -47,14 +49,6 @@ GAD_EXTERN GADAdSize const kGADAdSizeLeaderboard;
 /// Skyscraper size for the iPad. Mediation only. AdMob/Google does not offer this size. Typically
 /// 120x600.
 GAD_EXTERN GADAdSize const kGADAdSizeSkyscraper;
-
-/// An ad size that spans the full width of the application in portrait orientation. The height is
-/// typically 50 points on an iPhone/iPod UI, and 90 points tall on an iPad UI.
-GAD_EXTERN GADAdSize const kGADAdSizeSmartBannerPortrait;
-
-/// An ad size that spans the full width of the application in landscape orientation. The height is
-/// typically 32 points on an iPhone/iPod UI, and 90 points tall on an iPad UI.
-GAD_EXTERN GADAdSize const kGADAdSizeSmartBannerLandscape;
 
 /// An ad size that spans the full width of its container, with a height dynamically determined by
 /// the ad.
@@ -124,11 +118,14 @@ GAD_EXTERN NSValue *_Nonnull NSValueFromGADAdSize(GADAdSize size);
 /// Returns a GADAdSize from an NSValue. Returns kGADAdSizeInvalid if the value is not a GADAdSize.
 GAD_EXTERN GADAdSize GADAdSizeFromNSValue(NSValue *_Nonnull value);
 
-#pragma mark Deprecated Macros
+#pragma mark Deprecated
 
-#define GAD_SIZE_320x50 CGSizeFromGADAdSize(kGADAdSizeBanner)
-#define GAD_SIZE_320x100 CGSizeFromGADAdSize(kGADAdSizeLargeBanner)
-#define GAD_SIZE_300x250 CGSizeFromGADAdSize(kGADAdSizeMediumRectangle)
-#define GAD_SIZE_468x60 CGSizeFromGADAdSize(kGADAdSizeFullBanner)
-#define GAD_SIZE_728x90 CGSizeFromGADAdSize(kGADAdSizeLeaderboard)
-#define GAD_SIZE_120x600 CGSizeFromGADAdSize(kGADAdSizeSkyscraper)
+/// An ad size that spans the full width of the application in portrait orientation. The height is
+/// typically 50 points on an iPhone/iPod UI, and 90 points tall on an iPad UI.
+GAD_EXTERN GADAdSize const kGADAdSizeSmartBannerPortrait
+    GAD_DEPRECATED_MSG_ATTRIBUTE("Use GADPortraitAnchoredAdaptiveBannerAdSizeWithWidth.");
+
+/// An ad size that spans the full width of the application in landscape orientation. The height is
+/// typically 32 points on an iPhone/iPod UI, and 90 points tall on an iPad UI.
+GAD_EXTERN GADAdSize const kGADAdSizeSmartBannerLandscape
+    GAD_DEPRECATED_MSG_ATTRIBUTE("Use GADLandscapeAnchoredAdaptiveBannerAdSizeWithWidth");

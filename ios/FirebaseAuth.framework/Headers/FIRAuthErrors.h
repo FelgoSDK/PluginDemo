@@ -212,7 +212,7 @@ typedef NS_ENUM(NSInteger, FIRAuthErrorCode) {
    */
   FIRAuthErrorCodeMissingAndroidPackageName = 17037,
 
-  /** Indicates that the domain specified in the continue URL is not whitelisted in the Firebase
+  /** Indicates that the domain specified in the continue URL is not allowlisted in the Firebase
       console.
    */
   FIRAuthErrorCodeUnauthorizedDomain = 17038,
@@ -336,6 +336,18 @@ typedef NS_ENUM(NSInteger, FIRAuthErrorCode) {
    * Represents the error code for when the given provider id for a web operation is invalid.
    */
   FIRAuthErrorCodeInvalidProviderID = 17071,
+
+  /**
+   * Represents the error code for when an attempt is made to update the current user with a
+   * tenantId that differs from the current FirebaseAuth instance's tenantId.
+   */
+  FIRAuthErrorCodeTenantIDMismatch = 17072,
+
+  /**
+   * Represents the error code for when a request is made to the backend with an associated tenant
+   * ID for an operation that does not support multi-tenancy.
+   */
+  FIRAuthErrorCodeUnsupportedTenantOperation = 17073,
 
   /** Indicates that the Firebase Dynamic Link domain used is either not configured or is
       unauthorized for the current project.

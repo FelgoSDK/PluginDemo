@@ -5,7 +5,8 @@ buildscript {
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.2.1'
+        classpath 'com.android.tools.build:gradle:3.3.3'
+        classpath 'com.google.gms:google-services:3.0.0'
     }
 }
 
@@ -14,6 +15,7 @@ allprojects {
         maven { url 'https://maven.google.com' }
         jcenter()
         maven { url 'https://install.felgo.com/maven/' }
+        maven { url "https://chartboostmobile.bintray.com/Chartboost" }
     }
 }
 
@@ -21,6 +23,7 @@ apply plugin: 'com.android.application'
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
+
     implementation 'net.vplay.plugins:plugin-admob:3.+'
     implementation 'net.vplay.plugins:plugin-chartboost:3.+'
     implementation 'net.vplay.plugins:plugin-facebook:3.+'
@@ -50,10 +53,24 @@ android {
     compileSdkVersion androidCompileSdkVersion.toInteger()
     buildToolsVersion androidBuildToolsVersion
 
+    compileOptions {
+      sourceCompatibility 1.8
+      targetCompatibility 1.8
+    }
+
     defaultConfig {
       applicationId = productIdentifier
       versionCode = productVersionCode.toInteger()
       versionName = productVersionName
+      minSdkVersion 21
+
+      int qtVersionNr = project.hasProperty("qtVersionInt") ? qtVersionInt.toInteger() : 5132
+      if (qtVersionNr < 5140) {
+        resValue('array', 'load_local_libs', "")
+      } else if (qtVersionNr >= 5140) {
+        resValue('array', 'bundled_in_lib', "")
+        resValue('array', 'bundled_in_assets', "")
+      }
     }
 
     sourceSets {

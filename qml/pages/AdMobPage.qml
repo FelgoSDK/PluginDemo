@@ -4,6 +4,7 @@ import "../helper"
 
 ListPage {
   title: "AdMob Plugin"
+
   listView.header: Column {
     width: parent.width
 
@@ -25,6 +26,12 @@ ListPage {
     }
 
     SectionHeader { text: "Example" }
+  }
+
+  listView.footer: Item {
+    // dummy for ad banner
+    width: parent.width
+    height: dp(48)
   }
 
   model: ListModel {
@@ -53,8 +60,6 @@ ListPage {
     text: name
     property bool isSelected: current || (index === 0 && adMobBanner.visible || index === 1 && !adMobBanner.visible)
 
-    height: nativeAdLoader.active ? dp(80) : dp(48)
-
     Icon {
       anchors.right: parent.right
       anchors.rightMargin: dp(10)
@@ -63,26 +68,6 @@ ListPage {
       size: dp(14)
       color: row.style.textColor
       visible: isSelected
-    }
-
-    //show native ad view inside corresponding list element
-    Loader {
-      id: nativeAdLoader
-
-      active: false//index === 7
-      anchors.fill: parent
-
-      sourceComponent: AdMobNative {
-        id: adMobNative
-
-        width: parent.width
-        height: dp(80) //minimum height of small native ad template
-
-        clipContainer: listView
-
-        adUnitId: Constants.admobNativeAdUnitId
-        testDeviceIds: Constants.admobTestDeviceIds
-      }
     }
 
     style.showDisclosure: false
@@ -119,10 +104,6 @@ ListPage {
       else if (index === 6) {
         adMobBanner.banner = AdMobBanner.Smart
       }
-      // Native ad
-//      else if (index === 7) {
-//        //no click handler, this list element shows the ad
-//      }
       // Interstitial
       else if (index === 7) {
         interstitial.loadInterstitial()

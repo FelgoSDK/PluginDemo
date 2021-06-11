@@ -1,10 +1,35 @@
 //
-// Amplitude.h
+//  Amplitude.h
+//  Copyright (c) 2013 Amplitude Inc. (https://amplitude.com/)
+//
+//  Permission is hereby granted, free of charge, to any person obtaining a copy
+//  of this software and associated documentation files (the "Software"), to deal
+//  in the Software without restriction, including without limitation the rights
+//  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+//  copies of the Software, and to permit persons to whom the Software is
+//  furnished to do so, subject to the following conditions:
+//
+//  The above copyright notice and this permission notice shall be included in
+//  all copies or substantial portions of the Software.
+//
+//  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+//  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+//  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+//  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+//  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+//  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+//  THE SOFTWARE.
+//
 
 #import <Foundation/Foundation.h>
 #import "AMPIdentify.h"
 #import "AMPRevenue.h"
+#import "AMPTrackingOptions.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
+typedef NSString *_Nonnull (^AMPAdSupportBlock)(void);
+typedef NSDictionary *_Nullable (^AMPLocationInfoBlock)(void);
 
 /**
  Amplitude iOS SDK.
@@ -32,36 +57,39 @@
 
 #pragma mark - Properties
 
- /**-----------------------------------------------------------------------------
- * @name Instance Properties
- * -----------------------------------------------------------------------------
+/**
+ API key for your Amplitude App.
  */
-
- /**
-  API key for your Amplitude App.
-  */
-@property (nonatomic, strong, readonly) NSString *apiKey;
+@property (nonatomic, copy, readonly) NSString *apiKey;
 
 /**
  Identifier for the current user.
  */
-@property (nonatomic, strong, readonly) NSString *userId;
+@property (nonatomic, copy, readonly, nullable) NSString *userId;
 
 /**
  Identifier for the current device.
  */
-@property (nonatomic, strong, readonly) NSString *deviceId;
+@property (nonatomic, copy, readonly) NSString *deviceId;
 
 /**
  Name of the SDK instance (ex: no name for default instance, or custom name for a named instance)
  */
-@property (nonatomic, strong, readonly) NSString *instanceName;
-@property (nonatomic ,strong, readonly) NSString *propertyListPath;
+@property (nonatomic, copy, readonly, nullable) NSString *instanceName;
+@property (nonatomic, copy, readonly, nullable) NSString *propertyListPath;
 
 /**
  Whether or to opt the current user out of tracking. If true then this blocks the logging of any events and properties, and blocks the sending of events to Amplitude servers.
  */
-@property (nonatomic, assign) BOOL optOut;
+@property (nonatomic, assign, readwrite) BOOL optOut;
+
+/**
+ Turning this flag on will find the best server url automatically based on users' geo location.
+ Note:
+ 1. If you have your own proxy server and use `setServerUrl` API, please leave this off.
+ 2. If you have users in China Mainland, we suggest you turn this on.
+ */
+@property (nonatomic, assign, readwrite) BOOL useDynamicConfig;
 
 
 /**-----------------------------------------------------------------------------
@@ -80,7 +108,7 @@
 @property (nonatomic, assign) int eventUploadMaxBatchSize;
 
 /**
- The maximum number of events that can be stored lcoally. The default is 1000 events.
+ The maximum number of events that can be stored locally. The default is 1000 events.
  */
 @property (nonatomic, assign) int eventMaxCount;
 
@@ -90,7 +118,7 @@
 @property (nonatomic, assign) int eventUploadPeriodSeconds;
 
 /**
- When a user closes and reopens the app within minTimeBetweenSessionsMillis milliseconds, the reopen is considered part of the same session and the session continues. Otherwise, a new session is created. The default is 15 minutes.
+ When a user closes and reopens the app within minTimeBetweenSessionsMillis milliseconds, the reopen is considered part of the same session and the session continues. Otherwise, a new session is created. The default is 5 minutes.
  */
 @property (nonatomic, assign) long minTimeBetweenSessionsMillis;
 
@@ -99,6 +127,59 @@
  */
 @property (nonatomic, assign) BOOL trackingSessionEvents;
 
+/**
+ Library name is default as `amplitude-ios`.
+ Notice: You will only want to set it when following conditions are met.
+ 1. You develop your own library which bridges Amplitude iOS native library.
+ 2. You want to track your library as one of the data sources.
+ */
+@property (nonatomic, copy, nullable) NSString *libraryName;
+
+/**
+ Library version is default as the latest Amplitude iOS SDK version.
+ Notice: You will only want to set it when following conditions are met.
+ 1. You develop your own library which bridges Amplitude iOS native library.
+ 2. You want to track your library as one of the data sources.
+*/
+@property (nonatomic, copy, nullable) NSString *libraryVersion;
+
+/**
+ * Sets a block to be called when IDFA / AdSupport identifier is created.
+ * This is to allow for apps that do not want ad tracking to pass App Store guidelines in certain categories while
+ * still allowing apps that do ad tracking to continue to function.  This block will be called repeatedly during
+ * the life of the application as IDFA is needed.
+ *
+ * This achieve the previous SDK behavior use the example as follows.  It assumes you've handled any setup
+ * and dialogs necessary to receive permissions from the user.
+ *
+ * Example:
+ *      amplitude.adSupportBlock = ^{
+ *          return [[ASIdentifierManager sharedManager] advertisingIdentifier];
+ *      };
+ */
+@property (nonatomic, strong, nullable) AMPAdSupportBlock adSupportBlock;
+
+/**
+ * Sets a block to be called when location (latitude, longitude) information can be passed into an event.
+ * This is to allow for apps that do not want location tracking to function without defining location permission while
+ * still allowing apps that do location tracking to continue to function.  This block will be called repeatedly when
+ * location information is needed for constructing an event.
+ *
+ * Location information is a NSDictionary with 2 keys in it, "lat" and "lng".
+ * Example:
+ *      amplitude.locationInfoBlock = ^{
+ *          return @{
+ *              @"lat" : @37.7,
+ *              @"lng" : @122.4
+ *              };
+ *      };
+ */
+@property (nonatomic, strong, nullable) AMPLocationInfoBlock locationInfoBlock;
+
+/**
+ Content-Type header for event sending requests. Only relevant for sending events to a different URL (e.g. proxy server)
+ */
+@property (nonatomic, copy, readonly) NSString *contentTypeHeader;
 
 #pragma mark - Methods
 
@@ -123,7 +204,7 @@
 
  @see [Tracking Events to Multiple Amplitude Apps](https://github.com/amplitude/amplitude-ios#tracking-events-to-multiple-amplitude-apps)
  */
-+ (Amplitude *)instanceWithName:(NSString*) instanceName;
++ (Amplitude *)instanceWithName:(nullable NSString *)instanceName;
 
 /**-----------------------------------------------------------------------------
  * @name Initialize the Amplitude SDK with your Amplitude API Key
@@ -139,7 +220,7 @@
 
  @param apiKey Your Amplitude key obtained from your dashboard at https://amplitude.com/settings
  */
-- (void)initializeApiKey:(NSString*) apiKey;
+- (void)initializeApiKey:(NSString *)apiKey;
 
 /**
  Initializes the Amplitude instance with your Amplitude API key and sets a user identifier for the current user.
@@ -153,7 +234,7 @@
  @param userId If your app has its own login system that you want to track users with, you can set the userId.
 
 */
-- (void)initializeApiKey:(NSString*) apiKey userId:(NSString*) userId;
+- (void)initializeApiKey:(NSString *)apiKey userId:(nullable NSString *)userId;
 
 
 /**-----------------------------------------------------------------------------
@@ -170,7 +251,7 @@
 
  @see [Tracking Events](https://github.com/amplitude/amplitude-ios#tracking-events)
  */
-- (void)logEvent:(NSString*) eventType;
+- (void)logEvent:(NSString *)eventType;
 
 /**
  Tracks an event. Events are saved locally.
@@ -182,7 +263,7 @@
 
  @see [Tracking Events](https://github.com/amplitude/amplitude-ios#tracking-events)
  */
-- (void)logEvent:(NSString*) eventType withEventProperties:(NSDictionary*) eventProperties;
+- (void)logEvent:(NSString *)eventType withEventProperties:(nullable NSDictionary *)eventProperties;
 
 /**
  Tracks an event. Events are saved locally.
@@ -196,7 +277,7 @@
  @see [Tracking Events](https://github.com/amplitude/amplitude-ios#tracking-events)
  @see [Tracking Sessions](https://github.com/amplitude/Amplitude-iOS#tracking-sessions)
  */
-- (void)logEvent:(NSString*) eventType withEventProperties:(NSDictionary*) eventProperties outOfSession:(BOOL) outOfSession;
+- (void)logEvent:(NSString *)eventType withEventProperties:(nullable NSDictionary *)eventProperties outOfSession:(BOOL)outOfSession;
 
 /**
  Tracks an event. Events are saved locally.
@@ -211,7 +292,8 @@
 
  @see [Setting Groups](https://github.com/amplitude/Amplitude-iOS#setting-groups)
  */
-- (void)logEvent:(NSString*) eventType withEventProperties:(NSDictionary*) eventProperties withGroups:(NSDictionary*) groups;
+- (void)logEvent:(NSString *)eventType withEventProperties:(nullable NSDictionary *)eventProperties
+      withGroups:(nullable NSDictionary *)groups;
 
 /**
  Tracks an event. Events are saved locally.
@@ -229,7 +311,9 @@
 
  @see [Tracking Sessions](https://github.com/amplitude/Amplitude-iOS#tracking-sessions)
  */
-- (void)logEvent:(NSString*) eventType withEventProperties:(NSDictionary*) eventProperties withGroups:(NSDictionary*) groups outOfSession:(BOOL) outOfSession;
+- (void)logEvent:(NSString *)eventType withEventProperties:(nullable NSDictionary *)eventProperties
+      withGroups:(nullable NSDictionary *)groups
+    outOfSession:(BOOL)outOfSession;
 
 /**
  Tracks an event. Events are saved locally.
@@ -248,7 +332,7 @@
 
  @see [Tracking Sessions](https://github.com/amplitude/Amplitude-iOS#tracking-sessions)
  */
-- (void)logEvent:(NSString*) eventType withEventProperties:(NSDictionary*) eventProperties withGroups:(NSDictionary*) groups withLongLongTimestamp:(long long) longLongTimestamp outOfSession:(BOOL)outOfSession;
+- (void)logEvent:(NSString *)eventType withEventProperties:(nullable NSDictionary *)eventProperties withGroups:(nullable NSDictionary *)groups withLongLongTimestamp:(long long)longLongTimestamp outOfSession:(BOOL)outOfSession;
 
 /**
  Tracks an event. Events are saved locally.
@@ -267,7 +351,10 @@
 
  @see [Tracking Sessions](https://github.com/amplitude/Amplitude-iOS#tracking-sessions)
  */
-- (void)logEvent:(NSString*) eventType withEventProperties:(NSDictionary*) eventProperties withGroups:(NSDictionary*) groups withTimestamp:(NSNumber*) timestamp outOfSession:(BOOL)outOfSession;
+- (void)logEvent:(NSString *)eventType withEventProperties:(nullable NSDictionary *)eventProperties
+      withGroups:(nullable NSDictionary *)groups
+   withTimestamp:(NSNumber *)timestamp
+    outOfSession:(BOOL)outOfSession;
 
 /**-----------------------------------------------------------------------------
  * @name Logging Revenue
@@ -275,8 +362,6 @@
  */
 
 /**
- **Note: this is deprecated** - please use `logRevenueV2` and `AMPRevenue`
-
  Tracks revenue.
 
  To track revenue from a user, call [[Amplitude instance] logRevenue:[NSNumber numberWithDouble:3.99]] each time the user generates revenue. logRevenue: takes in an NSNumber with the dollar amount of the sale as the only argument. This allows us to automatically display data relevant to revenue on the Amplitude website, including average revenue per daily active user (ARPDAU), 7, 30, and 90 day revenue, lifetime value (LTV) estimates, and revenue by advertising campaign cohort and daily/weekly/monthly cohorts.
@@ -285,11 +370,9 @@
 
  @see [LogRevenue Backwards Compatability](https://github.com/amplitude/Amplitude-iOS#backwards-compatibility)
  */
-- (void)logRevenue:(NSNumber*) amount;
+- (void)logRevenue:(NSNumber *)amount DEPRECATED_MSG_ATTRIBUTE("Use `logRevenueV2` and `AMPRevenue` instead");
 
 /**
- **Note: this is deprecated** - please use `logRevenueV2` and `AMPRevenue`
-
  Tracks revenue. This allows us to automatically display data relevant to revenue on the Amplitude website, including average revenue per daily active user (ARPDAU), 7, 30, and 90 day revenue, lifetime value (LTV) estimates, and revenue by advertising campaign cohort and daily/weekly/monthly cohorts.
 
  @param productIdentifier        The identifier for the product in the transaction, e.g. "com.amplitude.productId"
@@ -299,11 +382,11 @@
  @see [LogRevenueV2](https://github.com/amplitude/Amplitude-iOS#tracking-revenue)
  @see [LogRevenue Backwards Compatability](https://github.com/amplitude/Amplitude-iOS#backwards-compatibility)
  */
-- (void)logRevenue:(NSString*) productIdentifier quantity:(NSInteger) quantity price:(NSNumber*) price;
+- (void)logRevenue:(nullable NSString *)productIdentifier
+          quantity:(NSInteger)quantity
+             price:(NSNumber *)price DEPRECATED_MSG_ATTRIBUTE("Use `logRevenueV2` and `AMPRevenue` instead");
 
 /**
- **Note: this is deprecated** - please use `logRevenueV2` and `AMPRevenue`
-
  Tracks revenue. This allows us to automatically display data relevant to revenue on the Amplitude website, including average revenue per daily active user (ARPDAU), 7, 30, and 90 day revenue, lifetime value (LTV) estimates, and revenue by advertising campaign cohort and daily/weekly/monthly cohorts.
 
  For validating revenue, use [[Amplitude instance] logRevenue:@"com.company.app.productId" quantity:1 price:[NSNumber numberWithDouble:3.99] receipt:transactionReceipt]
@@ -317,7 +400,10 @@
  @see [LogRevenue Backwards Compatability](https://github.com/amplitude/Amplitude-iOS#backwards-compatibility)
  @see [Revenue Verification](https://github.com/amplitude/Amplitude-iOS#revenue-verification)
  */
-- (void)logRevenue:(NSString*) productIdentifier quantity:(NSInteger) quantity price:(NSNumber*) price receipt:(NSData*) receipt;
+- (void)logRevenue:(nullable NSString *)productIdentifier
+          quantity:(NSInteger)quantity
+             price:(NSNumber *)price
+           receipt:(nullable NSData *)receipt DEPRECATED_MSG_ATTRIBUTE("Use `logRevenueV2` and `AMPRevenue` instead");
 
 /**
  Tracks revenue - API v2. This uses the `AMPRevenue` object to store transaction properties such as quantity, price, and revenue type. This is the recommended method for tracking revenue in Amplitude.
@@ -330,7 +416,7 @@
 
  @see [Tracking Revenue](https://github.com/amplitude/Amplitude-iOS#tracking-revenue)
  */
-- (void)logRevenueV2:(AMPRevenue*) revenue;
+- (void)logRevenueV2:(AMPRevenue *)revenue;
 
 /**-----------------------------------------------------------------------------
  * @name User Properties and User Property Operations
@@ -374,7 +460,7 @@
 
  */
 
-- (void)identify:(AMPIdentify *)identify outOfSession:(BOOL) outOfSession;
+- (void)identify:(AMPIdentify *)identify outOfSession:(BOOL)outOfSession;
 
 /**
 
@@ -386,22 +472,19 @@
 
  @see [Setting Multiple Properties with setUserProperties](https://github.com/amplitude/Amplitude-iOS#setting-multiple-properties-with-setuserproperties)
  */
-- (void)setUserProperties:(NSDictionary*) userProperties;
+- (void)setUserProperties:(NSDictionary *)userProperties;
 
 /**
-
- **NOTE: this method is deprecated** - use `setUserProperties` instead. In earlier versions of the SDK, replace = YES replaced the in-memory userProperties dictionary with the input; however, now userProperties are no longer stored in memory, so the flag does nothing.
-
  Adds properties that are tracked on the user level.
 
  **Note:** Property keys must be <code>NSString</code> objects and values must be serializable.
 
  @param userProperties          An NSDictionary containing any additional data to be tracked.
- @param replace                 This is deprecated. In earlier versions of this SDK, this replaced the in-memory userProperties dictionary with the input, but now userProperties are no longer stored in memory.
+ @param replace                 In earlier versions of this SDK, this replaced the in-memory userProperties dictionary with the input, but now userProperties are no longer stored in memory, so this parameter does nothing.
 
  @see [Setting Multiple Properties with setUserProperties](https://github.com/amplitude/Amplitude-iOS#setting-multiple-properties-with-setuserproperties)
  */
-- (void)setUserProperties:(NSDictionary*) userProperties replace:(BOOL) replace;
+- (void)setUserProperties:(NSDictionary *)userProperties replace:(BOOL)replace DEPRECATED_MSG_ATTRIBUTE("Use `- setUserProperties` instead. In earlier versions of the SDK, `replace: YES` replaced the in-memory userProperties dictionary with the input. However, userProperties are no longer stored in memory, so the flag does nothing.");
 
 /**
  Clears all properties that are tracked on the user level.
@@ -429,7 +512,16 @@
  @see [Setting Groups](https://github.com/amplitude/Amplitude-iOS#setting-groups)
  */
 
-- (void)setGroup:(NSString*) groupType groupName:(NSObject*) groupName;
+- (void)setGroup:(NSString *)groupType groupName:(NSObject *)groupName;
+
+- (void)groupIdentifyWithGroupType:(NSString *)groupType
+                         groupName:(NSObject *)groupName
+                     groupIdentify:(AMPIdentify *)groupIdentify;
+
+- (void)groupIdentifyWithGroupType:(NSString *)groupType
+                         groupName:(NSObject *)groupName
+                     groupIdentify:(AMPIdentify *)groupIdentify
+                      outOfSession:(BOOL)outOfSession;
 
 /**-----------------------------------------------------------------------------
  * @name Setting User and Device Identifiers
@@ -437,13 +529,24 @@
  */
 
 /**
- Sets the userId.
+ Sets the userId and starts a new session.
+
+ @param userId                  If your app has its own login system that you want to track users with, you can set the userId.
+ @see [Setting Custom UserIds](https://github.com/amplitude/Amplitude-iOS#setting-custom-user-ids)
+ */
+
+- (void)setUserId:(nullable NSString *)userId;
+
+/**
+ Sets the userId. If startNewSession is true, the previous session for the previous user will be terminated and a new session will begin for the new userId.
 
  @param userId                  If your app has its own login system that you want to track users with, you can set the userId.
 
+ @param startNewSession         Terminates previous user session and creates a new one for the new user
+
  @see [Setting Custom UserIds](https://github.com/amplitude/Amplitude-iOS#setting-custom-user-ids)
  */
-- (void)setUserId:(NSString*) userId;
+- (void)setUserId:(nullable NSString *)userId startNewSession:(BOOL)startNewSession;
 
 /**
  Sets the deviceId.
@@ -454,7 +557,7 @@
 
  @see [Setting Custom Device Ids](https://github.com/amplitude/Amplitude-iOS#custom-device-ids)
  */
-- (void)setDeviceId:(NSString*) deviceId;
+- (void)setDeviceId:(NSString *)deviceId;
 
 /**-----------------------------------------------------------------------------
  * @name Configuring the SDK instance
@@ -480,27 +583,6 @@
 - (void)setOffline:(BOOL)offline;
 
 /**
- Enables location tracking.
-
- If the user has granted your app location permissions, the SDK will also grab the location of the user. Amplitude will never prompt the user for location permissions itself, this must be done by your app.
-
- **Note:** the user's location is only fetched once per session. Use `updateLocation` to force the SDK to fetch the user's latest location.
- */
-- (void)enableLocationListening;
-
-/**
- Disables location tracking. If you want location tracking disabled on startup of the app, call disableLocationListening before you call initializeApiKey.
- */
-- (void)disableLocationListening;
-
-/**
- Forces the SDK to update with the user's last known location if possible.
-
- If you want to manually force the SDK to update with the user's last known location, call updateLocation.
- */
-- (void)updateLocation;
-
-/**
  Uses advertisingIdentifier instead of identifierForVendor as the device ID
 
  Apple prohibits the use of advertisingIdentifier if your app does not have advertising. Useful for tying together data from advertising campaigns to anlaytics data.
@@ -508,6 +590,39 @@
  **NOTE:** Must be called before initializeApiKey: is called to function.
  */
 - (void)useAdvertisingIdForDeviceId;
+
+/**
+  By default the iOS SDK will track several user properties such as carrier, city, country, ip_address, language, platform, etc. You can use the provided AMPTrackingOptions interface to customize and disable individual fields.
+
+  Note: Each operation on the AMPTrackingOptions object returns the same instance which allows you to chain multiple operations together.
+
+      AMPTrackingOptions *options = [[[[AMPTrackingOptions options] disableCity] disableIPAddress] disablePlatform];
+      [[Amplitude instance] setTrackingOptions:options];
+ */
+- (void)setTrackingOptions:(AMPTrackingOptions *)options;
+
+/**
+ Enable COPPA (Children's Online Privacy Protection Act) restrictions on IDFA, IDFV, city, IP address and location tracking.
+ This can be used by any customer that does not want to collect IDFA, IDFV, city, IP address and location tracking.
+ */
+- (void)enableCoppaControl;
+
+/**
+ Disable COPPA (Children's Online Privacy Protection Act) restrictions on IDFA, IDFV, city, IP address and location tracking.
+ */
+- (void)disableCoppaControl;
+
+/**
+ Sends events to a different URL other than kAMPEventLogUrl. Used for proxy servers
+ */
+- (void)setServerUrl:(NSString *)serverUrl;
+
+/**
+ Sets Content-Type header for event sending requests
+*/
+- (void)setContentTypeHeader:(NSString *)contentType;
+
+- (void)setBearerToken:(NSString *)token;
 
 /**-----------------------------------------------------------------------------
  * @name Other Methods
@@ -526,7 +641,7 @@
 
  @returns the deviceId.
  */
-- (NSString*)getDeviceId;
+- (NSString *)getDeviceId;
 
 /**
  Regenerates a new random deviceId for current user. Note: this is not recommended unless you know what you are doing. This can be used in conjunction with setUserId:nil to anonymize users after they log out. With a nil userId and a completely new deviceId, the current user would appear as a brand new user in dashboard.
@@ -540,9 +655,20 @@
 
  @returns the current session id
 
- @see [Tracking Sessions](https://github.com/amplitude/Amplitude-iOS#tracking-sessions)
+ @see [Tracking Sessions](https://help.amplitude.com/hc/en-us/articles/115002323627-Tracking-Session)
  */
 - (long long)getSessionId;
+
+/**
+ Sets the sessionId.
+
+ **NOTE: not recommended unless you know what you are doing**
+
+ @param timestamp                  Timestamp representing the sessionId
+
+ @see [Tracking Sessions](https://help.amplitude.com/hc/en-us/articles/115002323627-Tracking-Session)
+ */
+- (void)setSessionId:(long long)timestamp;
 
 /**
  Manually forces the instance to immediately upload all unsent events.
@@ -551,42 +677,14 @@
  */
 - (void)uploadEvents;
 
+/**
+ Call to check if the SDK is ready to start a new session at timestamp. Returns YES if a new session was started, otherwise NO and current session is extended. Only use if you know what you are doing. Recommended to use current time in UTC milliseconds for timestamp.
+ */
+- (BOOL)startOrContinueSession:(long long)timestamp;
 
-#pragma mark - Deprecated methods
 
-- (void)initializeApiKey:(NSString*) apiKey userId:(NSString*) userId startSession:(BOOL)startSession __attribute((deprecated()));
+- (NSString *)getContentTypeHeader;
 
-- (void)startSession __attribute((deprecated()));
-
-+ (void)initializeApiKey:(NSString*) apiKey __attribute((deprecated()));
-
-+ (void)initializeApiKey:(NSString*) apiKey userId:(NSString*) userId __attribute((deprecated()));
-
-+ (void)logEvent:(NSString*) eventType __attribute((deprecated()));
-
-+ (void)logEvent:(NSString*) eventType withEventProperties:(NSDictionary*) eventProperties __attribute((deprecated()));
-
-+ (void)logRevenue:(NSNumber*) amount __attribute((deprecated()));
-
-+ (void)logRevenue:(NSString*) productIdentifier quantity:(NSInteger) quantity price:(NSNumber*) price __attribute((deprecated())) __attribute((deprecated()));
-
-+ (void)logRevenue:(NSString*) productIdentifier quantity:(NSInteger) quantity price:(NSNumber*) price receipt:(NSData*) receipt __attribute((deprecated()));
-
-+ (void)uploadEvents __attribute((deprecated()));
-
-+ (void)setUserProperties:(NSDictionary*) userProperties __attribute((deprecated()));
-
-+ (void)setUserId:(NSString*) userId __attribute((deprecated()));
-
-+ (void)enableLocationListening __attribute((deprecated()));
-
-+ (void)disableLocationListening __attribute((deprecated()));
-
-+ (void)useAdvertisingIdForDeviceId __attribute((deprecated()));
-
-+ (void)printEventsCount __attribute((deprecated()));
-
-+ (NSString*)getDeviceId __attribute((deprecated()));
 @end
 
 #pragma mark - constants
@@ -594,3 +692,5 @@
 extern NSString *const kAMPSessionStartEvent;
 extern NSString *const kAMPSessionEndEvent;
 extern NSString *const kAMPRevenueEvent;
+
+NS_ASSUME_NONNULL_END

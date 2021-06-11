@@ -1,10 +1,27 @@
 //
 //  AMPIdentify.h
-//  Amplitude
+//  Copyright (c) 2015 Amplitude Inc. (https://amplitude.com/)
 //
-//  Created by Daniel Jih on 10/5/15.
-//  Copyright © 2015 Amplitude. All rights reserved.
+//  Permission is hereby granted, free of charge, to any person obtaining a copy
+//  of this software and associated documentation files (the "Software"), to deal
+//  in the Software without restriction, including without limitation the rights
+//  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+//  copies of the Software, and to permit persons to whom the Software is
+//  furnished to do so, subject to the following conditions:
 //
+//  The above copyright notice and this permission notice shall be included in
+//  all copies or substantial portions of the Software.
+//
+//  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+//  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+//  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+//  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+//  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+//  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+//  THE SOFTWARE.
+//
+
+#import <Foundation/Foundation.h>
 
 /**
  `AMPIdentify` objects are a wrapper for user property operations, which get passed to the `identify` method to send to Amplitude servers.
@@ -55,7 +72,7 @@
 
  @see [User Properties and User Property Operations](https://github.com/amplitude/amplitude-ios#user-properties-and-user-property-operations)
  */
-- (AMPIdentify*)add:(NSString*) property value:(NSObject*) value;
+- (AMPIdentify *)add:(NSString *)property value:(NSObject *)value;
 
 /**
  Append a value or values to a user property.
@@ -70,14 +87,14 @@
 
  @see [User Properties and User Property Operations](https://github.com/amplitude/amplitude-ios#user-properties-and-user-property-operations)
  */
-- (AMPIdentify*)append:(NSString*) property value:(NSObject*) value;
+- (AMPIdentify *)append:(NSString *)property value:(NSObject *)value;
 
 /*
  Internal method for clearing user properties.
 
  **Note:** $clearAll needs to be sent on its own Identify object. If there are already other operations, then don't add $clearAll. If $clearAll already in an Identify object, don't allow other operations to be added.
  */
-- (AMPIdentify*)clearAll;
+- (AMPIdentify *)clearAll;
 
 /**
  Prepend a value or values to a user property. Prepend means inserting the value or values at the front of a list.
@@ -92,7 +109,7 @@
 
  @see [User Properties and User Property Operations](https://github.com/amplitude/amplitude-ios#user-properties-and-user-property-operations)
  */
-- (AMPIdentify*)prepend:(NSString*) property value:(NSObject*) value;
+- (AMPIdentify *)prepend:(NSString *)property value:(NSObject *)value;
 
 /**
  Sets the value of a given user property. If the value already exists, it will be overwritten with the new value.
@@ -105,7 +122,7 @@
 
  @see [User Properties and User Property Operations](https://github.com/amplitude/amplitude-ios#user-properties-and-user-property-operations)
  */
-- (AMPIdentify*)set:(NSString*) property value:(NSObject*) value;
+- (AMPIdentify *)set:(NSString *)property value:(NSObject *)value;
 
 
 /**
@@ -121,7 +138,7 @@
 
  @see [User Properties and User Property Operations](https://github.com/amplitude/amplitude-ios#user-properties-and-user-property-operations)
  */
-- (AMPIdentify*)setOnce:(NSString*) property value:(NSObject*) value;
+- (AMPIdentify *)setOnce:(NSString *)property value:(NSObject *)value;
 
 
 /**
@@ -133,6 +150,47 @@
 
  @see [User Properties and User Property Operations](https://github.com/amplitude/amplitude-ios#user-properties-and-user-property-operations)
  */
-- (AMPIdentify*)unset:(NSString*) property;
+- (AMPIdentify *)unset:(NSString *)property;
 
+
+/**
+  Pre-insert the value of a given user property. If the value already exists, it will do no operation.
+
+ @param property The user property key
+
+ @param value A value or values to set.
+
+ @returns the same [AMPIdentify](#) object, allowing you to chain multiple method calls together.
+
+ @see [User Properties and User Property Operations](https://github.com/amplitude/amplitude-ios#user-properties-and-user-property-operations)
+ */
+- (AMPIdentify *)preInsert:(NSString *)property value:(NSObject *)value;
+
+
+/**
+ Post-insert the value of a given user property. If the value already exists, it will do no operation.
+
+ @param property The user property key
+
+ @param value A value or values to set.
+
+ @returns the same [AMPIdentify](#) object, allowing you to chain multiple method calls together.
+
+ @see [User Properties and User Property Operations](https://github.com/amplitude/amplitude-ios#user-properties-and-user-property-operations)
+ */
+- (AMPIdentify *)postInsert:(NSString *)property value:(NSObject *)value;
+
+
+/**
+ Remove the value of a given user property, if the value exists. If the value doesn't exsit, it will do no opearation.
+
+ @param property The user property key
+
+ @param value A value or values to set.
+
+ @returns the same [AMPIdentify](#) object, allowing you to chain multiple method calls together.
+
+ @see [User Properties and User Property Operations](https://github.com/amplitude/amplitude-ios#user-properties-and-user-property-operations)
+ */
+- (AMPIdentify *)remove:(NSString *)property value:(NSObject *)value;
 @end
