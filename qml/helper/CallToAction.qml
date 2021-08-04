@@ -6,13 +6,14 @@ Rectangle {
   anchors.bottom: parent.bottom
   anchors.bottomMargin: -dp(40)
   width: parent.width
-  height: dp(40)
+  height: dp(40) + nativeUtils.safeAreaInsets.bottom
   color: Theme.tintColor
 
   property string linkUrl: "https://felgo.com/plugin-demo/?source=app-plugin-demo&utm_medium=app&utm_source=app-plugin-demo"
 
   MouseArea {
     anchors.fill: parent
+    anchors.bottomMargin: nativeUtils.safeAreaInsets.bottom
     onClicked: {
 
       // to try: may get rejected in the review by Apple as it links to a product where you can buy something

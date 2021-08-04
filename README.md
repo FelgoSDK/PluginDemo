@@ -7,10 +7,6 @@ For more information about the Felgo Plugin Demo see https://felgo.com/plugin-de
 
 ![ScreenShot](https://felgo.com/doc/images/plugindemo_screens.png)
 
-Download and try the demo:
- - Android: https://play.google.com/store/apps/details?id=net.vplay.demos.PluginDemo
- - iOS: https://itunes.apple.com/us/app/qt-plugin-demo-by-felgo/id1108040936?ls=1&mt=8
-
 The Plugin Demo uses Felgo Plugins to add features like:
  - Advertising / Monetization with AdMob (https://felgo.com/doc/plugin-admob/) or Chartboost (https://felgo.com/doc/plugin-chartboost/)
  - In-App Purchases by Soomla (https://felgo.com/doc/plugin-soomla/)
@@ -30,7 +26,7 @@ Felgo Plugins use native, platform-specific functionality, meaning that your app
 
 Installation Instructions
 -------------------------
-This game was made with Felgo. You need the SDK which is freely available on https://felgo.com/ for all desktop platforms. Felgo Plugins are only available starting with the Felgo Indie license and above. See https://felgo.com/pricing for more information.
+This app was made with Felgo. You need the SDK which is freely available on https://felgo.com/ for all desktop platforms. Felgo Plugins are only available starting with the Felgo Startup license and above. See https://felgo.com/pricing for more information.
 
 1. Go to https://felgo.com/, register, download and install the free Felgo SDK.
 2. Clone the repository.

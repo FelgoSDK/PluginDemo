@@ -1,14 +1,31 @@
 <RCC>
     <qresource prefix="/">
-        <file>qml</file>
-        <file>qml/pages</file>
-        <file>qml/helper</file>
-        <file>qml/pages/firebase</file>
-    </qresource>
-    <qresource prefix="/appdemos/plugindemo/">
-        <file>qml</file>
-        <file>qml/pages</file>
-        <file>qml/helper</file>
-        <file>qml/pages/firebase</file>
+        <file>qml/Main.qml</file>
+        <file>qml/PluginMainItem.qml</file>
+        <file>qml/config.json</file>
+        <file>qml/pages/AdMobPage.qml</file>
+        <file>qml/pages/AmplitudePage.qml</file>
+        <file>qml/pages/ChartboostPage.qml</file>
+        <file>qml/pages/FacebookPage.qml</file>
+        <file>qml/pages/FirebasePage.qml</file>
+        <file>qml/pages/FlurryPage.qml</file>
+        <file>qml/pages/GameCenterPage.qml</file>
+        <file>qml/pages/GoogleAnalyticsPage.qml</file>
+        <file>qml/pages/GoogleCloudMessagingPage.qml</file>
+        <file>qml/pages/HockeyAppPage.qml</file>
+        <file>qml/pages/LocalNotificationPage.qml</file>
+        <file>qml/pages/OneSignalPage.qml</file>
+        <file>qml/pages/SoomlaPage.qml</file>
+        <file>qml/pages/firebase/FirebaseAdvanced.qml</file>
+        <file>qml/pages/firebase/FirebaseLoginPage.qml</file>
+        <file>qml/pages/firebase/FirebaseSimpleAuth.qml</file>
+        <file>qml/pages/firebase/FirebaseSimpleDb.qml</file>
+        <file>qml/helper/CallToAction.qml</file>
+        <file>qml/helper/Constants.qml</file>
+        <file>qml/helper/PluginListItem.qml</file>
+        <file>qml/helper/SectionContent.qml</file>
+        <file>qml/helper/SectionDescription.qml</file>
+        <file>qml/helper/SectionHeader.qml</file>
+        <file>qml/helper/qmldir</file>
     </qresource>
 </RCC>

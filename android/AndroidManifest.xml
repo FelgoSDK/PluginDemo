@@ -47,12 +47,24 @@
             <!-- auto screen scale factor -->
         </activity>
 
-        <meta-data android:name="billing.service" android:value="google.GooglePlayIabService"/>
+        <!-- file provider needed for letting external apps (like camera) write to a file of the app -->
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths"/>
+        </provider>
+
 
         <!-- For AdMob plugin: -->
+        <meta-data android:name="billing.service" android:value="google.GooglePlayIabService"/>
         <meta-data android:name="com.google.android.gms.ads.APPLICATION_ID" android:value="ca-app-pub-1062462698709071~3048371341"/>
+
     </application>
-    <uses-sdk android:minSdkVersion="21" android:targetSdkVersion="29"/>
     <supports-screens android:largeScreens="true" android:normalScreens="true" android:anyDensity="true" android:smallScreens="true"/>
 
     <!-- The following comment will be replaced upon deployment with default permissions based on the dependencies of the application.

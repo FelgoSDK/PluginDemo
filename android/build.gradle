@@ -1,21 +1,22 @@
 buildscript {
     repositories {
-        maven { url 'https://maven.google.com' }
+        google()
+        mavenCentral()
         jcenter()
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.3.3'
+        classpath 'com.android.tools.build:gradle:3.6.0'
         classpath 'com.google.gms:google-services:3.0.0'
     }
 }
 
 allprojects {
     repositories {
-        maven { url 'https://maven.google.com' }
+        google()
+        mavenCentral()
         jcenter()
         maven { url 'https://install.felgo.com/maven/' }
-        maven { url "https://chartboostmobile.bintray.com/Chartboost" }
     }
 }
 
@@ -23,6 +24,7 @@ apply plugin: 'com.android.application'
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "androidx.appcompat:appcompat:1.2.0"
 
     implementation 'net.vplay.plugins:plugin-admob:3.+'
     implementation 'net.vplay.plugins:plugin-chartboost:3.+'
@@ -50,8 +52,8 @@ android {
      * Changing them manually might break the compilation!
      *******************************************************/
 
-    compileSdkVersion androidCompileSdkVersion.toInteger()
-    buildToolsVersion androidBuildToolsVersion
+    compileSdkVersion    androidCompileSdkVersion.toInteger()
+    buildToolsVersion    androidBuildToolsVersion
 
     compileOptions {
       sourceCompatibility 1.8
@@ -59,10 +61,12 @@ android {
     }
 
     defaultConfig {
-      applicationId = productIdentifier
-      versionCode = productVersionCode.toInteger()
-      versionName = productVersionName
-      minSdkVersion 21
+      multiDexEnabled true
+      targetSdkVersion   androidCompileSdkVersion.toInteger()
+      applicationId    = productIdentifier
+      versionCode      = productVersionCode.toInteger()
+      versionName      = productVersionName
+      minSdkVersion    = project.hasProperty("qtMinSdkVersion") ? qtMinSdkVersion.toInteger() : 21
 
       int qtVersionNr = project.hasProperty("qtVersionInt") ? qtVersionInt.toInteger() : 5132
       if (qtVersionNr < 5140) {
@@ -88,6 +92,12 @@ android {
 
     lintOptions {
         abortOnError false
+    }
+    aaptOptions { // Do not compress Qt binary resources file
+        noCompress 'rcc'
+    }
+    tasks.withType(JavaCompile) {
+        options.incremental = true
     }
 }
 
