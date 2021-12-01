@@ -38,7 +38,7 @@ App {
       onPopped: { notificationPage.parent = pluginMainItem; visible = false }
     }
 
-    anchors.bottomMargin: callToAction.height + callToAction.anchors.bottomMargin
+    anchors.bottomMargin: callToAction.height
   }
   CallToAction { id: callToAction }
 }

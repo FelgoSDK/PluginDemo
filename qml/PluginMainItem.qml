@@ -12,6 +12,7 @@ Item {
     ListPage {
       id: page
       title: qsTr("Felgo Plugins")
+      listView.bottomMargin: 0 // safe area is handled in Main.qml
 
       model: ListModel {
         ListElement { type: "Advertising"; name: "AdMob";
