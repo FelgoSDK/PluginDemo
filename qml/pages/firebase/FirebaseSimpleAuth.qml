@@ -21,6 +21,10 @@ Page {
       console.debug("User login: " + success + " - " + message)
     }
 
+    onUserDeleted: {
+      console.debug("User deleted: "+ success + " - " + message)
+    }
+
   }
 
   Column {
@@ -39,6 +43,11 @@ Page {
     AppButton {
       text: "Log out"
       onClicked: firebaseAuth.logoutUser()
+    }
+
+    AppButton {
+      text: "Delete user"
+      onClicked: firebaseAuth.deleteUser()
     }
 
     AppText {

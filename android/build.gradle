@@ -6,7 +6,7 @@ buildscript {
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.6.0'
+        classpath 'com.android.tools.build:gradle:7.2.0'
         classpath 'com.google.gms:google-services:4.3.10'
     }
 }
@@ -26,6 +26,7 @@ apply plugin: 'com.google.gms.google-services'
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "androidx.appcompat:appcompat:1.2.0"
+    implementation 'androidx.work:work-runtime:2.7.1' // required for Android 31
 
     implementation 'net.vplay.plugins:plugin-admob:3.+'
     implementation 'net.vplay.plugins:plugin-chartboost:3.+'
