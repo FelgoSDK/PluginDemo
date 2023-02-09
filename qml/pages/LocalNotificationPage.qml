@@ -1,4 +1,4 @@
-import Felgo 3.0
+import Felgo 4.0
 import QtQuick 2.0
 import "../helper"
 
@@ -36,7 +36,7 @@ ListPage {
   delegate: SimpleRow {
     text: name
 
-    onSelected: {
+    onSelected: index => {
       if (index === 0) {
         NativeDialog.confirm("Local Notifications", "A test notification will be scheduled to arrive in 3 seconds.", function(confirmed) {
           if(confirmed)
@@ -55,6 +55,6 @@ ListPage {
 
   NotificationManager {
     id: notificationmanager
-    onNotificationFired: NativeDialog.confirm("Local Notifications", "Notification with id " + notificationId + " fired", null, false)
+    onNotificationFired: notificationId => NativeDialog.confirm("Local Notifications", "Notification with id " + notificationId + " fired", null, false)
   }
 }

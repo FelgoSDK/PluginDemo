@@ -1,5 +1,5 @@
 # allows to add DEPLOYMENTFOLDERS and links to the Felgo library and QtCreator auto-completion
-CONFIG += felgo
+CONFIG += felgo felgo_bluetooth
 
 # uncomment this line to add the Live Client Module and use live reloading with your custom C++ code
 # for the remaining steps to build a custom Live Code Reload app see here: https://felgo.com/custom-code-reload-app/
@@ -9,6 +9,9 @@ CONFIG += felgo
 PRODUCT_IDENTIFIER = net.vplay.demos.PluginDemo
 PRODUCT_VERSION_NAME = 1.0
 PRODUCT_VERSION_CODE = 1
+
+# temporary fix to not use latest build tools:
+ANDROID_SDK_BUILD_TOOLS_REVISION = 30.0.3
 
 # Optionally set a license key that is used instead of the license key from
 # main.qml file (App::licenseKey for your app or GameWindow::licenseKey for your game)

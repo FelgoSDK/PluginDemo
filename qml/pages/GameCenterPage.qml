@@ -1,4 +1,4 @@
-import Felgo 3.0
+import Felgo 4.0
 import QtQuick 2.0
 import "../helper"
 
@@ -40,7 +40,7 @@ ListPage {
   delegate: SimpleRow {
     text: name
 
-    onSelected: {
+    onSelected: index => {
       // if user is not authenticated, show a message box that he cannot use GameCenter features
       if(index > 0 && !gamecenter.authenticated) {
         NativeDialog.confirm("Not Authenticated",
@@ -92,9 +92,9 @@ ListPage {
     id: gamecenter
 
     onAuthenticatedChanged: NativeDialog.confirm("GameCenter", "User is authenticated: "+authenticated, function() { }, false)
-    onAchievementReported: NativeDialog.confirm("GameCenter", "Achievement reported with success: "+success, function() { }, false)
-    onScoreReported: NativeDialog.confirm("GameCenter", "Score reported with success: "+success, function() { }, false)
-    onAchievementsReset: NativeDialog.confirm("GameCenter", "Achievements reset with success: "+success, function() { }, false)
+    onAchievementReported: success => NativeDialog.confirm("GameCenter", "Achievement reported with success: "+success, function() { }, false)
+    onScoreReported:       success => NativeDialog.confirm("GameCenter", "Score reported with success: "+success, function() { }, false)
+    onAchievementsReset:   success => NativeDialog.confirm("GameCenter", "Achievements reset with success: "+success, function() { }, false)
   }
 
   // automatically call authenticate when page is created/opened

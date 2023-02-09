@@ -1,8 +1,8 @@
-import Felgo 3.0
+import Felgo 4.0
 import QtQuick 2.0
 import QtQuick.Layouts 1.1
 
-Page {
+AppPage {
   id: loginPage
   title: "Login"
 
@@ -38,7 +38,7 @@ Page {
   FirebaseAuth {
     id: firebaseAuth
 
-    onUserRegistered: {
+    onUserRegistered: (success, message) => {
 
       indicator.stopAnimating()
 
@@ -57,7 +57,7 @@ Page {
       loginDialog.open()
     }
 
-    onLoggedIn:  {
+    onLoggedIn: (success, message) => {
       indicator.stopAnimating()
 
       console.debug("User login " + success + " - " + message)

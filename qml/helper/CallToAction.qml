@@ -1,5 +1,5 @@
 import QtQuick 2.0
-import Felgo 3.0
+import Felgo 4.0
 
 Rectangle {
   id: cta
@@ -78,8 +78,8 @@ Rectangle {
           // other variations: "Get Full Source Code", "Download for Free"
           font.pixelSize: sp(14)
         }
-        Icon {
-          icon: IconType.externallink
+        AppIcon {
+          iconType: IconType.externallink
           color: "#fff"
           size: sp(13)
           anchors.verticalCenter: parent.verticalCenter

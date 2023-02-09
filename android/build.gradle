@@ -2,11 +2,10 @@ buildscript {
     repositories {
         google()
         mavenCentral()
-        jcenter()
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:7.2.0'
+        classpath "com.android.tools.build:gradle:${androidGradleToolsVersion}"
         classpath 'com.google.gms:google-services:4.3.10'
     }
 }
@@ -15,7 +14,6 @@ allprojects {
     repositories {
         google()
         mavenCentral()
-        jcenter()
         maven { url 'https://install.felgo.com/maven/' }
     }
 }
@@ -26,7 +24,6 @@ apply plugin: 'com.google.gms.google-services'
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "androidx.appcompat:appcompat:1.2.0"
-    implementation 'androidx.work:work-runtime:2.7.1' // required for Android 31
 
     implementation 'net.vplay.plugins:plugin-admob:3.+'
     implementation 'net.vplay.plugins:plugin-chartboost:3.+'
@@ -69,14 +66,6 @@ android {
       versionCode      = productVersionCode.toInteger()
       versionName      = productVersionName
       minSdkVersion    = project.hasProperty("qtMinSdkVersion") ? qtMinSdkVersion.toInteger() : 21
-
-      int qtVersionNr = project.hasProperty("qtVersionInt") ? qtVersionInt.toInteger() : 5132
-      if (qtVersionNr < 5140) {
-        resValue('array', 'load_local_libs', "")
-      } else if (qtVersionNr >= 5140) {
-        resValue('array', 'bundled_in_lib', "")
-        resValue('array', 'bundled_in_assets', "")
-      }
     }
 
     sourceSets {

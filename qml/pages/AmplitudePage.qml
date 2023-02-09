@@ -1,4 +1,4 @@
-import Felgo 3.0
+import Felgo 4.0
 import QtQuick 2.0
 import "../helper"
 
@@ -41,7 +41,7 @@ ListPage {
   delegate: SimpleRow {
     text: name
 
-    onSelected: {
+    onSelected: index => {
       if (index === 0) {
         amplitude.logEvent("Buttons", "Send Event Clicked")
         NativeDialog.confirm("Amplitude", "event logged:\nButtons\nSend Event Clicked", function(){}, false)

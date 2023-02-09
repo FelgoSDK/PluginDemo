@@ -1,4 +1,4 @@
-import Felgo 3.0
+import Felgo 4.0
 import QtQuick 2.0
 import "./firebase"
 
@@ -87,7 +87,7 @@ ListPage {
   section.delegate: SimpleSection { }
 
   delegate: SimpleRow {
-    onSelected: {
+    onSelected: index => {
       switch(index) {
       case 0:
         loginPage.opacity = 1

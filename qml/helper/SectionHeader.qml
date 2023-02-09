@@ -1,12 +1,12 @@
 import QtQuick 2.0
-import Felgo 3.0
+import Felgo 4.0
 
 Rectangle {
   color: Qt.darker(Theme.tintColor, 4)
   width: parent.width
   height: iconRect.height + 2 * dp(Theme.navigationBar.defaultBarItemPadding)
 
-  property alias icon: iconItem.icon
+  property alias icon: iconItem.iconType
   property alias text: appText.text
   property alias image: imageItem.source
 
@@ -17,15 +17,15 @@ Rectangle {
 
     Rectangle {
       id: iconRect
-      visible: imageItem.source != "" || iconItem.icon !== ""
+      visible: imageItem.source != "" || iconItem.iconType !== ""
       width: dp(Theme.navigationBar.defaultIconSize) * 2.5
       height: visible ? dp(Theme.navigationBar.defaultIconSize) * 2.5 : appText.height
       radius: width * 0.5
       color: Theme.backgroundColor
-      Icon {
+      AppIcon {
         id: iconItem
         anchors.centerIn: parent
-        visible: iconItem.icon !== ""
+        visible: iconItem.iconType !== ""
       }
       Image {
         id: imageItem

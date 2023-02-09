@@ -1,4 +1,4 @@
-import Felgo 3.0
+import Felgo 4.0
 import QtQuick 2.0
 import "../helper"
 
@@ -51,11 +51,11 @@ ListPage {
     property bool isSelected: index === 0 && gcm.enabled || index === 1 && !gcm.enabled
     enabled: clickable === undefined || clickable
 
-    Icon {
+    AppIcon {
       anchors.right: parent.right
       anchors.rightMargin: dp(10)
       anchors.verticalCenter: parent.verticalCenter
-      icon: IconType.check
+      iconType: IconType.check
       size: dp(14)
       color: row.style.textColor
       visible: isSelected
@@ -63,7 +63,7 @@ ListPage {
 
     style.showDisclosure: false
 
-    onSelected: {
+    onSelected: index => {
       if (index === 0) {
         gcm.enabled = true
       }
@@ -99,7 +99,7 @@ ListPage {
   GoogleCloudMessaging {
     id: gcm
 
-    onNotificationReceived: {
+    onNotificationReceived: data => {
       console.debug("Received notification:", JSON.stringify(data))
       // Possible actions:
       // - Read message from data payload and display a user dialog

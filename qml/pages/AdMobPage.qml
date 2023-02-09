@@ -1,4 +1,4 @@
-import Felgo 3.0
+import Felgo 4.0
 import QtQuick 2.0
 import "../helper"
 
@@ -60,11 +60,11 @@ ListPage {
     text: name
     property bool isSelected: current || (index === 0 && adMobBanner.visible || index === 1 && !adMobBanner.visible)
 
-    Icon {
+    AppIcon {
       anchors.right: parent.right
       anchors.rightMargin: dp(10)
       anchors.verticalCenter: parent.verticalCenter
-      icon: IconType.check
+      iconType: IconType.check
       size: dp(14)
       color: row.style.textColor
       visible: isSelected
@@ -72,7 +72,7 @@ ListPage {
 
     style.showDisclosure: false
 
-    onSelected: {
+    onSelected: index => {
 
       // Set selection
       if (index >= 2 && index <= 6) {

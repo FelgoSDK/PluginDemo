@@ -1,12 +1,12 @@
-import Felgo 3.0
+import Felgo 4.0
 import QtQuick 2.5
 import "../helper"
 
-Page {
+AppPage {
 
   title: "Facebook Plugin"
 
-  ScrollIndicator {
+  AppScrollIndicator {
     flickable: flick
     z: 1
   }
@@ -133,7 +133,7 @@ Page {
     }
 
     // handle completed get-friends graph request
-    onGetGraphRequestFinished: {
+    onGetGraphRequestFinished: (graphPath, resultState, result) => {
       if(resultState !== Facebook.ResultOk)
         NativeDialog.confirm("Retrieving Friends Failed", "", function(){}, false)
 

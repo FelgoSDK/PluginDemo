@@ -1,4 +1,4 @@
-import Felgo 3.0
+import Felgo 4.0
 import QtQuick 2.0
 import "../helper"
 
@@ -41,7 +41,7 @@ ListPage {
   delegate: SimpleRow {
     text: name
 
-    onSelected: {
+    onSelected: index => {
       // Interstitial
       if (index === 0) {
         chartboost.showInterstitial()
@@ -69,13 +69,13 @@ ListPage {
     appId: Theme.isIos ? Constants.chartboostIosAppId : Constants.chartboostAndroidAppId
     appSignature: Theme.isIos ? Constants.chartboostIosAppSignature : Constants.chartboostAndroidAppSignature
 
-    onRewardedVideoCached: {
+    onRewardedVideoCached: (location, locationType) => {
       rewardReady = true
       console.debug("Rewarded Video was cached!")
       NativeDialog.confirm("Rewarded Video Cached", "Rewarded Video is now cached.", function() {}, false)
     }
 
-    onInterstitialCached: {
+    onInterstitialCached: (location, locationType) => {
       console.log("Interstitial Cached for " + location + " or locationType: " + locationType)
       if(locationType === Chartboost.HomeScreenLocation) {
         console.log("Interstitial cached for HomeScreen")

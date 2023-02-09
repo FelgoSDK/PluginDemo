@@ -1,4 +1,4 @@
-import Felgo 3.0
+import Felgo 4.0
 import QtQuick 2.5
 import "../helper"
 
@@ -56,7 +56,7 @@ ListPage {
   delegate: SimpleRow {
     text: name
 
-    onSelected: {
+    onSelected: index => {
       if (index === 0) {
         store.buyItem(creditsPack.itemId)
       }

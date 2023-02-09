@@ -1,7 +1,7 @@
-import Felgo 3.0
+import Felgo 4.0
 import QtQuick 2.0
 
-Page {
+AppPage {
   // make the background red if the user is logged out,
   // and green if logged in
   backgroundColor: firebaseAuth.authenticated ? "green" : "red"
@@ -9,15 +9,15 @@ Page {
   FirebaseAuth {
     id: firebaseAuth
 
-    onAuthenticatedChanged: {
+    onAuthenticatedChanged: authenticated => {
       console.log("Authenticated changed " + authenticated)
     }
 
-    onUserRegistered: {
+    onUserRegistered: (success, message) => {
       console.debug("User registered: " + success + " - " + message)
     }
 
-    onLoggedIn:  {
+    onLoggedIn: (success, message) => {
       console.debug("User login: " + success + " - " + message)
     }
 

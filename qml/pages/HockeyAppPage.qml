@@ -1,4 +1,4 @@
-import Felgo 3.0
+import Felgo 4.0
 import QtQuick 2.0
 import "../helper"
 
@@ -42,7 +42,7 @@ ListPage {
   delegate: SimpleRow {
     text: name
 
-    onSelected: {
+    onSelected: index => {
       if (index === 0) {
         NativeDialog.confirm("Crash app", "Do you really want to crash the app?", function(confirmed) {
           if(confirmed)

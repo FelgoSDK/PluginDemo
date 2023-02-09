@@ -4,8 +4,10 @@
 
 /.qmake.cache
 /.qmake.stash
+/.qtc_clangd
 *.pro.user
 *.pro.user.*
+CMakeLists.txt.user
 *.moc
 moc_*.cpp
 qrc_*.cpp

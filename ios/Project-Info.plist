@@ -5,7 +5,7 @@
     <key>CFBundleDisplayName</key>
     <string>Felgo Plugins</string>
     <key>CFBundleExecutable</key>
-    <string>${EXECUTABLE_NAME}</string>
+    <string>$(EXECUTABLE_NAME)</string>
     <key>CFBundleIdentifier</key>
     <string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
     <key>CFBundleName</key>
@@ -26,6 +26,8 @@
     <false/>
     <key>UIRequiresFullScreen</key>
     <true/>
+    <key>UILaunchStoryboardName</key>
+    <string>Launch Screen</string>
     <key>UISupportedInterfaceOrientations</key>
     <array>
         <string>UIInterfaceOrientationPortrait</string>

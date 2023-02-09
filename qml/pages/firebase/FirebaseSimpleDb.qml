@@ -1,7 +1,7 @@
-import Felgo 3.0
+import Felgo 4.0
 import QtQuick 2.0
 
-Page {
+AppPage {
 
   /* Dummy FirebaseAuth item, which is only required within plugin demo.
      FirebaseDatbase of this example otherwise gets confused by FirebaseAuth items of other examples. */
@@ -17,7 +17,7 @@ Page {
       realtimeValueKeys = [ "public/teststring", "public/news" ]
     }
 
-    onReadCompleted: {
+    onReadCompleted: (success, key, value) => {
       if(success) {
         console.debug("Read value " +  value + " for key " + key)
         output.text = value
@@ -26,7 +26,7 @@ Page {
       }
     }
 
-    onWriteCompleted: {
+    onWriteCompleted: (success, key, value) => {
       if(success) {
         console.debug("Successfully wrote to DB")
       } else {
@@ -34,7 +34,7 @@ Page {
       }
     }
 
-    onRealtimeValueChanged: {
+    onRealtimeValueChanged: (success, key, value) => {
       console.debug("Realtime value changed to " + value)
       output.text = value
     }

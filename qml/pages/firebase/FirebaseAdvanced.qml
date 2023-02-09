@@ -1,22 +1,22 @@
-import Felgo 3.0
+import Felgo 4.0
 import QtQuick 2.0
 
-Page {
+AppPage {
 
   FirebaseAuth {
     id: firebaseAuth
 
-    onUserRegistered: {
+    onUserRegistered: (success, message) => {
       console.debug("User registered: " + success + " - " + message)
       output.text = message
     }
 
-    onLoggedIn:  {
+    onLoggedIn: (success, message) => {
       console.debug("User login: " + success + " - " + message)
       output.text = message
     }
 
-    onPasswordResetEmailSent: {
+    onPasswordResetEmailSent: (success, message) => {
       console.debug("Email Sent: " + success + " - " + message)
       output.text = message
     }
@@ -25,7 +25,7 @@ Page {
   FirebaseDatabase {
     id: firebaseDb
 
-    onReadCompleted: {
+    onReadCompleted: (success, key, value) => {
       if(success) {
         console.debug("Read value " +  value + " for key " + key)
       } else {
@@ -34,7 +34,7 @@ Page {
       output.text = value
     }
 
-    onWriteCompleted: {
+    onWriteCompleted: (success, key, value) => {
       if(success) {
         console.debug("Successfully wrote to DB")
         output.text = output.text + "\nSuccessfully wrote to DB\n"
@@ -44,7 +44,7 @@ Page {
       }
     }
 
-    onRealtimeUserValueChanged: {
+    onRealtimeUserValueChanged: (success, key, value) => {
       output.text = value
     }
   }

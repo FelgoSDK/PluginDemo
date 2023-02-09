@@ -1,4 +1,4 @@
-import Felgo 3.0
+import Felgo 4.0
 import QtQuick 2.0
 import "../helper"
 
@@ -35,7 +35,7 @@ ListPage {
   delegate: SimpleRow {
     text: name
 
-    onSelected: {
+    onSelected: index => {
       if (index === 0) {
         googleAnalytics.logScreen("GoogleAnalyticsPage")
         NativeDialog.confirm("Google Analytics", "screen logged:\nGoogleAnalyticsPage", function() {}, false)
