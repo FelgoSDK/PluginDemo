@@ -28,8 +28,8 @@ Item {
         ListElement { type: "Social"; name: "Facebook"
           detailText: "Social Sharing & Friend Invites"; image: "../assets/logo-facebook.png" }
 
-        ListElement { type: "Analytics"; name: "Google Analytics"
-          detailText: "App Analytics & Events"; image: "../assets/logo-ga.png" }
+        ListElement { type: "Analytics"; name: "Firebase Analytics"
+          detailText: "App Analytics & Events"; image: "../assets/logo-firebase.png" }
         ListElement { type: "Analytics"; name: "Flurry"
           detailText: "User Analytics & App Statistics"; image: "../assets/logo-flurry.png" }
         ListElement { type: "Analytics"; name: "Amplitude"
@@ -68,7 +68,7 @@ Item {
             page.navigationStack.push(facebookPage)
             break
           case 5:
-            page.navigationStack.push(Qt.resolvedUrl("pages/GoogleAnalyticsPage.qml"))
+            page.navigationStack.push(Qt.resolvedUrl("pages/firebase/FirebaseAnalyticsPage.qml"))
             break
           case 6:
             page.navigationStack.push(Qt.resolvedUrl("pages/FlurryPage.qml"))

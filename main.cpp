@@ -9,9 +9,6 @@ int main(int argc, char *argv[])
   QApplication app(argc, argv);
   FelgoApplication felgo;
 
-  // Use platform-specific fonts instead of Felgo's default font
-  felgo.setPreservePlatformFonts(true);
-
   QQmlApplicationEngine engine;
   felgo.initialize(&engine);
 
