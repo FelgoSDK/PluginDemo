@@ -6,7 +6,7 @@ buildscript {
 
     dependencies {
         classpath "com.android.tools.build:gradle:${androidGradleToolsVersion}"
-        classpath 'com.google.gms:google-services:4.3.10'
+        classpath 'com.google.gms:google-services:4.4.2'
     }
 }
 
@@ -25,16 +25,15 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "androidx.appcompat:appcompat:1.2.0"
 
-    implementation 'net.vplay.plugins:plugin-admob:3.+'
-    implementation 'net.vplay.plugins:plugin-chartboost:3.+'
-    implementation 'net.vplay.plugins:plugin-facebook:3.+'
-    implementation 'net.vplay.plugins:plugin-firebase:3.+'
-    // implementation 'net.vplay.plugins:plugin-flurry:3.+'
-    // implementation 'net.vplay.plugins:plugin-gcm:3.+'
-    // implementation 'net.vplay.plugins:plugin-hockeyapp:3.+'
-    implementation 'net.vplay.plugins:plugin-notification:3.+'
-    // implementation 'net.vplay.plugins:plugin-onesignal:3.+'
-    implementation 'net.vplay.plugins:plugin-soomla:3.+'
+    implementation 'com.felgo.plugins:plugin-admob:4.+'
+    implementation 'com.felgo.plugins:plugin-chartboost:4.+'
+    implementation 'com.felgo.plugins:plugin-facebook:4.+'
+    implementation 'com.felgo.plugins:plugin-firebase:4.+'
+    // implementation 'com.felgo.plugins:plugin-gcm:4.+'
+    // implementation 'com.felgo.plugins:plugin-hockeyapp:4.+'
+    implementation 'com.felgo.plugins:plugin-notification:4.+'
+    // implementation 'com.felgo.plugins:plugin-onesignal:4.+'
+    implementation 'com.felgo.plugins:plugin-soomla:4.+'
 }
 
 android {
@@ -50,6 +49,8 @@ android {
      * updated by QtCreator and androiddeployqt tools.
      * Changing them manually might break the compilation!
      *******************************************************/
+
+    namespace androidPackageName
 
     compileSdkVersion    androidCompileSdkVersion.toInteger()
     buildToolsVersion    androidBuildToolsVersion
@@ -89,5 +90,10 @@ android {
     }
     tasks.withType(JavaCompile) {
         options.incremental = true
+    }
+    packagingOptions {
+        jniLibs {
+            useLegacyPackaging = true
+        }
     }
 }

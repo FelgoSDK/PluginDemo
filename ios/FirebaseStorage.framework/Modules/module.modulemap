@@ -1,11 +1,13 @@
 framework module FirebaseStorage {
-umbrella header "FirebaseStorage.h"
+umbrella header "FirebaseStorage-umbrella.h"
 export *
 module * { export * }
-  link framework "CoreTelephony"
   link framework "Foundation"
   link framework "Security"
-  link framework "SystemConfiguration"
   link framework "UIKit"
   link "z"
+}
+module FirebaseStorage.Swift {
+  header "FirebaseStorage-Swift.h"
+  requires objc
 }

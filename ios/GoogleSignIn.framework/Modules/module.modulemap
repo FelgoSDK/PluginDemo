@@ -1,8 +1,7 @@
 framework module GoogleSignIn {
-  umbrella header "GoogleSignIn.h"
-  export *
-  module * { export * }
-  link framework "AuthenticationServices"
+umbrella header "GoogleSignIn-umbrella.h"
+export *
+module * { export * }
   link framework "CoreGraphics"
   link framework "CoreText"
   link framework "Foundation"

@@ -30,8 +30,6 @@ Item {
 
         ListElement { type: "Analytics"; name: "Firebase Analytics"
           detailText: "App Analytics & Events"; image: "../assets/logo-firebase.png" }
-        ListElement { type: "Analytics"; name: "Flurry"
-          detailText: "User Analytics & App Statistics"; image: "../assets/logo-flurry.png" }
         ListElement { type: "Analytics"; name: "Amplitude"
           detailText: "User Analytics & App Statistics"; image: "../assets/logo-amplitude.png" }
 
@@ -71,24 +69,21 @@ Item {
             page.navigationStack.push(Qt.resolvedUrl("pages/firebase/FirebaseAnalyticsPage.qml"))
             break
           case 6:
-            page.navigationStack.push(Qt.resolvedUrl("pages/FlurryPage.qml"))
-            break
-          case 7:
             page.navigationStack.push(Qt.resolvedUrl("pages/AmplitudePage.qml"))
             break
-          case 8:
+          case 7:
             page.navigationStack.push(Qt.resolvedUrl("pages/GoogleCloudMessagingPage.qml"))
             break
-          case 9:
+          case 8:
             page.navigationStack.push(Qt.resolvedUrl("pages/OneSignalPage.qml"))
             break
-          case 10:
+          case 9:
             page.navigationStack.push(notificationPage)
             break
-          case 11:
+          case 10:
             page.navigationStack.push(Qt.resolvedUrl("pages/HockeyAppPage.qml"))
             break
-          case 12:
+          case 11:
             page.navigationStack.push(Qt.resolvedUrl("pages/FirebasePage.qml"))
             break
           }

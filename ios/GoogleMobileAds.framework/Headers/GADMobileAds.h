@@ -7,10 +7,12 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import <WebKit/WebKit.h>
 
 #import <GoogleMobileAds/GADAudioVideoManager.h>
 #import <GoogleMobileAds/GADInitializationStatus.h>
 #import <GoogleMobileAds/GADRequestConfiguration.h>
+#import <GoogleMobileAds/Mediation/GADVersionNumber.h>
 
 /// A block called with the initialization status when [GADMobileAds startWithCompletionHandler:]
 /// completes or times out.
@@ -26,18 +28,23 @@ typedef void (^GADAdInspectorCompletionHandler)(NSError *_Nullable error);
 /// Returns the shared GADMobileAds instance.
 + (nonnull GADMobileAds *)sharedInstance;
 
-/// Returns the version of the SDK.
-@property(nonatomic, nonnull, readonly) NSString *sdkVersion;
+/// Returns the Google Mobile Ads SDK's version number.
+@property(nonatomic, readonly) GADVersionNumber versionNumber;
 
 /// The application's audio volume. Affects audio volumes of all ads relative to other audio output.
-/// Valid ad volume values range from 0.0 (silent) to 1.0 (current device volume). Use this method
-/// only if your application has its own volume controls (e.g., custom music or sound effect
-/// volumes). Defaults to 1.0.
+/// Valid ad volume values range from 0.0 (silent) to 1.0 (current device volume). Defaults to 1.0.
+///
+/// Warning: Lowering your app's audio volume reduces video ad eligibility and may reduce your app's
+/// ad revenue. You should only utilize this API if your app provides custom volume controls to the
+/// user, and you should reflect the user's volume choice in this API.
 @property(nonatomic, assign) float applicationVolume;
 
-/// Indicates whether the application's audio is muted. Affects initial mute state for all ads. Use
-/// this method only if your application has its own volume controls (e.g., custom music or sound
-/// effect muting). Defaults to NO.
+/// Indicates whether the application's audio is muted. Affects initial mute state for all ads.
+/// Defaults to NO.
+///
+/// Warning: Muting your application reduces video ad eligibility and may reduce your app's ad
+/// revenue. You should only utilize this API if your app provides a custom mute control to the
+/// user, and you should reflect the user's mute decision in this API.
 @property(nonatomic, assign) BOOL applicationMuted;
 
 /// Manages the Google Mobile Ads SDK's audio and video settings.
@@ -56,7 +63,10 @@ typedef void (^GADAdInspectorCompletionHandler)(NSError *_Nullable error);
 /// Available in Google Mobile Ads SDK 7.10 and onwards. Before calling this method check if the
 /// GADMobileAds's shared instance responds to this method. Calling this method on a Google Mobile
 /// Ads SDK lower than 7.10 can crash the app.
-- (BOOL)isSDKVersionAtLeastMajor:(NSInteger)major minor:(NSInteger)minor patch:(NSInteger)patch;
+- (BOOL)isSDKVersionAtLeastMajor:(NSInteger)major
+                           minor:(NSInteger)minor
+                           patch:(NSInteger)patch
+    NS_SWIFT_NAME(isSDKVersionAtLeast(major:minor:patch:));
 
 /// Starts the Google Mobile Ads SDK. Call this method as early as possible to reduce latency on the
 /// session's first ad request. Calls completionHandler when the GMA SDK and all mediation networks
@@ -79,18 +89,15 @@ typedef void (^GADAdInspectorCompletionHandler)(NSError *_Nullable error);
 /// to launch Ad Inspector. Set
 /// GADMobileAds.sharedInstance.requestConfiguration.testDeviceIdentifiers to enable test mode on
 /// this device.
-/// @param viewController A view controller to present Ad Inspector.
+/// @param viewController A view controller to present Ad Inspector. If nil, uses the top view
+/// controller of the app's main window.
 /// @param completionHandler A handler to execute when Ad Inspector is closed.
-- (void)presentAdInspectorFromViewController:(nonnull UIViewController *)viewController
+- (void)presentAdInspectorFromViewController:(nullable UIViewController *)viewController
                            completionHandler:
                                (nullable GADAdInspectorCompletionHandler)completionHandler;
 
-#pragma mark Deprecated
-
-/// Deprecated and does nothing. IAP transaction reporting is no longer supported.
-- (void)disableAutomatedInAppPurchaseReporting GAD_DEPRECATED_ATTRIBUTE;
-
-/// Deprecated and does nothing. IAP transaction reporting is no longer supported.
-- (void)enableAutomatedInAppPurchaseReporting GAD_DEPRECATED_ATTRIBUTE;
+/// Registers a web view with the Google Mobile Ads SDK to improve in-app ad monetization of ads
+/// within this web view.
+- (void)registerWebView:(nonnull WKWebView *)webView;
 
 @end

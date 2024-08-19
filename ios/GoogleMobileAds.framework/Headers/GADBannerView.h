@@ -36,13 +36,13 @@
 /// Example AdMob ad unit ID: @"ca-app-pub-0123456789012345/0123456789"
 @property(nonatomic, copy, nullable) IBInspectable NSString *adUnitID;
 
-/// Required reference to a root view controller that is used by the banner to present full screen
-/// content after the user interacts with the ad. The root view controller is most commonly the view
-/// controller displaying the banner.
+/// Reference to a root view controller that is used by the banner to present full screen
+/// content after the user interacts with the ad. If this is nil, the view controller containing the
+/// banner view is used.
 @property(nonatomic, weak, nullable) IBOutlet UIViewController *rootViewController;
 
 /// Required to set this banner view to a proper size. Never create your own GADAdSize directly.
-/// Use one of the predefined standard ad sizes (such as kGADAdSizeBanner), or create one using the
+/// Use one of the predefined standard ad sizes (such as GADAdSizeBanner), or create one using the
 /// GADAdSizeFromCGSize method. If not using mediation, then changing the adSize after an ad has
 /// been shown will cause a new request (for an ad of the new size) to be sent. If using mediation,
 /// then a new request may not be sent.
@@ -72,5 +72,8 @@
 
 /// Called when ad is estimated to have earned money. Available for allowlisted accounts only.
 @property(nonatomic, nullable, copy) GADPaidEventHandler paidEventHandler;
+
+/// Indicates whether the last loaded ad is a collapsible banner.
+@property(nonatomic, readonly) BOOL isCollapsible;
 
 @end

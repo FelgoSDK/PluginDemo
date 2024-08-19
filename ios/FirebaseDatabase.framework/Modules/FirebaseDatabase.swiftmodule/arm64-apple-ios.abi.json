@@ -1,0 +1,675 @@
+{
+  "ABIRoot": {
+    "kind": "Root",
+    "name": "TopLevel",
+    "printedName": "TopLevel",
+    "children": [
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "FirebaseDatabase",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "FirebaseSharedSwift",
+        "printedName": "FirebaseSharedSwift",
+        "declKind": "Import",
+        "moduleName": "FirebaseDatabase",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "FirebaseDatabase",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "FirebaseSharedSwift",
+        "printedName": "FirebaseSharedSwift",
+        "declKind": "Import",
+        "moduleName": "FirebaseDatabase",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "FirebaseSharedSwift",
+        "printedName": "FirebaseSharedSwift",
+        "declKind": "Import",
+        "moduleName": "FirebaseDatabase",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "ServerTimestamp",
+        "printedName": "ServerTimestamp",
+        "children": [
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(wrappedValue:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "ServerTimestamp",
+                "printedName": "FirebaseDatabase.ServerTimestamp",
+                "usr": "s:16FirebaseDatabase15ServerTimestampV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Foundation.Date?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Date",
+                    "printedName": "Foundation.Date",
+                    "usr": "s:10Foundation4DateV"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "s:16FirebaseDatabase15ServerTimestampV12wrappedValueAC10Foundation4DateVSg_tcfc",
+            "mangledName": "$s16FirebaseDatabase15ServerTimestampV12wrappedValueAC10Foundation4DateVSg_tcfc",
+            "moduleName": "FirebaseDatabase",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "init_kind": "Designated"
+          },
+          {
+            "kind": "Var",
+            "name": "wrappedValue",
+            "printedName": "wrappedValue",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Foundation.Date?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Date",
+                    "printedName": "Foundation.Date",
+                    "usr": "s:10Foundation4DateV"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:16FirebaseDatabase15ServerTimestampV12wrappedValue10Foundation4DateVSgvp",
+            "mangledName": "$s16FirebaseDatabase15ServerTimestampV12wrappedValue10Foundation4DateVSgvp",
+            "moduleName": "FirebaseDatabase",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Foundation.Date?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Date",
+                        "printedName": "Foundation.Date",
+                        "usr": "s:10Foundation4DateV"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:16FirebaseDatabase15ServerTimestampV12wrappedValue10Foundation4DateVSgvg",
+                "mangledName": "$s16FirebaseDatabase15ServerTimestampV12wrappedValue10Foundation4DateVSgvg",
+                "moduleName": "FirebaseDatabase",
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Foundation.Date?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Date",
+                        "printedName": "Foundation.Date",
+                        "usr": "s:10Foundation4DateV"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:16FirebaseDatabase15ServerTimestampV12wrappedValue10Foundation4DateVSgvs",
+                "mangledName": "$s16FirebaseDatabase15ServerTimestampV12wrappedValue10Foundation4DateVSgvs",
+                "moduleName": "FirebaseDatabase",
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:16FirebaseDatabase15ServerTimestampV12wrappedValue10Foundation4DateVSgvM",
+                "mangledName": "$s16FirebaseDatabase15ServerTimestampV12wrappedValue10Foundation4DateVSgvM",
+                "moduleName": "FirebaseDatabase",
+                "implicit": true,
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(from:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "ServerTimestamp",
+                "printedName": "FirebaseDatabase.ServerTimestamp",
+                "usr": "s:16FirebaseDatabase15ServerTimestampV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Decoder",
+                "printedName": "Swift.Decoder",
+                "usr": "s:s7DecoderP"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "s:16FirebaseDatabase15ServerTimestampV4fromACs7Decoder_p_tKcfc",
+            "mangledName": "$s16FirebaseDatabase15ServerTimestampV4fromACs7Decoder_p_tKcfc",
+            "moduleName": "FirebaseDatabase",
+            "declAttributes": [
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "throwing": true,
+            "init_kind": "Designated"
+          },
+          {
+            "kind": "Function",
+            "name": "encode",
+            "printedName": "encode(to:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Encoder",
+                "printedName": "Swift.Encoder",
+                "usr": "s:s7EncoderP"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:16FirebaseDatabase15ServerTimestampV6encode2toys7Encoder_p_tKF",
+            "mangledName": "$s16FirebaseDatabase15ServerTimestampV6encode2toys7Encoder_p_tKF",
+            "moduleName": "FirebaseDatabase",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "throwing": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "==",
+            "printedName": "==(_:_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "ServerTimestamp",
+                "printedName": "FirebaseDatabase.ServerTimestamp",
+                "usr": "s:16FirebaseDatabase15ServerTimestampV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "ServerTimestamp",
+                "printedName": "FirebaseDatabase.ServerTimestamp",
+                "usr": "s:16FirebaseDatabase15ServerTimestampV"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:16FirebaseDatabase15ServerTimestampV2eeoiySbAC_ACtFZ",
+            "mangledName": "$s16FirebaseDatabase15ServerTimestampV2eeoiySbAC_ACtFZ",
+            "moduleName": "FirebaseDatabase",
+            "static": true,
+            "implicit": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Var",
+            "name": "hashValue",
+            "printedName": "hashValue",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Int",
+                "printedName": "Swift.Int",
+                "usr": "s:Si"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:16FirebaseDatabase15ServerTimestampV9hashValueSivp",
+            "mangledName": "$s16FirebaseDatabase15ServerTimestampV9hashValueSivp",
+            "moduleName": "FirebaseDatabase",
+            "implicit": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Int",
+                    "printedName": "Swift.Int",
+                    "usr": "s:Si"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:16FirebaseDatabase15ServerTimestampV9hashValueSivg",
+                "mangledName": "$s16FirebaseDatabase15ServerTimestampV9hashValueSivg",
+                "moduleName": "FirebaseDatabase",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Function",
+            "name": "hash",
+            "printedName": "hash(into:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Hasher",
+                "printedName": "Swift.Hasher",
+                "paramValueOwnership": "InOut",
+                "usr": "s:s6HasherV"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:16FirebaseDatabase15ServerTimestampV4hash4intoys6HasherVz_tF",
+            "mangledName": "$s16FirebaseDatabase15ServerTimestampV4hash4intoys6HasherVz_tF",
+            "moduleName": "FirebaseDatabase",
+            "implicit": true,
+            "funcSelfKind": "NonMutating"
+          }
+        ],
+        "declKind": "Struct",
+        "usr": "s:16FirebaseDatabase15ServerTimestampV",
+        "mangledName": "$s16FirebaseDatabase15ServerTimestampV",
+        "moduleName": "FirebaseDatabase",
+        "declAttributes": [
+          "AccessControl",
+          "PropertyWrapper",
+          "RawDocComment"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Decodable",
+            "printedName": "Decodable",
+            "usr": "s:Se",
+            "mangledName": "$sSe"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Encodable",
+            "printedName": "Encodable",
+            "usr": "s:SE",
+            "mangledName": "$sSE"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Hashable",
+            "printedName": "Hashable",
+            "usr": "s:SH",
+            "mangledName": "$sSH"
+          }
+        ]
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "DatabaseReference",
+        "printedName": "DatabaseReference",
+        "children": [
+          {
+            "kind": "Function",
+            "name": "setValue",
+            "printedName": "setValue(from:encoder:completion:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "GenericTypeParam",
+                "printedName": "τ_0_0"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "FirebaseDataEncoder",
+                "printedName": "FirebaseSharedSwift.FirebaseDataEncoder",
+                "hasDefaultArg": true,
+                "usr": "s:19FirebaseSharedSwift0A11DataEncoderC"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "((Swift.Error?) -> ())?",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "(Swift.Error?) -> ()",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Void",
+                        "printedName": "()"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Optional",
+                        "printedName": "Swift.Error?",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Error",
+                            "printedName": "Swift.Error",
+                            "usr": "s:s5ErrorP"
+                          }
+                        ],
+                        "usr": "s:Sq"
+                      }
+                    ]
+                  }
+                ],
+                "hasDefaultArg": true,
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:So20FIRDatabaseReferenceC16FirebaseDatabaseE8setValue4from7encoder10completionyx_0C11SharedSwift0C11DataEncoderCys5Error_pSgcSgtKSERzlF",
+            "mangledName": "$sSo20FIRDatabaseReferenceC16FirebaseDatabaseE8setValue4from7encoder10completionyx_0C11SharedSwift0C11DataEncoderCys5Error_pSgcSgtKSERzlF",
+            "moduleName": "FirebaseDatabase",
+            "genericSig": "<τ_0_0 where τ_0_0 : Swift.Encodable>",
+            "sugared_genericSig": "<T where T : Swift.Encodable>",
+            "declAttributes": [
+              "RawDocComment"
+            ],
+            "isFromExtension": true,
+            "throwing": true,
+            "funcSelfKind": "NonMutating"
+          }
+        ],
+        "declKind": "Class",
+        "usr": "c:objc(cs)FIRDatabaseReference",
+        "moduleName": "FirebaseDatabase",
+        "isOpen": true,
+        "objc_name": "FIRDatabaseReference",
+        "declAttributes": [
+          "ObjC",
+          "Dynamic"
+        ],
+        "superclassUsr": "c:objc(cs)FIRDatabaseQuery",
+        "isExternal": true,
+        "inheritsConvenienceInitializers": true,
+        "superclassNames": [
+          "FirebaseDatabase.DatabaseQuery",
+          "ObjectiveC.NSObject"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Hashable",
+            "printedName": "Hashable",
+            "usr": "s:SH",
+            "mangledName": "$sSH"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CVarArg",
+            "printedName": "CVarArg",
+            "usr": "s:s7CVarArgP",
+            "mangledName": "$ss7CVarArgP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObservingPublishing",
+            "printedName": "_KeyValueCodingAndObservingPublishing",
+            "usr": "s:10Foundation37_KeyValueCodingAndObservingPublishingP",
+            "mangledName": "$s10Foundation37_KeyValueCodingAndObservingPublishingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObserving",
+            "printedName": "_KeyValueCodingAndObserving",
+            "usr": "s:10Foundation27_KeyValueCodingAndObservingP",
+            "mangledName": "$s10Foundation27_KeyValueCodingAndObservingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomStringConvertible",
+            "printedName": "CustomStringConvertible",
+            "usr": "s:s23CustomStringConvertibleP",
+            "mangledName": "$ss23CustomStringConvertibleP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomDebugStringConvertible",
+            "printedName": "CustomDebugStringConvertible",
+            "usr": "s:s28CustomDebugStringConvertibleP",
+            "mangledName": "$ss28CustomDebugStringConvertibleP"
+          }
+        ]
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "DataSnapshot",
+        "printedName": "DataSnapshot",
+        "children": [
+          {
+            "kind": "Function",
+            "name": "data",
+            "printedName": "data(as:decoder:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "GenericTypeParam",
+                "printedName": "τ_0_0"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Metatype",
+                "printedName": "τ_0_0.Type",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "GenericTypeParam",
+                    "printedName": "τ_0_0"
+                  }
+                ]
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "FirebaseDataDecoder",
+                "printedName": "FirebaseSharedSwift.FirebaseDataDecoder",
+                "hasDefaultArg": true,
+                "usr": "s:19FirebaseSharedSwift0A11DataDecoderC"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:So15FIRDataSnapshotC16FirebaseDatabaseE4data2as7decoderxxm_0C11SharedSwift0C11DataDecoderCtKSeRzlF",
+            "mangledName": "$sSo15FIRDataSnapshotC16FirebaseDatabaseE4data2as7decoderxxm_0C11SharedSwift0C11DataDecoderCtKSeRzlF",
+            "moduleName": "FirebaseDatabase",
+            "genericSig": "<τ_0_0 where τ_0_0 : Swift.Decodable>",
+            "sugared_genericSig": "<T where T : Swift.Decodable>",
+            "declAttributes": [
+              "RawDocComment"
+            ],
+            "isFromExtension": true,
+            "throwing": true,
+            "funcSelfKind": "NonMutating"
+          }
+        ],
+        "declKind": "Class",
+        "usr": "c:objc(cs)FIRDataSnapshot",
+        "moduleName": "FirebaseDatabase",
+        "isOpen": true,
+        "objc_name": "FIRDataSnapshot",
+        "declAttributes": [
+          "ObjC",
+          "Dynamic"
+        ],
+        "superclassUsr": "c:objc(cs)NSObject",
+        "isExternal": true,
+        "inheritsConvenienceInitializers": true,
+        "superclassNames": [
+          "ObjectiveC.NSObject"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Hashable",
+            "printedName": "Hashable",
+            "usr": "s:SH",
+            "mangledName": "$sSH"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CVarArg",
+            "printedName": "CVarArg",
+            "usr": "s:s7CVarArgP",
+            "mangledName": "$ss7CVarArgP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObservingPublishing",
+            "printedName": "_KeyValueCodingAndObservingPublishing",
+            "usr": "s:10Foundation37_KeyValueCodingAndObservingPublishingP",
+            "mangledName": "$s10Foundation37_KeyValueCodingAndObservingPublishingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObserving",
+            "printedName": "_KeyValueCodingAndObserving",
+            "usr": "s:10Foundation27_KeyValueCodingAndObservingP",
+            "mangledName": "$s10Foundation27_KeyValueCodingAndObservingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomStringConvertible",
+            "printedName": "CustomStringConvertible",
+            "usr": "s:s23CustomStringConvertibleP",
+            "mangledName": "$ss23CustomStringConvertibleP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomDebugStringConvertible",
+            "printedName": "CustomDebugStringConvertible",
+            "usr": "s:s28CustomDebugStringConvertibleP",
+            "mangledName": "$ss28CustomDebugStringConvertibleP"
+          }
+        ]
+      }
+    ],
+    "json_format_version": 8
+  },
+  "ConstValues": [
+    {
+      "filePath": "\/var\/folders\/sx\/mf6nj_sn1ll2crpml02qjgbr0000gn\/T\/ZipRelease\/2024-07-03T04-01-33\/project-ios\/Pods\/FirebaseDatabase\/FirebaseDatabase\/Swift\/Sources\/Codable\/ServerTimestamp.swift",
+      "kind": "IntegerLiteral",
+      "offset": 1715,
+      "length": 4,
+      "value": "1000"
+    },
+    {
+      "filePath": "\/var\/folders\/sx\/mf6nj_sn1ll2crpml02qjgbr0000gn\/T\/ZipRelease\/2024-07-03T04-01-33\/project-ios\/Pods\/FirebaseDatabase\/FirebaseDatabase\/Swift\/Sources\/Codable\/ServerTimestamp.swift",
+      "kind": "IntegerLiteral",
+      "offset": 1944,
+      "length": 4,
+      "value": "1000"
+    }
+  ]
+}

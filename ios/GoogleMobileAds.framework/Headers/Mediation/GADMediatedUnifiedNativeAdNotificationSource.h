@@ -34,10 +34,6 @@
 /// dismissed.
 + (void)mediatedNativeAdDidDismissScreen:(nonnull id<GADMediatedUnifiedNativeAd>)mediatedNativeAd;
 
-/// Must be called by the adapter just before mediatedNativeAd leaves the application.
-+ (void)mediatedNativeAdWillLeaveApplication:
-    (nonnull id<GADMediatedUnifiedNativeAd>)mediatedNativeAd;
-
 #pragma mark - Mediated Native Video Ad Notifications
 
 /// Called by the adapter when native video playback has begun or resumed.

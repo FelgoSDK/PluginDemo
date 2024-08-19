@@ -19,8 +19,6 @@ Item {
 
   readonly property string amplitudeApiKey: "47f92e5a607264e66bffa4aa3c94ce2a"
 
-  readonly property string flurryApiKey: "HMV9VC35FS77G6QK9TNZ"
-
   readonly property string googleAnalyticsPropertyId: "UA-32264673-5"
 
   readonly property string hockeyAppiOSAppid: "8bb55b2d177645449bec6e6794f6fc0b"
@@ -32,10 +30,19 @@ Item {
   // soomla
   property string soomlaSecret: "<your-game-secret>"
   property string soomlaAndroidPublicKey: "<android-public-key>"
-  property string creditsCurrencyItemId: "net.vplay.demos.PluginDemo.credits"
-  property string creditsPackItemId: "net.vplay.demos.PluginDemo.creditspack"
+
+  // virtual purchases
   property string goodieItemId: "net.vplay.demos.PluginDemo.goodie"
-  property string noAdsItemId: "net.vplay.demos.PluginDemo.noads"
+  property string creditsCurrencyItemId: "net.vplay.demos.PluginDemo.credits"
+
+  // store purchases (IDs must be lowercase on android)
+  property string creditsPackItemId: Qt.platform.os === "android"
+                                     ? "net.vplay.demos.plugindemo.creditspack"
+                                     : "net.vplay.demos.PluginDemo.creditspack"
+
+  property string noAdsItemId:  Qt.platform.os === "android"
+                                ? "net.vplay.demos.plugindemo.noads"
+                                : "net.vplay.demos.PluginDemo.noads"
 
   // gamecenter
   property string gcLeaderboardID: "leaderboard_main"

@@ -6,6 +6,8 @@
 //
 
 #import <GoogleMobileAds/GADAdReward.h>
+#import <GoogleMobileAds/GoogleMobileAdsDefines.h>
+
 #import <UIKit/UIKit.h>
 
 /// Reports information to the Google Mobile Ads SDK from the adapter. Adapters receive an ad event
@@ -19,6 +21,7 @@
 - (void)reportClick;
 
 /// Notifies Google Mobile Ads SDK that the GADMediationAd will present a full screen modal view.
+/// Maps to adWillPresentFullScreenContent: for full screen ads.
 - (void)willPresentFullScreenView;
 
 /// Notifies Google Mobile Ads SDK that the GADMediationAd failed to present with an error.
@@ -36,18 +39,10 @@
 /// Reports banner related information to the Google Mobile Ads SDK from the adapter.
 @protocol GADMediationBannerAdEventDelegate <GADMediationAdEventDelegate>
 
-/// Notifies Google Mobile Ads SDK that an action on the GADMediationAd will cause the application
-/// to move into the background.
-- (void)willBackgroundApplication;
-
 @end
 
 /// Reports interstitial related information to the Google Mobile Ads SDK from the adapter.
 @protocol GADMediationInterstitialAdEventDelegate <GADMediationAdEventDelegate>
-
-/// Notifies Google Mobile Ads SDK that an action on the GADMediationAd will cause the application
-/// to move into the background.
-- (void)willBackgroundApplication;
 
 @end
 
@@ -69,22 +64,23 @@
 /// Notifies Google Mobile Ads SDK that the GADMediationAd unmuted video playback.
 - (void)didUnmuteVideo;
 
-/// Notifies Google Mobile Ads SDK that an action on the GADMediationAd will cause the application
-/// to move into the background.
-- (void)willBackgroundApplication;
-
 @end
 
 /// Reports rewarded related information to the Google Mobile Ads SDK from the adapter.
 @protocol GADMediationRewardedAdEventDelegate <GADMediationAdEventDelegate>
 
-/// Notifies the Google Mobile Ads SDK that the GADMediationAd has rewarded the user with a reward.
-- (void)didRewardUserWithReward:(nonnull GADAdReward *)reward;
+/// Notifies the Google Mobile Ads SDK that the GADMediationAd has rewarded the user.
+- (void)didRewardUser;
 
 /// Notifies Google Mobile Ads SDK that the GADMediationAd started video playback.
 - (void)didStartVideo;
 
 /// Notifies Google Mobile Ads SDK that the GADMediationAd's video playback finished.
 - (void)didEndVideo;
+
+@end
+
+/// Reports app open related information to the Google Mobile Ads SDK from the adapter.
+@protocol GADMediationAppOpenAdEventDelegate <GADMediationAdEventDelegate>
 
 @end

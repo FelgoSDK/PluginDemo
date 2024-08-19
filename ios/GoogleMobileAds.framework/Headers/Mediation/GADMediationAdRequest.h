@@ -41,32 +41,7 @@
 /// of consent.
 - (nullable NSNumber *)underAgeOfConsent;
 
-/// Returns YES if the publisher has specified latitude and longitude location.
-- (BOOL)userHasLocation;
-
-/// Returns the user's latitude or 0 if location isn't specified.
-- (CGFloat)userLatitude;
-
-/// Returns the user's longitude or 0 if location isn't specified.
-- (CGFloat)userLongitude;
-
-/// Returns the user's location accuracy or 0 if location isn't specified.
-- (CGFloat)userLocationAccuracyInMeters;
-
-/// Returns user's location description. May return a value even if userHasLocation is NO.
-- (nullable NSString *)userLocationDescription;
-
 /// Keywords describing the user's current activity. Example: @"Sport Scores".
 - (nullable NSArray *)userKeywords;
-
-#pragma mark Deprecated
-
-/// Deprecated. The end user's gender set by the publisher in GADRequest. Returns kGADGenderUnknown
-/// if it has not been specified.
-- (GADGender)userGender GAD_DEPRECATED_ATTRIBUTE;
-
-/// Deprecated. The end user's birthday set by the publisher. Returns nil if it has not been
-/// specified.
-- (nullable NSDate *)userBirthday GAD_DEPRECATED_ATTRIBUTE;
 
 @end

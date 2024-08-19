@@ -8,7 +8,6 @@
         <file>qml/pages/ChartboostPage.qml</file>
         <file>qml/pages/FacebookPage.qml</file>
         <file>qml/pages/FirebasePage.qml</file>
-        <file>qml/pages/FlurryPage.qml</file>
         <file>qml/pages/GameCenterPage.qml</file>
         <file>qml/pages/GoogleAnalyticsPage.qml</file>
         <file>qml/pages/GoogleCloudMessagingPage.qml</file>

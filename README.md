@@ -11,7 +11,7 @@ The Plugin Demo uses Felgo Plugins to add features like:
  - Advertising / Monetization with AdMob (https://felgo.com/doc/plugin-admob/) or Chartboost (https://felgo.com/doc/plugin-chartboost/)
  - In-App Purchases by Soomla (https://felgo.com/doc/plugin-soomla/)
  - Facebook Integration (https://felgo.com/doc/plugin-facebook/)
- - Analytics with Google Analytics (https://felgo.com/doc/plugin-googleanalytics/) or Flurry (https://felgo.com/doc/plugin-flurry/)
+ - Analytics with Amplitude (https://felgo.com/doc/plugin-amplitude/), Google Analytics (https://felgo.com/doc/plugin-googleanalytics/) or Firebase (https://felgo.com/doc/plugin-firebase/)
  - Targeted Push Notifications by OneSignal (https://felgo.com/plugins)
  - Local Push Notifications (https://felgo.com/doc/plugin-notification/)
  - Beta Testing & Crash Reporting with HockeyApp (https://felgo.com/doc/plugin-hockeyapp/)

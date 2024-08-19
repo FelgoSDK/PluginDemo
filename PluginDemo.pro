@@ -46,7 +46,6 @@ FELGO_PLUGINS += admob
 FELGO_PLUGINS += chartboost
 FELGO_PLUGINS += facebook
 FELGO_PLUGINS += firebase
-# FELGO_PLUGINS += flurry
 FELGO_PLUGINS += gamecenter
 # FELGO_PLUGINS += gcm
 # FELGO_PLUGINS += hockeyapp

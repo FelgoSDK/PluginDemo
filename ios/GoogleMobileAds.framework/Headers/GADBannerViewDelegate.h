@@ -22,12 +22,15 @@
 - (void)bannerViewDidReceiveAd:(nonnull GADBannerView *)bannerView;
 
 /// Tells the delegate that an ad request failed. The failure is normally due to network
-/// connectivity or ad availablility (i.e., no fill).
+/// connectivity or ad availablility (for example, no fill).
 - (void)bannerView:(nonnull GADBannerView *)bannerView
     didFailToReceiveAdWithError:(nonnull NSError *)error;
 
 /// Tells the delegate that an impression has been recorded for an ad.
 - (void)bannerViewDidRecordImpression:(nonnull GADBannerView *)bannerView;
+
+/// Tells the delegate that a click has been recorded for the ad.
+- (void)bannerViewDidRecordClick:(nonnull GADBannerView *)bannerView;
 
 #pragma mark Click-Time Lifecycle Notifications
 
